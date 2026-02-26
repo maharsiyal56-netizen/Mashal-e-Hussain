@@ -1,114 +1,476 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mashal-e-Hussain | Noha · Majlis · Matam Dari Videos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mashal-e-Hussain | Noha · Majlis · Matam Dari</title>
 
-<!-- favicon -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23d4af37'>🕋</text></svg>">
+  <!-- favicon (Kaaba icon) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23d4af37'>🕋</text></svg>">
 
-<!-- Fonts & Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<style>
-/* Reset & base */
-* { margin:0; padding:0; box-sizing:border-box; transition: all 0.3s; }
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #0a0f0c;
-    color: #e5e5e5;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.05"><path d="M60 40 L140 40 L160 80 L140 120 L60 120 L40 80 L60 40" fill="none" stroke="%23d4af37" stroke-width="1.5"/><circle cx="100" cy="80" r="12" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M70 150 Q100 170 130 150" stroke="%23d4af37" fill="none" stroke-width="1.2"/></svg>');
-    background-repeat: repeat;
-    background-size: 140px 140px;
-}
+  <!-- Elegant Arabic/Urdu fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
 
-/* Light mode */
-body.light-mode { background-color: #f4efe9; color: #1e2b1e; }
-body.light-mode .hero-bg { background-color: rgba(255,255,255,0.5); }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    }
 
-/* Fonts */
-h1, h2, h3, .islamic-heading { font-family: 'Noto Nastaliq Urdu', 'Scheherazade New', serif; font-weight:700; letter-spacing:0.5px; }
+    body {
+      font-family: 'Segoe UI', 'Amiri', sans-serif;
+      background-color: #0a0f0c;        /* deep green-black */
+      color: #e5e5e5;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      /* subtle background pattern (hussaini inspired) */
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.05"><path d="M60 40 L140 40 L160 80 L140 120 L60 120 L40 80 L60 40" fill="none" stroke="%23d4af37" stroke-width="1.5"/><circle cx="100" cy="80" r="12" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M70 150 Q100 170 130 150" stroke="%23d4af37" fill="none" stroke-width="1.2"/></svg>');
+      background-repeat: repeat;
+      background-size: 140px 140px;
+    }
 
-/* Hero */
-.hero { position: relative; text-align:center; padding:70px 20px 50px; margin-bottom:40px; }
-.hero-bg {
-    position:absolute; top:0; left:0; width:100%; height:100%;
-    background: url('"D:\Mashal-e-Hussain\background.jpg"') center/cover no-repeat;
-    opacity: 0.5; z-index:0; border-radius:0 0 50px 50px;
-}
-.hero h1 { position:relative; z-index:1; font-size:4rem; margin-bottom:15px; color:#d4af37; }
-.hero p { position:relative; z-index:1; font-size:1.5rem; max-width:800px; margin:0 auto; font-style:italic; }
+    /* Light mode (optional) */
+    body.light-mode {
+      background-color: #f9f6f0;
+      color: #1e2b1e;
+    }
+    body.light-mode .navbar,
+    body.light-mode .footer,
+    body.light-mode .social-card {
+      background-color: #e6dcd0;
+      color: #1e2b1e;
+      border-color: #b39b72;
+    }
+    body.light-mode .social-card {
+      background-color: #f0e7db;
+    }
+    body.light-mode .logo,
+    body.light-mode .social-card i,
+    body.light-mode .footer .social-icons i {
+      color: #b8860b;
+    }
 
-/* Navbar */
-.navbar { background:#0a120e; padding:15px 0; border-bottom:2px solid #d4af37; position:sticky; top:0; z-index:100; }
-.nav-container { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; max-width:1300px; margin:0 auto; padding:0 25px; }
-.logo { font-family:'Amiri', serif; font-size:2rem; color:#d4af37; text-shadow: 2px 2px 0 #0a2f1f; }
-.nav-links a { color:#efefef; margin-left:25px; text-decoration:none; font-weight:500; border-bottom:2px solid transparent; padding-bottom:5px; transition:0.2s; }
-.nav-links a:hover, .nav-links a.active { color:#d4af37; border-bottom-color:#d4af37; }
-.dark-toggle { background:#2b4b35; border:none; color:#d4af37; padding:8px 15px; border-radius:30px; cursor:pointer; font-weight:bold; margin-left:20px; }
+    /* headings use urdu font */
+    h1, h2, h3, .islamic-heading {
+      font-family: 'Noto Nastaliq Urdu', 'Scheherazade New', serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
 
-/* Social Cards */
-.social-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:25px; margin:40px 0; }
-.social-card { display:flex; flex-direction:column; align-items:center; gap:15px; padding:35px 15px; text-align:center; font-size:1.8rem; font-weight:bold; border-radius:20px; background:#16261e; border:1px solid #3e5f4b; text-decoration:none; color:white; transition:all 0.25s; }
-.social-card i { font-size:4rem; color:#d4af37; }
-.social-card span { font-size:1.4rem; background:#d4af37; color:#0a2f1f; padding:5px 20px; border-radius:40px; }
-.social-card:hover { transform:translateY(-12px); background:#1d3a2a; box-shadow:0 15px 0 #6b4f1f; }
+    /* ----- navbar (fully responsive) ----- */
+    .navbar {
+      background: #0a120e;
+      padding: 10px 0;
+      border-bottom: 2px solid #d4af37;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 25px;
+      gap: 10px 20px;
+    }
+    .logo {
+      font-family: 'Amiri', serif;
+      font-size: 2.2rem;
+      color: #d4af37;
+      text-shadow: 2px 2px 0 #0a2f1f;
+      white-space: nowrap;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 15px;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 15px;
+    }
+    .nav-links a {
+      color: #efefef;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 5px;
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #d4af37;
+      border-bottom-color: #d4af37;
+    }
+    .dark-toggle {
+      background: #2b4b35;
+      border: none;
+      color: #d4af37;
+      padding: 8px 18px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .dark-toggle i {
+      font-size: 1rem;
+    }
 
-/* Footer */
-.footer { background:#07120b; padding:40px 0 20px; margin-top:60px; border-top:2px solid #d4af37; text-align:center; }
-.footer .social-icons i { font-size:2rem; margin:0 15px; color:#d4af37; }
-.footer p { margin-top:25px; font-size:1.2rem; }
+    /* ----- Hero section (title + description + background placeholder) ----- */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 80px 20px 90px;
+      margin: 30px 20px 50px;
+      border-radius: 40px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    /* background placeholder — you replace this image later */
+    .hero-bg-placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient( rgba(0,0,0,0.6), rgba(0,0,0,0.6) ), 
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%233d2b1f"/><text x="40" y="160" fill="%23d4af37" font-size="38" font-family="Arial" font-weight="bold" opacity="0.4">🌙 background</text><text x="180" y="200" fill="%23f5e6d3" font-size="30" opacity="0.3">(replace any image)</text></svg>') center/cover no-repeat;
+      z-index: -2;
+    }
+    /* extra dark overlay so white text stands out */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+    .hero h1 {
+      font-size: 4.5rem;
+      color: #d4af37;
+      margin-bottom: 20px;
+      position: relative;
+      text-shadow: 3px 3px 0 #1a2e1a;
+    }
+    .hero-description {
+      max-width: 850px;
+      margin: 0 auto;
+      font-size: 1.7rem;
+      font-family: 'Scheherazade New', serif;
+      background: rgba(10, 18, 14, 0.7);
+      backdrop-filter: blur(3px);
+      padding: 20px 35px;
+      border-radius: 70px;
+      border: 1px solid #d4af37;
+      color: #fff8e7;
+      line-height: 1.5;
+    }
+    body.light-mode .hero-description {
+      background: rgba(255, 245, 220, 0.8);
+      color: #1e3a1e;
+    }
 
-/* Responsive */
-@media(max-width:700px) { .hero h1 { font-size:3rem; } .nav-container { flex-direction:column; gap:15px; } .nav-links a { margin:0 10px; } }
+    /* ----- social cards (large, direct links) ----- */
+    .social-hub {
+      max-width: 1300px;
+      margin: 0 auto 50px;
+      padding: 0 25px;
+    }
+    .social-hub h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      color: #d4af37;
+      margin-bottom: 30px;
+      border-bottom: 2px dashed #b49450;
+      padding-bottom: 10px;
+    }
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .social-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 40px 15px;
+      text-align: center;
+      background: #16261e;
+      border: 2px solid #3e5f4b;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      box-shadow: 0 10px 0 #0a2f1f;
+      transition: all 0.25s;
+    }
+    .social-card i {
+      font-size: 5rem;
+      color: #d4af37;
+    }
+    .social-card span {
+      font-size: 1.9rem;
+      font-weight: 700;
+      background: #d4af37;
+      color: #0a2f1f;
+      padding: 8px 30px;
+      border-radius: 60px;
+      width: 100%;
+    }
+    .social-card:hover {
+      transform: translateY(-10px);
+      background: #1f3d2c;
+      box-shadow: 0 15px 0 #8b691b;
+    }
 
-</style>
+    /* ----- Footer responsive ----- */
+    .footer {
+      background: #07120b;
+      padding: 40px 0 20px;
+      margin-top: 60px;
+      border-top: 3px solid #d4af37;
+      text-align: center;
+    }
+    .footer .social-icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+    .footer .social-icons a {
+      color: #d4af37;
+      font-size: 2.5rem;
+      transition: transform 0.2s;
+    }
+    .footer .social-icons a:hover {
+      transform: scale(1.15);
+      color: #f5c542;
+    }
+    .footer p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Responsive fine-tuning */
+    @media (max-width: 800px) {
+      .hero h1 { font-size: 3.5rem; }
+      .hero-description { font-size: 1.4rem; padding: 15px 20px; }
+    }
+    @media (max-width: 650px) {
+      .nav-container { flex-direction: column; align-items: stretch; }
+      .nav-right { flex-direction: column; align-items: stretch; }
+      .nav-links { justify-content: center; }
+      .nav-links a { font-size: 1rem; }
+      .dark-toggle { justify-content: center; }
+      .hero h1 { font-size: 2.8rem; }
+      .hero-description { font-size: 1.2rem; }
+    }
+    @media (max-width: 480px) {
+      .logo { font-size: 1.8rem; text-align: center; }
+      .nav-links { gap: 8px; }
+      .nav-links a { font-size: 0.9rem; }
+      .social-card i { font-size: 3.8rem; }
+      .social-card span { font-size: 1.5rem; }
+    }
+
+    /* placeholder pages (admin, books, gallery) - hidden by default */
+    .page-placeholder {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 50px 25px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 40px;
+      text-align: center;
+      font-size: 2rem;
+      border: 2px dashed #d4af37;
+      backdrop-filter: blur(4px);
+    }
+    .page-placeholder i { font-size: 4rem; color: #d4af37; }
+  </style>
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar">
-  <div class="nav-container">
-    <div class="logo">مشعل حسین</div>
-    <div style="display:flex; align-items:center;">
-      <div class="nav-links">
-        <a href="#" class="nav-home active">Home</a>
-        <a href="#" class="nav-admin">Admin Contact</a>
-        <a href="#" class="nav-books">Book Library</a>
-        <a href="#" class="nav-gallery">Event Gallery</a>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">مشعل حسین</div>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#" class="nav-home active" data-page="home">Home</a>
+          <a href="#" class="nav-admin" data-page="admin">Admin Contact</a>
+          <a href="#" class="nav-books" data-page="books">Book Library</a>
+          <a href="#" class="nav-gallery" data-page="gallery">Event Gallery</a>
+        </div>
+        <button class="dark-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> Dark</button>
       </div>
-      <button class="dark-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> Dark</button>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- Main -->
-<main id="main-content"></main>
+  <!-- Main content area (dynamic placeholder pages + home) -->
+  <main id="main-content">
+    <!-- Home page (default visible) -->
+    <div id="home-page" class="page-active">
+      <!-- Hero section with description and background placeholder -->
+      <section class="hero">
+        <div class="hero-bg-placeholder"></div>
+        <div class="hero-overlay"></div> <!-- extra dark layer -->
+        <h1>مشعل حسین</h1>
+        <div class="hero-description">
+          Mash’al-e-Hussain is a platform for Noha, Majlis, and Matam Dari. We aim to spread the message of Imam Hussain (AS) with authentic and original content.
+        </div>
+      </section>
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="social-icons">
-      <!-- Easy to update social links here -->
-      <a href="https://www.facebook.com/profile.php?id=61583506752176" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/mashal_e_hussain/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@Mashal-e-Hussain" target="_blank"><i class="fab fa-youtube"></i></a>
-      <a href="https://whatsapp.com/channel/0029Vb0Ga3w8F2pHJXonzV1f" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <!-- Big social hub cards (direct links) -->
+      <section class="social-hub">
+        <h2>🔗  follow the flame  🔗</h2>
+        <div class="social-grid">
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/profile.php?id=61583506752176" target="_blank" class="social-card">
+            <i class="fab fa-facebook-f"></i>
+            <span>Facebook</span>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/mashal_e_hussain/" target="_blank" class="social-card">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+          <!-- YouTube -->
+          <a href="https://www.youtube.com/@Mashal-e-Hussain" target="_blank" class="social-card">
+            <i class="fab fa-youtube"></i>
+            <span>YouTube</span>
+          </a>
+          <!-- WhatsApp channel -->
+          <a href="https://whatsapp.com/channel/0029Vb0Ga3w8F2pHJXonzV1f" target="_blank" class="social-card">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </section>
     </div>
-    <p>© 2026 Mashal-e-Hussain. All rights reserved.</p>
-  </div>
-</footer>
 
-<script>
-// Dark mode toggle
-const toggle = document.getElementById('darkModeToggle');
-toggle.addEventListener('click', () => {
-    document.body.classList.toggle('light-mode');
-    toggle.innerHTML = document.body.classList.contains('light-mode') ? '<i class="fas fa-sun"></i> Light' : '<i class="fas fa-moon"></i> Dark';
-});
-</script>
+    <!-- placeholder for Admin Contact page (hidden initially) -->
+    <div id="admin-page" class="page-placeholder" style="display: none;">
+      <i class="fas fa-user-tie"></i>
+      <h3 style="color:#d4af37; font-size:2.5rem;">Admin Contact</h3>
+      <p style="font-size:1.4rem;">🔸 placeholder – admin details will appear here 🔸</p>
+      <p style="font-size:1.2rem; margin-top:20px;">(email, social handles, contact form later)</p>
+    </div>
+
+    <!-- placeholder for Book Library page -->
+    <div id="books-page" class="page-placeholder" style="display: none;">
+      <i class="fas fa-book-open"></i>
+      <h3 style="color:#d4af37; font-size:2.5rem;">Book Library</h3>
+      <p style="font-size:1.4rem;">📖 placeholder – collection of Islamic & Hussaini books 📖</p>
+    </div>
+
+    <!-- placeholder for Event Gallery page -->
+    <div id="gallery-page" class="page-placeholder" style="display: none;">
+      <i class="fas fa-images"></i>
+      <h3 style="color:#d4af37; font-size:2.5rem;">Event Gallery</h3>
+      <p style="font-size:1.4rem;">🖼️ placeholder – images from Majlis, Noha, processions 🖼️</p>
+    </div>
+  </main>
+
+  <!-- Footer with social icons (same links, easy to update) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61583506752176" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/mashal_e_hussain/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@Mashal-e-Hussain" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://whatsapp.com/channel/0029Vb0Ga3w8F2pHJXonzV1f" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <p>© 2026 Mashal-e-Hussain. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Simple vanilla JS for page switching (placeholder behavior) + dark mode -->
+  <script>
+    (function() {
+      // dark mode toggle
+      const toggle = document.getElementById('darkModeToggle');
+      toggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        toggle.innerHTML = document.body.classList.contains('light-mode') 
+          ? '<i class="fas fa-sun"></i> Light' 
+          : '<i class="fas fa-moon"></i> Dark';
+      });
+
+      // ----- Page navigation placeholders (Admin, Books, Gallery) -----
+      const homePage = document.getElementById('home-page');
+      const adminPage = document.getElementById('admin-page');
+      const booksPage = document.getElementById('books-page');
+      const galleryPage = document.getElementById('gallery-page');
+
+      const navHome = document.querySelector('.nav-home');
+      const navAdmin = document.querySelector('.nav-admin');
+      const navBooks = document.querySelector('.nav-books');
+      const navGallery = document.querySelector('.nav-gallery');
+
+      // helper to hide all main sections, show only selected
+      function showPage(pageId) {
+        // hide all containers
+        homePage.style.display = 'none';
+        adminPage.style.display = 'none';
+        booksPage.style.display = 'none';
+        galleryPage.style.display = 'none';
+
+        // remove active class from nav links
+        [navHome, navAdmin, navBooks, navGallery].forEach(link => link.classList.remove('active'));
+
+        // show selected and activate nav
+        if (pageId === 'home') {
+          homePage.style.display = 'block';
+          navHome.classList.add('active');
+        } else if (pageId === 'admin') {
+          adminPage.style.display = 'block';
+          navAdmin.classList.add('active');
+        } else if (pageId === 'books') {
+          booksPage.style.display = 'block';
+          navBooks.classList.add('active');
+        } else if (pageId === 'gallery') {
+          galleryPage.style.display = 'block';
+          navGallery.classList.add('active');
+        }
+      }
+
+      // event listeners
+      navHome.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage('home');
+      });
+      navAdmin.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage('admin');
+      });
+      navBooks.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage('books');
+      });
+      navGallery.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage('gallery');
+      });
+
+      // optional: set home as active initially (already visible)
+      // but ensure correct after any reload
+      showPage('home');
+    })();
+  </script>
+
+  <!-- note: background placeholder is inline SVG with text, replace hero-bg-placeholder with your own image later -->
 </body>
 </html>
