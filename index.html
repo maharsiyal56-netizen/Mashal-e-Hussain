@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mashal-e-Hussain | Noha · Majlis · Matam</title>
+    <title>Mashal-e-Hussain | Noha · Majlis · Matam Dari Videos</title>
     <!-- favicon (simple crescent & sword emoji as fallback) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23d4af37'>🕋</text></svg>">
     <!-- font awesome icons & google font for calligraphy style -->
@@ -43,7 +43,7 @@
             color: #1e2b1e;
         }
         h1, h2, h3, .islamic-heading {
-            font-family: 'Amiri', 'Scheherazade New', 'Times New Roman', serif;
+            font-family: 'Noto Nastaliq Urdu', 'Scheherazade New', 'Times New Roman', serif;
             font-weight: 700;
             letter-spacing: 0.5px;
         }
@@ -718,14 +718,27 @@
         (function secondary() {
             // open dummy social links in new tab (prevent actual navigation)
             document.addEventListener('click', (e) => {
-                if (e.target.closest('.social-card') || e.target.closest('.whatsapp-btn')) {
-                    e.preventDefault();
-                    alert('🔗 [Demo] This would open the social link in a new tab.');
-                }
-                if (e.target.closest('.download-btn')) {
-                    e.preventDefault();
-                    alert('📥 Demo: PDF download simulation.');
-                }
+                <div class="social-grid">
+    <a href="https://www.facebook.com/profile.php?id=61583506752176" target="_blank" class="social-card" rel="noopener">
+        <i class="fab fa-facebook"></i> 
+        <span>Facebook</span>
+    </a>
+
+    <a href="https://www.instagram.com/mashal_e_hussain/" target="_blank" class="social-card" rel="noopener">
+        <i class="fab fa-instagram"></i> 
+        <span>Instagram</span>
+    </a>
+
+    <a href="https://www.youtube.com/@Mashal-e-Hussain" target="_blank" class="social-card" rel="noopener">
+        <i class="fab fa-youtube"></i> 
+        <span>YouTube</span>
+    </a>
+
+    <a href="https://whatsapp.com/channel/0029Vb0Ga3w8F2pHJXonzV1f" target="_blank" class="social-card" rel="noopener">
+        <i class="fab fa-whatsapp"></i> 
+        <span>WhatsApp</span>
+    </a>
+</div>
             });
         })();
     </script>
