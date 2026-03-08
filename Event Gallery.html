@@ -219,19 +219,6 @@
       transform: scale(1.05);
     }
     
-    /* Enhanced Placeholder */
-    .placeholder-img {
-      background: linear-gradient(145deg, #2a4a3a, #1a2f25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #d4af37;
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      height: 100%;
-      width: 100%;
-      text-shadow: 0 5px 10px rgba(0,0,0,0.3);
-    }
-    
     /* Enhanced Caption */
     .gallery-caption {
       position: absolute;
@@ -538,17 +525,6 @@
       }
     }
     
-    /* Loading Animation */
-    @keyframes pulse {
-      0% { opacity: 1; }
-      50% { opacity: 0.7; }
-      100% { opacity: 1; }
-    }
-    
-    .placeholder-img {
-      animation: pulse 2s infinite;
-    }
-    
     /* Empty State */
     .no-results {
       text-align: center;
@@ -558,7 +534,7 @@
       grid-column: 1 / -1;
     }
     
-    /* Scroll to Top Button (Optional) */
+    /* Scroll to Top Button */
     .scroll-top {
       position: fixed;
       bottom: 30px;
@@ -578,6 +554,7 @@
       transition: all 0.2s;
       opacity: 0;
       visibility: hidden;
+      z-index: 999;
     }
     
     .scroll-top.visible {
@@ -619,65 +596,100 @@
     </div>
     
     <div class="gallery-grid" id="galleryGrid">
-      <!-- Gallery Items -->
+      <!-- Gallery Items - Now with proper img tags and data attributes -->
       <div class="gallery-item" data-category="Arbaeen2015" data-index="0">
-        <div class="Arbaeen2025.jpg">🕋</div>
+        <img src="Event Gallery/Arbaeen2025.jpg" alt="Arbaeen2015-The walk of the lovers" 
+             data-emoji="🕋"
+             data-category="Arbaeen2015"
+             onerror="this.src=createSVGPlaceholder('🕋', 'Arbaeen2015-The walk of the lovers')">
         <div class="gallery-caption">Arbaeen2015-The walk of the lovers</div>
       </div>
       
       <div class="gallery-item" data-category="Zuljanah" data-index="1">
-        <div class="Zuljanah _ Murtajiz.jpg">🎤</div>
+        <img src="Event Gallery/Zuljanah _ Murtajiz.jpg" alt="Zuljanah _ Murtajiz"
+             data-emoji="🎤"
+             data-category="Zuljanah"
+             onerror="this.src=createSVGPlaceholder('🎤', 'Zuljanah _ Murtajiz')">
         <div class="gallery-caption">Zuljanah _ Murtajiz</div>
       </div>
       
       <div class="gallery-item" data-category="matam" data-index="2">
-        <div class="5 Muharram Chiniot.jpg">⚫</div>
+        <img src="Event Gallery/5 Muharram Chiniot.jpg" alt="Matam Dari - 5 Muharram Chiniot"
+             data-emoji="⚫"
+             data-category="matam"
+             onerror="this.src=createSVGPlaceholder('⚫', 'Matam Dari - 5 Muharram Chiniot')">
         <div class="gallery-caption">Matam Dari - 5 Muharram Chiniot</div>
       </div>
       
       <div class="gallery-item" data-category="juloos" data-index="3">
-        <div class="Markazi jaloos.jpg">🏴</div>
+        <img src="Event Gallery/Markazi jaloos.jpg" alt="Markazi jaloos"
+             data-emoji="🏴"
+             data-category="juloos"
+             onerror="this.src=createSVGPlaceholder('🏴', 'Markazi jaloos')">
         <div class="gallery-caption">Markazi jaloos</div>
       </div>
       
       <div class="gallery-item" data-category="majlis" data-index="4">
-        <div class="Majalis.jpg">📖</div>
+        <img src="Event Gallery/Majalis.jpg" alt="Majlis - MAJALIS-E-AYYAM-E-AZA-E-FATMIYAH S.A."
+             data-emoji="📖"
+             data-category="majlis"
+             onerror="this.src=createSVGPlaceholder('📖', 'Majlis - MAJALIS-E-AYYAM-E-AZA-E-FATMIYAH S.A.')">
         <div class="gallery-caption">Majlis - MAJALIS-E-AYYAM-E-AZA-E-FATMIYAH S.A.</div>
       </div>
       
       <div class="gallery-item" data-category="noha" data-index="5">
-        <div class="placeholder-img">🌙</div>
+        <img src="Event Gallery/Noha Night 7th Muharram.jpg" alt="Noha Night - 7th Muharram"
+             data-emoji="🌙"
+             data-category="noha"
+             onerror="this.src=createSVGPlaceholder('🌙', 'Noha Night - 7th Muharram')">
         <div class="gallery-caption">Noha Night - 7th Muharram</div>
       </div>
       
       <div class="gallery-item" data-category="juloos" data-index="6">
-        <div class="placeholder-img">🐎</div>
+        <img src="Event Gallery/Zuljinah Procession.jpg" alt="Zuljinah Procession"
+             data-emoji="🐎"
+             data-category="juloos"
+             onerror="this.src=createSVGPlaceholder('🐎', 'Zuljinah Procession')">
         <div class="gallery-caption">Zuljinah Procession</div>
       </div>
       
       <div class="gallery-item" data-category="matam" data-index="7">
-        <div class="placeholder-img">🖤</div>
+        <img src="Event Gallery/Sina Zani Chehlum.jpg" alt="Sina Zani - Chehlum"
+             data-emoji="🖤"
+             data-category="matam"
+             onerror="this.src=createSVGPlaceholder('🖤', 'Sina Zani - Chehlum')">
         <div class="gallery-caption">Sina Zani - Chehlum</div>
       </div>
       
-      <!-- Additional items for better grid demonstration -->
       <div class="gallery-item" data-category="majlis" data-index="8">
-        <div class="placeholder-img">📿</div>
+        <img src="Event Gallery/Majlis 21st Ramazan.jpg" alt="Majlis - 21st Ramazan"
+             data-emoji="📿"
+             data-category="majlis"
+             onerror="this.src=createSVGPlaceholder('📿', 'Majlis - 21st Ramazan')">
         <div class="gallery-caption">Majlis - 21st Ramazan</div>
       </div>
       
       <div class="gallery-item" data-category="noha" data-index="9">
-        <div class="placeholder-img">🎵</div>
+        <img src="Event Gallery/Noha Shaam e Ghareeban.jpg" alt="Noha - Shaam-e-Ghareeban"
+             data-emoji="🎵"
+             data-category="noha"
+             onerror="this.src=createSVGPlaceholder('🎵', 'Noha - Shaam-e-Ghareeban')">
         <div class="gallery-caption">Noha - Shaam-e-Ghareeban</div>
       </div>
       
       <div class="gallery-item" data-category="juloos" data-index="10">
-        <div class="placeholder-img">🚩</div>
+        <img src="Event Gallery/Juloos Youm e Ali.jpg" alt="Juloos - Youm-e-Ali (AS)"
+             data-emoji="🚩"
+             data-category="juloos"
+             onerror="this.src=createSVGPlaceholder('🚩', 'Juloos - Youm-e-Ali (AS)')">
         <div class="gallery-caption">Juloos - Youm-e-Ali (AS)</div>
       </div>
       
       <div class="gallery-item" data-category="matam" data-index="11">
-        <div class="placeholder-img">🔗</div>
+        <img src="Event Gallery/Zanjeer Matam.jpg" alt="Zanjeer Matam"
+             data-emoji="🔗"
+             data-category="matam"
+             onerror="this.src=createSVGPlaceholder('🔗', 'Zanjeer Matam')">
         <div class="gallery-caption">Zanjeer Matam</div>
       </div>
     </div>
@@ -694,7 +706,7 @@
     </div>
   </div>
 
-  <!-- Scroll to Top Button (Optional) -->
+  <!-- Scroll to Top Button -->
   <div class="scroll-top" id="scrollTop">↑</div>
 
   <footer class="footer">
@@ -709,6 +721,19 @@
 
   <script>
     (function() {
+      // Function to create SVG placeholder (must be defined before use)
+      window.createSVGPlaceholder = function(emoji, text) {
+        // Encode the SVG properly for use in src attribute
+        const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+          <rect width="800" height="600" fill="#2a4a3a"/>
+          <text x="400" y="300" fill="#d4af37" font-size="120" font-family="Arial, sans-serif" text-anchor="middle" dominant-baseline="middle">${emoji}</text>
+          <text x="400" y="400" fill="#d4af37" font-size="30" font-family="Arial, sans-serif" text-anchor="middle">${text}</text>
+        </svg>`;
+        
+        // Convert to data URL
+        return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
+      };
+
       // Gallery items and lightbox functionality
       const galleryItems = document.querySelectorAll('.gallery-item');
       const lightbox = document.getElementById('lightbox');
@@ -723,26 +748,30 @@
       let currentIndex = 0;
       let visibleItems = [];
 
-      // Create SVG placeholder data
-      const placeholderData = {
-        '🕋': 'Kaaba',
-        '🎤': 'Noha Khwani',
-        '⚫': 'Matam',
-        '🏴': 'Alam',
-        '📖': 'Majlis',
-        '🌙': 'Noha Night',
-        '🐎': 'Zuljinah',
-        '🖤': 'Sina Zani',
-        '📿': 'Tasbih',
-        '🎵': 'Noha',
-        '🚩': 'Juloos',
-        '🔗': 'Zanjeer'
-      };
-
-      // Function to create SVG from placeholder
-      function createSvgFromPlaceholder(emoji, text) {
-        return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600"><rect width="800" height="600" fill="%233d2b1f"/><text x="250" y="300" fill="%23d4af37" font-size="120" font-family="Arial, sans-serif">${emoji}</text><text x="200" y="400" fill="%23d4af37" font-size="40" font-family="Arial, sans-serif">${text}</text></svg>`;
-      }
+      // Apply SVG placeholders to any images that failed to load
+      galleryItems.forEach((item, index) => {
+        const img = item.querySelector('img');
+        const caption = item.querySelector('.gallery-caption').textContent;
+        const emoji = img.getAttribute('data-emoji') || '🖼️';
+        
+        // Set error handler for each image
+        img.onerror = function() {
+          this.src = createSVGPlaceholder(emoji, caption);
+        };
+        
+        // Try to load the image, if it fails, onerror will handle it
+        if (!img.complete || img.naturalHeight === 0) {
+          // Image might already be in error state
+          const testImg = new Image();
+          testImg.onload = function() {
+            img.src = img.src; // Retry loading
+          };
+          testImg.onerror = function() {
+            img.src = createSVGPlaceholder(emoji, caption);
+          };
+          testImg.src = img.src;
+        }
+      });
 
       // Function to update visible items based on filter
       function updateVisibleItems() {
@@ -787,16 +816,14 @@
       // Open lightbox with navigation
       galleryItems.forEach((item, index) => {
         item.addEventListener('click', function() {
-          const placeholder = this.querySelector('.placeholder-img');
+          const img = this.querySelector('img');
           const caption = this.querySelector('.gallery-caption').textContent;
-          const emoji = placeholder.textContent;
           
           // Find index in visible items
           currentIndex = visibleItems.findIndex(visibleItem => visibleItem === this);
           
           if (currentIndex !== -1) {
-            const svgData = createSvgFromPlaceholder(emoji, caption);
-            lightboxImg.src = svgData;
+            lightboxImg.src = img.src;
             lightboxCaption.textContent = caption;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -809,11 +836,10 @@
         if (visibleItems.length > 0) {
           currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
           const item = visibleItems[currentIndex];
-          const placeholder = item.querySelector('.placeholder-img');
+          const img = item.querySelector('img');
           const caption = item.querySelector('.gallery-caption').textContent;
-          const emoji = placeholder.textContent;
           
-          lightboxImg.src = createSvgFromPlaceholder(emoji, caption);
+          lightboxImg.src = img.src;
           lightboxCaption.textContent = caption;
         }
       }
@@ -822,11 +848,10 @@
         if (visibleItems.length > 0) {
           currentIndex = (currentIndex + 1) % visibleItems.length;
           const item = visibleItems[currentIndex];
-          const placeholder = item.querySelector('.placeholder-img');
+          const img = item.querySelector('img');
           const caption = item.querySelector('.gallery-caption').textContent;
-          const emoji = placeholder.textContent;
           
-          lightboxImg.src = createSvgFromPlaceholder(emoji, caption);
+          lightboxImg.src = img.src;
           lightboxCaption.textContent = caption;
         }
       }
@@ -904,13 +929,16 @@
         }, 250);
       });
 
-      // Lazy loading for images (if you add real images later)
+      // Lazy loading for images
       if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               const img = entry.target;
-              img.src = img.dataset.src;
+              // If image has data-src, load it
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+              }
               imageObserver.unobserve(img);
             }
           });
