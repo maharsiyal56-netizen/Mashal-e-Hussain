@@ -6,7 +6,8 @@
   <title>Mashal-e-Hussain | Noha · Majlis · Matam Dari</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23d4af37'>🕋</text></svg>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+  <!-- Keep Amiri/Scheherazade for other text, add Noto Nastaliq Urdu for the main heading -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s; }
     body {
@@ -38,11 +39,18 @@
       align-items: center;
       flex-wrap: wrap;
     }
-    .logo { font-family: 'Amiri', serif; font-size: 2.2rem; color: #d4af37; text-decoration: none; }
+    /* Logo uses Noto Nastaliq Urdu as requested */
+    .logo { 
+      font-family: 'Noto Nastaliq Urdu', 'Amiri', serif; 
+      font-size: 2.2rem; 
+      color: #d4af37; 
+      text-decoration: none;
+    }
     .nav-links { display: flex; gap: 25px; flex-wrap: wrap; }
     .nav-links a { color: #efefef; text-decoration: none; font-size: 1.1rem; padding-bottom: 5px; border-bottom: 2px solid transparent; }
     .nav-links a:hover, .nav-links a.active { color: #d4af37; border-bottom-color: #d4af37; }
     
+    /* ===== SLIDESHOW HERO ===== */
     .hero {
       position: relative;
       text-align: center;
@@ -51,24 +59,41 @@
       border-radius: 40px;
       overflow: hidden;
       isolation: isolate;
+      background-color: #1a2a1a; /* fallback */
     }
-    .hero-bg-placeholder {
+
+    /* Slideshow container */
+    .slideshow-container {
       position: absolute;
       inset: 0;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%233d2b1f"/><text x="40" y="160" fill="%23d4af37" font-size="38" font-family="Arial" font-weight="bold" opacity="0.4">🌙 background</text></svg>') center/cover no-repeat;
       z-index: -2;
     }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    /* Dark overlay remains for readability */
     .hero-overlay {
       position: absolute;
       inset: 0;
       background-color: rgba(0, 0, 0, 0.5);
       z-index: -1;
     }
+
     .hero h1 {
       font-size: 4.5rem;
       color: #d4af37;
       margin-bottom: 20px;
       text-shadow: 3px 3px 0 #1a2e1a;
+      /* Ensure the main heading also uses Noto Nastaliq Urdu, but the word mark is logo. Keep optional */
+      font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
     }
     .hero-description {
       max-width: 850px;
@@ -155,7 +180,7 @@
 <body>
   <nav class="navbar">
     <div class="nav-container">
-      <a href="index.html" class="logo">Mashal-e-Hussain</a>
+      <a href="index.html" class="logo">مشعل حسین</a> <!-- Now uses Noto Nastaliq Urdu -->
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>
         <a href="Admin%20Contact.html">Admin Contact</a>
@@ -166,9 +191,18 @@
   </nav>
 
   <main>
+    <!-- Hero section with rotating landscape background -->
     <section class="hero">
-      <div class="background.jpg"></div>
-      <div class="hero-overlay"></div>
+      <!-- Slideshow container (landscape wallpapers) -->
+      <div class="slideshow-container" id="slideshow">
+        <!-- slides will be generated via JS, but we also add static divs as fallback / manual -->
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop');"></div> <!-- wide landscape 1 -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1490682143684-14369e18dce8?q=80&w=2070&auto=format&fit=crop');"></div> <!-- landscape 2 -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop');"></div> <!-- landscape 3 -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1426604966848-d7adac402b1b?q=80&w=2070&auto=format&fit=crop');"></div> <!-- mountain lake -->
+        <!-- Add your own pictures above or extend. You can replace URLs with your own. -->
+      </div>
+      <div class="hero-overlay"></div> <!-- dark overlay -->
       <h1>مشعل حسین</h1>
       <div class="hero-description">
         Mash'al-e-Hussain is a platform for Noha, Majlis, and Matam Dari. We aim to spread the message of Imam Hussain (AS) with authentic and original content.
@@ -207,5 +241,34 @@
     </div>
     <p>© 2026 Mashal-e-Hussain. All rights reserved.</p>
   </footer>
+
+  <!-- Simple slideshow script -->
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide');
+      if (slides.length <= 1) return; // no need for rotation if only one
+
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+
+      // Function to show the next slide
+      function nextSlide() {
+        // Remove active class from current slide
+        slides[currentIndex].classList.remove('active');
+        // Move to next slide, loop if needed
+        currentIndex = (currentIndex + 1) % totalSlides;
+        // Add active class to new slide
+        slides[currentIndex].classList.add('active');
+      }
+
+      // Change slide every 5 seconds (5000 ms) — you can adjust
+      setInterval(nextSlide, 5000);
+    })();
+  </script>
+  <!-- 
+    Notes for adding pictures: 
+    In the slideshow container (div with id "slideshow"), replace the src or add new <div class="slide" style="background-image: url('YOUR_IMAGE_URL');"></div>
+    Ensure each slide has class "slide". The first slide should have "active" class.
+  -->
 </body>
 </html>
