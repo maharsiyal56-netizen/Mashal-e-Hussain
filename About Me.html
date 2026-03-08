@@ -236,7 +236,7 @@
       font-size: 1.4em;
     }
 
-    /* Subscribe reminder */
+    /* Subscribe reminder - clickable */
     .subscribe-note {
       font-size: clamp(1.3rem, 2.5vw, 2rem);
       font-weight: 700;
@@ -245,6 +245,12 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       text-shadow: 2px 2px 0 #0a2f1f;
+      transition: all 0.3s ease;
+    }
+
+    .subscribe-note:hover {
+      color: #ffd700;
+      transform: scale(1.05);
     }
 
     .channel-badge {
@@ -257,6 +263,13 @@
       font-weight: bold;
       margin-top: 0.5rem;
       box-shadow: 0 5px 0 #8b691b;
+      transition: all 0.3s ease;
+    }
+
+    .channel-badge:hover {
+      background: #ffd700;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 0 #b49450;
     }
 
     /* Footer — same as home */
@@ -335,13 +348,13 @@
     <!-- 16:9 wallpaper section with circular logo overlay -->
     <div class="wallpaper-section">
       <!-- Background wallpaper - YOU REPLACE 'landscape-wallpaper.jpg' with your image -->
-      <div class="wallpaper-bg" style="background-image: url('About Me Wallpaper.png');"></div>
+      <div class="wallpaper-bg" style="background-image: url('landscape-wallpaper.jpg');"></div>
       <div class="wallpaper-overlay"></div>
       
       <!-- Circular logo - YOU REPLACE 'logo-circle.jpg' with your image -->
       <div class="circle-logo">
         <!-- img tag for your logo, if image missing shows a placeholder icon -->
-        <img src="Logo.png" alt="Mashal-e-Hussain logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <img src="logo-circle.jpg" alt="Mashal-e-Hussain logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
         <i class="fas fa-mosque placeholder-icon" style="display: none;"></i>
       </div>
     </div>
@@ -360,13 +373,15 @@
         <div class="feature-item"><i class="fas fa-check-circle"></i> Matamdari Videos</div>
       </div>
 
-      <!-- Subscribe callout -->
-      <div class="subscribe-note">
-        <i class="fab fa-youtube" style="margin-right: 10px;"></i> Subscribe to our Channel
-      </div>
-      <div class="channel-badge">
-        @Mashal-e-Hussain
-      </div>
+      <!-- Subscribe callout with clickable link -->
+      <a href="https://www.youtube.com/@Mashal-e-Hussain" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
+        <div class="subscribe-note" style="cursor: pointer;">
+          <i class="fab fa-youtube" style="margin-right: 10px;"></i> Subscribe to our Channel
+        </div>
+        <div class="channel-badge" style="cursor: pointer;">
+          @Mashal-e-Hussain
+        </div>
+      </a>
       
       <!-- Extra decorative line matching home page style -->
       <div style="margin-top: 2rem; border-top: 2px dashed #b49450; width: 80%; margin-left: auto; margin-right: auto;"></div>
