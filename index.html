@@ -51,7 +51,7 @@
       border-radius: 40px;
       overflow: hidden;
       isolation: isolate;
-      min-height: 500px; /* Fixed height ensure visibility */
+      min-height: 500px;
       background-color: #1a2a1a;
     }
 
@@ -82,15 +82,10 @@
       z-index: 1;
     }
     
-    /* Debug border - remove after fixing */
-    .slide {
-      border: 2px solid red; /* Temporary - shows slide boundaries */
-    }
-    
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background-color: rgba(0, 0, 0, 0.5);
+      background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
       z-index: -1;
     }
 
@@ -204,14 +199,7 @@
   <main>
     <section class="hero">
       <div class="slideshow-container" id="slideshow">
-        <!-- Option 1: Online images for testing (uncomment to test) -->
-        <!--
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1490682143684-14369e18dce8?w=500');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500');"></div>
-        -->
-        
-        <!-- Option 2: Local images - make sure paths are correct -->
+        <!-- اپنی تصاویر یہاں لگائیں - بالکل اسی طرح نام لکھیں -->
         <div class="slide active" style="background-image: url('Slide1.jpg');"></div>
         <div class="slide" style="background-image: url('Slide2.jpg');"></div>
         <div class="slide" style="background-image: url('Slide3.jpg');"></div>
@@ -258,58 +246,27 @@
     <p>© 2026 Mashal-e-Hussain. All rights reserved.</p>
   </footer>
 
-  <!-- FIXED SLIDESHOW SCRIPT -->
   <script>
-    // Wait for page to fully load
+    // یہ سلائیڈ شو اب بالکل درست کام کرے گا
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('Page loaded, starting slideshow...');
-      
       const slides = document.querySelectorAll('.slide');
-      console.log('Total slides found:', slides.length);
       
-      if (slides.length <= 1) {
-        console.log('Not enough slides for rotation');
-        return;
-      }
-
-      // Log first slide background to check
-      if (slides[0]) {
-        console.log('First slide background:', window.getComputedStyle(slides[0]).backgroundImage);
-      }
+      if (slides.length <= 1) return;
 
       let currentIndex = 0;
-      const totalSlides = slides.length;
-
-      // Function to show next slide
-      function nextSlide() {
-        // Remove active class from current slide
-        slides[currentIndex].classList.remove('active');
-        
-        // Move to next slide
-        currentIndex = (currentIndex + 1) % totalSlides;
-        
-        // Add active class to new slide
-        slides[currentIndex].classList.add('active');
-        
-        console.log('Showing slide:', currentIndex + 1);
-      }
-
-      // Clear any existing interval
-      if (window.slideInterval) {
-        clearInterval(window.slideInterval);
-      }
       
-      // Start slideshow - change every 5 seconds
-      window.slideInterval = setInterval(nextSlide, 5000);
-      
-      // Also manually trigger first slide to ensure visibility
+      // پہلی سلائیڈ کو ایکٹو کریں
       slides.forEach((slide, index) => {
-        if (index === 0) {
-          slide.classList.add('active');
-        } else {
-          slide.classList.remove('active');
-        }
+        if (index === 0) slide.classList.add('active');
+        else slide.classList.remove('active');
       });
+
+      // سلائیڈ شو شروع کریں
+      setInterval(function() {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      }, 5000);
     });
   </script>
 </body>
