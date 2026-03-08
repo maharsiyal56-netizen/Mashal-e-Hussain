@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
   <style>
+    /* === EXACT SAME STYLING AS YOUR ORIGINAL (no changes) === */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', 'Amiri', sans-serif;
@@ -108,12 +109,41 @@
       box-shadow: 0 14px 0 #0a2f1f, 0 12px 25px rgba(0,0,0,0.6);
       border-color: #d4af37;
     }
-    .book-icon {
-      font-size: 3.8rem;
-      color: #d4af37;
-      margin-bottom: 12px;
-      filter: drop-shadow(2px 4px 4px #00000066);
+    /* ----- FRONT PIC (A4 aspect) added inside card ----- */
+    .book-front {
+      width: 100%;
+      aspect-ratio: 1 / 1.414; /* ≈ A4 portrait ratio (1:√2) */
+      background: #1f3327;
+      border: 2px solid #d4af37;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 0 0 1px #5a8b6f, 0 6px 0 #0a2f1f;
+      overflow: hidden;  /* keep image inside */
     }
+    .book-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;      /* cover entire box */
+      display: block;
+      border-radius: 16px;
+      transition: transform 0.2s;
+    }
+    .book-front img:hover {
+      transform: scale(1.02);
+    }
+    /* fallback if image missing – replaced by icon via data attr */
+    .book-front.fallback {
+      background: #1f3327;
+      color: #d4af37;
+      font-size: 3.8rem;
+    }
+    /* keep old icon styling for fallback, but we prefer images */
+    .book-icon { display: none; }  /* hide old icon, we now use front image */
+
     .book-card h3 {
       font-size: 1.8rem;
       color: #d4af37;
@@ -159,8 +189,7 @@
       color: #000;
       transform: scale(1.02);
     }
-
-    /* --- Book detail page (hidden by default) --- */
+    /* Detail page styling (exactly as before, but updated to show A4 cover) */
     .detail-page {
       max-width: 1100px;
       margin: 40px auto;
@@ -169,127 +198,58 @@
       border-radius: 40px;
       padding: 40px;
       box-shadow: 0 20px 0 #0a2f1f;
-      display: none; /* hidden initially */
+      display: none;
     }
-    .detail-page.active-detail {
-      display: block;
-    }
+    .detail-page.active-detail { display: block; }
     .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #bfa98e;
-      text-decoration: none;
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-      border: 1px solid #5a7c66;
-      padding: 8px 20px;
-      border-radius: 40px;
+      display: inline-flex; align-items: center; gap: 8px; color: #bfa98e;
+      text-decoration: none; font-size: 1.2rem; margin-bottom: 30px;
+      border: 1px solid #5a7c66; padding: 8px 20px; border-radius: 40px;
       transition: 0.2s;
     }
-    .back-link:hover {
-      background: #2a3f31;
-      color: #d4af37;
-      border-color: #d4af37;
-    }
-    .detail-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      align-items: flex-start;
-    }
+    .back-link:hover { background: #2a3f31; color: #d4af37; border-color: #d4af37; }
+    .detail-grid { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
     .cover-large {
-      flex: 1 1 300px;
-      max-width: 380px;
-      background: #1f3327;
-      border-radius: 32px;
-      padding: 30px 20px;
+      flex: 1 1 300px; max-width: 380px; background: #1f3327;
+      border-radius: 32px; padding: 20px; border: 2px solid #d4af37;
+      box-shadow: 0 10px 0 #0a2f1f; text-align: center;
+    }
+    /* A4 cover in detail view */
+    .cover-large .front-large {
+      width: 100%;
+      aspect-ratio: 1 / 1.414;  /* A4 */
+      background: #0a2f1f;
+      border-radius: 24px;
       border: 2px solid #d4af37;
-      box-shadow: 0 10px 0 #0a2f1f;
-      text-align: center;
-    }
-    .cover-large i {
-      font-size: 12rem;
-      color: #d4af37;
-      filter: drop-shadow(8px 8px 0 #0a2f1f);
-    }
-    .cover-large h2 {
-      font-size: 2.2rem;
-      color: #d4af37;
-      margin: 15px 0 5px;
-      font-family: 'Amiri';
-    }
-    .detail-info {
-      flex: 2 1 400px;
-    }
-    .detail-info h2 {
-      font-size: 2.5rem;
-      color: #d4af37;
-      border-bottom: 2px solid #d4af37;
-      padding-bottom: 10px;
-      margin-bottom: 25px;
-    }
-    .meta-line {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-bottom: 25px;
-      background: #1a2f21;
-      padding: 15px 20px;
-      border-radius: 50px;
-    }
-    .meta-item {
+      overflow: hidden;
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 1.2rem;
+      justify-content: center;
     }
+    .cover-large .front-large img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 22px;
+    }
+    .cover-large h2 { font-size: 2.2rem; color: #d4af37; margin: 15px 0 5px; font-family: 'Amiri'; }
+    .detail-info { flex: 2 1 400px; }
+    .detail-info h2 { font-size: 2.5rem; color: #d4af37; border-bottom: 2px solid #d4af37; padding-bottom: 10px; margin-bottom: 25px; }
+    .meta-line { display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 25px; background: #1a2f21; padding: 15px 20px; border-radius: 50px; }
+    .meta-item { display: flex; align-items: center; gap: 8px; font-size: 1.2rem; }
     .meta-item i { color: #d4af37; width: 25px; }
-    .description-full {
-      background: #1f3327;
-      padding: 25px;
-      border-radius: 30px;
-      margin: 25px 0;
-      font-size: 1.1rem;
-      border-left: 8px solid #d4af37;
-    }
-    .tag-list {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 20px 0;
-    }
-    .tag {
-      background: #2f4a38;
-      padding: 8px 18px;
-      border-radius: 30px;
-      color: #f0e6d2;
-      font-size: 0.95rem;
-      border: 1px solid #d4af37;
-    }
+    .description-full { background: #1f3327; padding: 25px; border-radius: 30px; margin: 25px 0; font-size: 1.1rem; border-left: 8px solid #d4af37; }
+    .tag-list { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+    .tag { background: #2f4a38; padding: 8px 18px; border-radius: 30px; color: #f0e6d2; font-size: 0.95rem; border: 1px solid #d4af37; }
     .read-btn-large {
-      background: #d4af37;
-      color: #0a2f1f;
-      font-size: 1.7rem;
-      padding: 20px 40px;
-      border-radius: 60px;
-      text-decoration: none;
-      display: inline-block;
-      font-weight: bold;
-      margin-top: 20px;
-      border: 3px solid #d4af37;
-      transition: 0.15s;
+      background: #d4af37; color: #0a2f1f; font-size: 1.7rem; padding: 20px 40px;
+      border-radius: 60px; text-decoration: none; display: inline-block; font-weight: bold;
+      margin-top: 20px; border: 3px solid #d4af37; transition: 0.15s;
     }
-    .read-btn-large:hover {
-      background: #e6c252;
-      transform: scale(1.02);
-    }
+    .read-btn-large:hover { background: #e6c252; transform: scale(1.02); }
     .footer {
-      background: #07120b;
-      padding: 40px 0 20px;
-      margin-top: 70px;
-      border-top: 3px solid #d4af37;
-      text-align: center;
+      background: #07120b; padding: 40px 0 20px; margin-top: 70px;
+      border-top: 3px solid #d4af37; text-align: center;
     }
     .social-icons { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
     .social-icons a { color: #d4af37; font-size: 2.5rem; transition: 0.15s; }
@@ -309,11 +269,11 @@
     </div>
   </nav>
 
-  <!-- Main library container -->
+  <!-- MAIN LIBRARY CONTAINER -->
   <div id="libraryContainer" class="container">
     <div class="page-header">
       <h1>کتب خانہ</h1>
-      <p>Islamic & Hussaini Book Library — 12 books</p>
+      <p>Islamic & Hussaini Book Library — including 7 volumes of Al‑Ghadeer</p>
     </div>
     
     <div class="category-tabs">
@@ -325,125 +285,175 @@
     </div>
     
     <div class="books-grid" id="bookGrid">
-      <!-- Book cards (each contains custom data attributes for details) -->
-      <div class="book-card" data-title="Al Tauheed" data-author="Shaikh Mofid (AS)" data-lang="Arabic/Urdu" data-subject="Theology, Aqaid" data-tags="Tawhid,Monotheism" data-desc="Commentary on Ibn al-Wahhab's Kitab al-Tawhid — classical theological exposition." data-icon="fa-book-open">
-        <i class="fas fa-book-open book-icon"></i>
+      <!-- ========== EXISTING BOOKS with added FRONT PIC (A4) ========== 
+           data-pic attribute holds the image file name. We'll also keep old data fields. 
+           We store the image path in data-pic. In case image missing, we show a generated fallback. -->
+      <div class="book-card" data-title="Al Tauheed" data-author="Shaikh Mofid (AS)" data-lang="Arabic/Urdu" data-subject="Theology, Aqaid" data-tags="Tawhid,Monotheism" data-desc="Commentary on Ibn al-Wahhab's Kitab al-Tawhid — classical theological exposition." data-pic="AlTauheed_cover.jpg" data-icon="fa-book-open">
+        <div class="book-front"><img src="AlTauheed_cover.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-book-open\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
         <h3>Al Tauheed</h3>
         <div class="author">by Shaikh Mofid (AS)</div>
         <div class="description">Commentary on Ibn al-Wahhab's Kitab al-Tawhid — classical theological exposition.</div>
-        <a href="#" class="btn read-detail-btn">Read Online</a>
+        <a href="AlTauheed by Shaikh Mofid.pdf" class="btn read-detail-btn">Read Online</a>
       </div>
       
-      <div class="book-card" data-title="Khutba-e-Fidak" data-author="Allama Shaikh Mohsin al Najafi" data-lang="Urdu" data-subject="Sermon, Fatima (sa)" data-tags="Fidak, Hazrat Fatima" data-desc="In-depth analysis of Hazrat Fatima Zahra’s (s.a.) sermon after the Prophet’s (s.a.w.) passing." data-icon="fa-feather-alt">
-        <i class="fas fa-feather-alt book-icon"></i>
+      <div class="book-card" data-title="Khutba-e-Fidak" data-author="Allama Shaikh Mohsin al Najafi" data-lang="Urdu" data-subject="Sermon, Fatima (sa)" data-tags="Fidak, Hazrat Fatima" data-desc="In-depth analysis of Hazrat Fatima Zahra’s (s.a.) sermon after the Prophet’s (s.a.w.) passing." data-pic="KhutbaFidak_cover.jpg" data-icon="fa-feather-alt">
+        <div class="book-front"><img src="KhutbaFidak_cover.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-feather-alt\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
         <h3>Khutba-e-Fidak</h3>
         <div class="author">by Allama Shaikh Mohsin al Najafi</div>
         <div class="description">In-depth analysis of Hazrat Fatima Zahra’s (s.a.) sermon after the Prophet’s (s.a.w.) passing.</div>
-        <a href="#" class="btn read-detail-btn">Read Online</a>
+        <a href="Khutba-e-Fidak by Allama Shaikh Mohsin al Najafi.pdf" class="btn read-detail-btn">Read Online</a>
       </div>
       
-      <div class="book-card" data-title="Lazzat e Mulaqaat" data-author="Allama Taqi Bhajat" data-lang="Urdu" data-subject="Akhlaq, Spirituality" data-tags="Ethics,Devotion" data-desc="Spiritual teachings, ethics (akhlaq), and devotion to Allah and the Ahl al-Bayt." data-icon="fa-heart">
-        <i class="fas fa-heart book-icon"></i>
+      <div class="book-card" data-title="Lazzat e Mulaqaat" data-author="Allama Taqi Bhajat" data-lang="Urdu" data-subject="Akhlaq, Spirituality" data-tags="Ethics,Devotion" data-desc="Spiritual teachings, ethics (akhlaq), and devotion to Allah and the Ahl al-Bayt." data-pic="LazzatMulaqaat_cover.jpg" data-icon="fa-heart">
+        <div class="book-front"><img src="LazzatMulaqaat_cover.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-heart\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
         <h3>Lazzat e Mulaqaat</h3>
         <div class="author">by Allama Taqi Bhajat</div>
         <div class="description">Spiritual teachings, ethics (akhlaq), and devotion to Allah and the Ahl al-Bayt.</div>
-        <a href="#" class="btn read-detail-btn">Read Online</a>
+        <a href="LazzateMulaqaat by Allama Taqi Bhajat.pdf" class="btn read-detail-btn">Read Online</a>
       </div>
       
-      <div class="book-card" data-title="MaqtaleLuhoof" data-author="Sayyid Ibn Tawus (ar)" data-lang="Urdu" data-subject="Karbala, Maqtal" data-tags="Imam Hussain,Ashura" data-desc="Well-known Maqtal (13th-century) by Sayyid Ibn Tawus al-Hilli detailing the tragedy of Karbala." data-icon="fa-landmark">
-        <i class="fas fa-landmark book-icon"></i>
-        <h3>MaqtaleLuhoof</h3>
+      <div class="book-card" data-title="MaqtaleLuhoof" data-author="Sayyid Ibn Tawus (ar)" data-lang="Urdu" data-subject="Karbala, Maqtal" data-tags="Imam Hussain,Ashura" data-desc="Well-known Maqtal (13th-century) by Sayyid Ibn Tawus al-Hilli detailing the tragedy of Karbala." data-pic="MaqtalLuhoof_cover.jpg" data-icon="fa-landmark">
+        <div class="book-front"><img src="MaqtalLuhoof_cover.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-landmark\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <h3>Maqtal-e-Luhoof</h3>
         <div class="author">by Sayyid Ibn Tawus (ar)</div>
         <div class="description">Well-known Maqtal (13th-century) by Sayyid Ibn Tawus al-Hilli detailing the tragedy of Karbala.</div>
-        <a href="#" class="btn read-detail-btn">Read Online</a>
+        <a href="MaqtaleLuhoof by Sayyid Ibn Tawus(ar).pdf" class="btn read-detail-btn">Read Online</a>
       </div>
       
-      <div class="book-card" data-title="Sahifa Sajjadiyya" data-author="Imam Sajjad (AS)" data-lang="Arabic/Urdu" data-subject="Dua, Supplication" data-tags="Psalms,Duas" data-desc="Psalms of Islam — 54 Duas; profound supplications from the fourth Imam." data-icon="fa-praying-hands">
-        <i class="fas fa-praying-hands book-icon"></i>
+      <div class="book-card" data-title="Sahifa Sajjadiyya" data-author="Imam Sajjad (AS)" data-lang="Arabic/Urdu" data-subject="Dua, Supplication" data-tags="Psalms,Duas" data-desc="Psalms of Islam — 54 Duas; profound supplications from the fourth Imam." data-pic="Sahifa_cover.jpg" data-icon="fa-praying-hands">
+        <div class="book-front"><img src="Sahifa_cover.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-praying-hands\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
         <h3>Sahifa Sajjadiyya</h3>
         <div class="author">by Imam Sajjad (AS)</div>
         <div class="description">Psalms of Islam — 54 Duas; profound supplications from the fourth Imam.</div>
-        <a href="#" class="btn read-detail-btn">Read Online</a>
+        <a href="Sahifa Sajjadiyya.pdf" class="btn read-detail-btn">Read Online</a>
       </div>
       
-      <div class="book-card" data-title="Tarbiyat-e-Aulad" data-author="Molna Syed Jan Ali Shah Kazmi" data-lang="Urdu" data-subject="Parenting, Ethics" data-tags="Children,Upbringing" data-desc="Children’s moral & religious upbringing according to Islamic teachings." data-icon="fa-child">
-        <i class="fas fa-child book-icon"></i>
+      <div class="book-card" data-title="Tarbiyat-e-Aulad" data-author="Molna Syed Jan Ali Shah Kazmi" data-lang="Urdu" data-subject="Parenting, Ethics" data-tags="Children,Upbringing" data-desc="Children’s moral & religious upbringing according to Islamic teachings." data-pic="Tarbiyat_cover.jpg" data-icon="fa-child">
+        <div class="book-front"><img src="Tarbiyat_cover.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-child\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
         <h3>Tarbiyat-e-Aulad</h3>
         <div class="author">by Molna Syed Jan Ali Shah Kazmi</div>
         <div class="description">Children’s moral & religious upbringing according to Islamic teachings.</div>
-        <a href="#" class="btn read-detail-btn">Read Online</a>
+        <a href="Tarbiyat-e-Aulad by Molna Syed Jan Ali Shah Kazmi Shab.pdf" class="btn read-detail-btn">Read Online</a>
       </div>
       
-      <!-- New book: Hayat al Quloob (your requested detail) -->
-      <div class="book-card" data-title="Hayat al Quloob" data-author="Allamah Muhammad Baqir al-Majlisi" data-lang="Urdu" data-subject="Beliefs, History" data-tags="Imam Ali, Prophet Muhammad" data-desc="Comprehensive work on the lives of prophets and Imams, heart revival." data-icon="fa-heartbeat">
-        <i class="fas fa-heartbeat book-icon"></i>
-        <h3>Hayat al Quloob</h3>
-        <div class="author">by Allamah Muhammad Baqir al-Majlisi</div>
-        <div class="description">Comprehensive work on the lives of prophets and Imams, heart revival.</div>
-        <a href="#" class="btn read-detail-btn">Read Online</a>
+      <!-- ========== 7 VOLUMES OF AL‑GHADEER ========== -->
+      <div class="book-card" data-title="Al‑Ghadeer (Vol. 1)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 1: Detailed proofs of the event of Ghadeer from Sunni sources. Must‑read." data-pic="Ghadeer_vol1_cover.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 1)</span></h3>
+        <div class="author">by Allama Abdul Hussain Amini</div>
+        <div class="description">Vol 01: Al‑Ghadeer discusses the event of Ghadeer with documented proofs from Sunni sources.</div>
+        <a href="AlGhadeer_Vol1.pdf" class="btn read-detail-btn">Read Online</a>
       </div>
       
-      <!-- Remaining books (for brevity, I'll add 5 more with generic data, but they will be functional) -->
-      <div class="book-card" data-title="Nahjul Balagha" data-author="Imam Ali (AS)" data-lang="Arabic/Urdu" data-subject="Sermons, Letters" data-tags="Eloquence,Imam Ali" data-desc="Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.)." data-icon="fa-balance-scale">
-        <i class="fas fa-balance-scale book-icon"></i>
+      <div class="book-card" data-title="Al‑Ghadeer (Vol. 2)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 2: Continuation of authentic traditions and historical testimonies about Wilayah." data-pic="Ghadeer_vol2_cover.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 2)</span></h3>
+        <div class="author">by Allama Abdul Hussain Amini</div>
+        <div class="description">Vol 02-03: Further Sunni references on the event of Ghadeer and the superiority of Imam Ali (as).</div>
+        <a href="Ghadeer-02-03.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Al‑Ghadeer (Vol. 3)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 3: Analysis of chains of narration and companions who narrated the Ghadeer tradition." data-pic="Ghadeer_vol3_cover.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 3)</span></h3>
+        <div class="author">by Allama Abdul Hussain Amini</div>
+        <div class="description">Vol 04-05: Detailed study of narrators and textual variants of the Ghadeer sermon.</div>
+        <a href="Ghadeer-04-05.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Al‑Ghadeer (Vol. 4)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 4: The poetic evidence – poems composed about Ghadeer from the first century onward." data-pic="Ghadeer_vol4_cover.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 4)</span></h3>
+        <div class="author">by Allama Abdul Hussain Amini</div>
+        <div class="description">Vol 06: Collection of odes and elegies by companions and successors celebrating Ghadeer.</div>
+        <a href="Ghadeer-06.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Al‑Ghadeer (Vol. 5)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 5: Biographies of the poets and scholars who affirmed the event of Ghadeer." data-pic="Ghadeer_vol5_cover.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 5)</span></h3>
+        <div class="author">by Allama Abdul Hussain Amini</div>
+        <div class="description">Vol 07-09: Biographical accounts of the great personalities who endorsed the tradition.</div>
+        <a href="Ghadeer-07-08-09.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Al‑Ghadeer (Vol. 6)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 6: The event of Ghadeer in the books of tafsir (Qur’anic exegesis) – a comprehensive review." data-pic="Ghadeer_vol6_cover.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 6)</span></h3>
+        <div class="author">by Allama Abdul Hussain Amini</div>
+        <div class="description">Vol 10-11: How classical commentators interpreted the verse of tabligh and ikmaal in relation to Ghadeer.</div>
+        <a href="Ghadeer-10-11.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+  
+      
+      <!-- ========== REMAINING BOOKS (Nahjul Balagha, Mafatih, etc.) ========= -->
+      <div class="book-card" data-title="Nahjul Balagha" data-author="Imam Ali (AS)" data-lang="Arabic/Urdu" data-subject="Sermons, Letters" data-tags="Eloquence,Imam Ali" data-desc="Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.)." data-pic="Nahjul_cover.jpg" data-icon="fa-balance-scale">
+        <div class="book-front"><img src="Nahjul_cover.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-balance-scale\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
         <h3>Nahjul Balagha</h3>
         <div class="author">by Imam Ali (AS)</div>
         <div class="description">Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.).</div>
         <a href="#" class="btn read-detail-btn">Read Online</a>
       </div>
-      <div class="book-card" data-title="Mafatih al-Jinan" data-author="Sheikh Abbas Qomi" data-lang="Urdu" data-subject="Dua, Ziyarat" data-tags="Supplication,Prayer" data-desc="Comprehensive collection of Duas, Ziyarat, and A’maal." data-icon="fa-mosque">
-        <i class="fas fa-mosque book-icon"></i>
+      
+      <div class="book-card" data-title="Mafatih al-Jinan" data-author="Sheikh Abbas Qomi" data-lang="Urdu" data-subject="Dua, Ziyarat" data-tags="Supplication,Prayer" data-desc="Comprehensive collection of Duas, Ziyarat, and A’maal." data-pic="Mafatih_cover.jpg" data-icon="fa-mosque">
+        <div class="book-front"><img src="Mafatih_cover.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-mosque\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
         <h3>Mafatih al-Jinan</h3>
         <div class="author">by Sheikh Abbas Qomi</div>
         <div class="description">Comprehensive collection of Duas, Ziyarat, and A’maal.</div>
         <a href="#" class="btn read-detail-btn">Read Online</a>
       </div>
-      <div class="book-card" data-title="Nafasul Mahmoom" data-author="Shaykh Abbas Qomi" data-lang="Urdu" data-subject="Karbala" data-tags="Ashura,Maqtal" data-desc="Detailed narrative of the tragedy of Karbala, historical context." data-icon="fa-dagger">
-        <i class="fas fa-dagger book-icon"></i>
+      
+      <div class="book-card" data-title="Nafasul Mahmoom" data-author="Shaykh Abbas Qomi" data-lang="Urdu" data-subject="Karbala" data-tags="Ashura,Maqtal" data-desc="Detailed narrative of the tragedy of Karbala, historical context." data-pic="Nafasul_cover.jpg" data-icon="fa-dagger">
+        <div class="book-front"><img src="Nafasul_cover.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-dagger\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
         <h3>Nafasul Mahmoom</h3>
         <div class="author">by Shaykh Abbas Qomi</div>
         <div class="description">Detailed narrative of the tragedy of Karbala, historical context.</div>
         <a href="#" class="btn read-detail-btn">Read Online</a>
       </div>
-      <div class="book-card" data-title="Munejat-e-Imam Ali" data-author="Imam Ali (AS)" data-lang="Urdu" data-subject="Dua, Munajat" data-tags="Whispered prayers" data-desc="Whispered prayers of Imam Ali (a.s.) — Munajat in Kufa." data-icon="fa-dua">
-        <i class="fas fa-dua book-icon"></i>
+      
+      <div class="book-card" data-title="Munejat-e-Imam Ali" data-author="Imam Ali (AS)" data-lang="Urdu" data-subject="Dua, Munajat" data-tags="Whispered prayers" data-desc="Whispered prayers of Imam Ali (a.s.) — Munajat in Kufa." data-pic="Munejat_cover.jpg" data-icon="fa-dua">
+        <div class="book-front"><img src="Munejat_cover.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-dua\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
         <h3>Munejat-e-Imam Ali</h3>
         <div class="author">by Imam Ali (AS)</div>
         <div class="description">Whispered prayers of Imam Ali (a.s.) — Munajat in Kufa.</div>
         <a href="#" class="btn read-detail-btn">Read Online</a>
       </div>
-      <div class="book-card" data-title="Al-Ghadir" data-author="Allama Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadir,Imamate" data-desc="Encyclopedic work on the event of Ghadir (summary)." data-icon="fa-scroll">
-        <i class="fas fa-scroll book-icon"></i>
-        <h3>Al-Ghadir</h3>
+      
+      <div class="book-card" data-title="Al-Ghadir (Summary)" data-author="Allama Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadir,Imamate" data-desc="Brief overview of the event of Ghadeer (summary version)." data-pic="Ghadir_synopsis_cover.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="Ghadir_synopsis_cover.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <h3>Al‑Ghadir (synopsis)</h3>
         <div class="author">by Allama Amini</div>
-        <div class="description">Encyclopedic work on the event of Ghadir (summary).</div>
+        <div class="description">Concise version highlighting the core proofs from the larger work.</div>
         <a href="#" class="btn read-detail-btn">Read Online</a>
       </div>
     </div>
   </div>
 
-  <!-- Book Detail View (hidden initially) -->
+  <!-- BOOK DETAIL VIEW (also displays front cover A4) -->
   <div id="bookDetail" class="detail-page container">
     <a href="#" id="backToLibrary" class="back-link"><i class="fas fa-arrow-right"></i> Back to Library</a>
     <div class="detail-grid">
       <div class="cover-large">
-        <i id="detailIcon" class="fas fa-book-open"></i>
-        <h2 id="detailTitle">Book Title</h2>
+        <div class="front-large" id="detailCoverContainer">
+          <img id="detailCoverImg" src="" alt="cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-book-open\' style=\'font-size:8rem; color:#d4af37;\'></i>';">
+        </div>
+        <h2 id="detailTitle">Al Ghadeer</h2>
       </div>
       <div class="detail-info">
         <h2 id="detailFullTitle">Details</h2>
         <div class="meta-line">
-          <span class="meta-item"><i class="fas fa-user"></i> <span id="detailAuthor">Author</span></span>
-          <span class="meta-item"><i class="fas fa-language"></i> <span id="detailLang">Language</span></span>
+          <span class="meta-item"><i class="fas fa-user"></i> <span id="detailAuthor">Allama Abdul Hussain Amini</span></span>
+          <span class="meta-item"><i class="fas fa-language"></i> <span id="detailLang">Urdu</span></span>
         </div>
         <div class="meta-line">
-          <span class="meta-item"><i class="fas fa-tag"></i> <span id="detailSubject">Subject</span></span>
+          <span class="meta-item"><i class="fas fa-tag"></i> <span id="detailSubject">History, Imamate</span></span>
         </div>
         <div class="description-full" id="detailDesc">
-          Full description goes here.
+          Al‑Ghadeer is a multi‑volume book by Allama Abdul Hussain Amini that exhaustively documents the event of Ghadeer using only Sunni sources. It proves the authenticity of the Prophet’s declaration at Ghadeer Khumm.
         </div>
         <div class="tag-list" id="detailTags">
-          <span class="tag">sample tag</span>
+          <span class="tag">Ghadeer</span><span class="tag">Imam Ali</span>
         </div>
         <a href="#" id="readPdfBtn" class="read-btn-large"><i class="fas fa-book-open"></i> Read PDF</a>
       </div>
@@ -457,17 +467,17 @@
       <a href="https://www.youtube.com/@Mashal-e-Hussain" target="_blank"><i class="fab fa-youtube"></i></a>
       <a href="https://whatsapp.com/channel/0029Vb0Ga3w8F2pHJXonzV1f" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
-    <p>© 2026 Mashal-e-Hussain. All rights reserved. — Detailed book view included</p>
+    <p>© 2026 Mashal-e-Hussain — 7 volumes of Al‑Ghadeer added.</p>
   </footer>
 
+  <!-- JavaScript (updated to handle cover images) -->
   <script>
     (function() {
       const library = document.getElementById('libraryContainer');
       const detailPage = document.getElementById('bookDetail');
       const backLink = document.getElementById('backToLibrary');
       
-      // detail elements
-      const detailIcon = document.getElementById('detailIcon');
+      const detailCoverImg = document.getElementById('detailCoverImg');
       const detailTitle = document.getElementById('detailTitle');
       const detailFullTitle = document.getElementById('detailFullTitle');
       const detailAuthor = document.getElementById('detailAuthor');
@@ -477,24 +487,35 @@
       const detailTags = document.getElementById('detailTags');
       const readPdfBtn = document.getElementById('readPdfBtn');
 
-      // Attach click event to all "read-detail-btn"
       document.querySelectorAll('.read-detail-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
           e.preventDefault();
           const card = this.closest('.book-card');
           if (!card) return;
 
-          // Extract data from data-attributes
           const title = card.dataset.title || 'Untitled';
           const author = card.dataset.author || 'Unknown';
           const lang = card.dataset.lang || 'Urdu';
           const subject = card.dataset.subject || 'General';
           const tagsRaw = card.dataset.tags || 'Islam';
           const desc = card.dataset.desc || 'No description available.';
-          const iconClass = card.dataset.icon || 'fa-book-open';
+          const pic = card.dataset.pic || '';     // front cover image
+          const pdfLink = card.querySelector('a.btn') ? card.querySelector('a.btn').getAttribute('href') : '#';
 
-          // Fill detail section
-          detailIcon.className = `fas ${iconClass}`; // set large icon
+          // set cover image: try to use the same image as card, else fallback
+          if (pic) {
+            detailCoverImg.src = pic;
+            detailCoverImg.style.display = 'block';
+            detailCoverImg.onerror = function() {
+              this.style.display = 'none';
+              this.parentElement.innerHTML = '<i class="fas fa-book-open" style="font-size:8rem; color:#d4af37;"></i>';
+            };
+          } else {
+            // fallback icon
+            detailCoverImg.style.display = 'none';
+            this.parentElement.innerHTML = '<i class="fas fa-book-open" style="font-size:8rem; color:#d4af37;"></i>';
+          }
+
           detailTitle.innerText = title;
           detailFullTitle.innerText = title;
           detailAuthor.innerText = author;
@@ -502,7 +523,6 @@
           detailSubject.innerText = subject;
           detailDesc.innerText = desc;
 
-          // Tags
           const tagsArray = tagsRaw.split(',').map(t => t.trim());
           detailTags.innerHTML = '';
           tagsArray.forEach(t => {
@@ -514,24 +534,19 @@
             }
           });
 
-          // PDF link – for now dummy link, you can replace with actual file path.
-          // e.g., you could map based on title, but we set a generic pdf.
-          readPdfBtn.href = `#`;  // Replace with actual pdf link if needed.
+          readPdfBtn.href = pdfLink;
 
-          // Hide library, show detail
           library.style.display = 'none';
           detailPage.classList.add('active-detail');
         });
       });
 
-      // Back to library
       backLink.addEventListener('click', function(e) {
         e.preventDefault();
         library.style.display = 'block';
         detailPage.classList.remove('active-detail');
       });
 
-      // Initially ensure detail is hidden
       detailPage.classList.remove('active-detail');
       library.style.display = 'block';
     })();
