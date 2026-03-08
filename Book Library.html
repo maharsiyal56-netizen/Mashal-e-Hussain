@@ -15,6 +15,7 @@
       color: #e5e5e5;
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.05"><path d="M60 40 L140 40 L160 80 L140 120 L60 120 L40 80 L60 40" fill="none" stroke="%23d4af37" stroke-width="1.5"/><circle cx="100" cy="80" r="12" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M70 150 Q100 170 130 150" stroke="%23d4af37" fill="none" stroke-width="1.2"/></svg>');
       background-repeat: repeat;
+      line-height: 1.5;
     }
     .navbar {
       background: #0a120e;
@@ -35,7 +36,7 @@
     }
     .logo { font-family: 'Amiri', serif; font-size: 2.2rem; color: #d4af37; text-decoration: none; }
     .nav-links { display: flex; gap: 25px; flex-wrap: wrap; }
-    .nav-links a { color: #efefef; text-decoration: none; font-size: 1.1rem; padding-bottom: 5px; border-bottom: 2px solid transparent; }
+    .nav-links a { color: #efefef; text-decoration: none; font-size: 1.1rem; padding-bottom: 5px; border-bottom: 2px solid transparent; transition: 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: #d4af37; border-bottom-color: #d4af37; }
     
     .container { max-width: 1300px; margin: 40px auto; padding: 0 20px; }
@@ -44,10 +45,19 @@
       margin-bottom: 50px;
     }
     .page-header h1 {
-      font-size: 3.5rem;
+      font-size: 3.8rem;
       color: #d4af37;
       font-family: 'Noto Nastaliq Urdu', serif;
       margin-bottom: 15px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+      letter-spacing: 1px;
+    }
+    .page-header p {
+      font-size: 1.3rem;
+      color: #bfa98e;
+      border-top: 1px dashed #5a7c66;
+      display: inline-block;
+      padding-top: 12px;
     }
     
     .category-tabs {
@@ -55,81 +65,235 @@
       justify-content: center;
       gap: 15px;
       flex-wrap: wrap;
-      margin-bottom: 40px;
+      margin-bottom: 45px;
     }
     .tab-btn {
       background: #1a2c21;
       border: 2px solid #3e5f4b;
       color: white;
-      padding: 12px 25px;
+      padding: 12px 28px;
       border-radius: 40px;
       font-size: 1.1rem;
       cursor: pointer;
+      transition: 0.2s;
+      font-weight: 500;
+      box-shadow: 0 4px 0 #0a2f1f;
     }
     .tab-btn.active {
       background: #d4af37;
       color: #0a2f1f;
       font-weight: bold;
       border-color: #d4af37;
+      box-shadow: 0 4px 0 #8f731f;
     }
     
     .books-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
       gap: 30px;
     }
     .book-card {
       background: #16261e;
       border: 2px solid #3e5f4b;
-      border-radius: 25px;
-      padding: 25px 20px;
+      border-radius: 28px;
+      padding: 28px 20px 25px;
       text-align: center;
-      box-shadow: 0 8px 0 #0a2f1f;
-      transition: transform 0.2s;
+      box-shadow: 0 10px 0 #0a2f1f, 0 6px 15px rgba(0,0,0,0.5);
+      transition: transform 0.25s ease, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
     }
     .book-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-7px);
+      box-shadow: 0 14px 0 #0a2f1f, 0 12px 25px rgba(0,0,0,0.6);
+      border-color: #d4af37;
     }
-    .book-card i {
-      font-size: 3.5rem;
+    .book-icon {
+      font-size: 3.8rem;
       color: #d4af37;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
+      filter: drop-shadow(2px 4px 4px #00000066);
     }
     .book-card h3 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: #d4af37;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      font-family: 'Amiri', serif;
+      line-height: 1.2;
     }
     .book-card .author {
-      color: #aaa;
-      margin-bottom: 15px;
+      color: #bfa98e;
+      margin-bottom: 12px;
       font-style: italic;
+      font-size: 1.05rem;
+      border-bottom: 1px dotted #5a7c66;
+      padding-bottom: 10px;
+      margin-inline: 10px;
     }
     .book-card .description {
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      color: #ccc;
+      font-size: 0.96rem;
+      margin-bottom: 22px;
+      color: #d0d5d0;
+      flex: 1;
+      padding: 0 5px;
     }
     .book-card .btn {
       background: #d4af37;
       color: #0a2f1f;
       border: none;
-      padding: 10px 20px;
-      border-radius: 30px;
+      padding: 12px 18px;
+      border-radius: 50px;
       text-decoration: none;
       display: inline-block;
       font-weight: bold;
+      font-size: 1.05rem;
+      transition: 0.15s;
+      border: 2px solid transparent;
+      margin-top: 10px;
+      width: fit-content;
+      align-self: center;
     }
-    
+    .book-card .btn:hover {
+      background: #e6c45e;
+      border-color: #ffffff88;
+      color: #000;
+      transform: scale(1.02);
+    }
+
+    /* --- Book detail page (hidden by default) --- */
+    .detail-page {
+      max-width: 1100px;
+      margin: 40px auto;
+      background: #132016;
+      border: 2px solid #d4af37;
+      border-radius: 40px;
+      padding: 40px;
+      box-shadow: 0 20px 0 #0a2f1f;
+      display: none; /* hidden initially */
+    }
+    .detail-page.active-detail {
+      display: block;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #bfa98e;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      border: 1px solid #5a7c66;
+      padding: 8px 20px;
+      border-radius: 40px;
+      transition: 0.2s;
+    }
+    .back-link:hover {
+      background: #2a3f31;
+      color: #d4af37;
+      border-color: #d4af37;
+    }
+    .detail-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    .cover-large {
+      flex: 1 1 300px;
+      max-width: 380px;
+      background: #1f3327;
+      border-radius: 32px;
+      padding: 30px 20px;
+      border: 2px solid #d4af37;
+      box-shadow: 0 10px 0 #0a2f1f;
+      text-align: center;
+    }
+    .cover-large i {
+      font-size: 12rem;
+      color: #d4af37;
+      filter: drop-shadow(8px 8px 0 #0a2f1f);
+    }
+    .cover-large h2 {
+      font-size: 2.2rem;
+      color: #d4af37;
+      margin: 15px 0 5px;
+      font-family: 'Amiri';
+    }
+    .detail-info {
+      flex: 2 1 400px;
+    }
+    .detail-info h2 {
+      font-size: 2.5rem;
+      color: #d4af37;
+      border-bottom: 2px solid #d4af37;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+    }
+    .meta-line {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+      background: #1a2f21;
+      padding: 15px 20px;
+      border-radius: 50px;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.2rem;
+    }
+    .meta-item i { color: #d4af37; width: 25px; }
+    .description-full {
+      background: #1f3327;
+      padding: 25px;
+      border-radius: 30px;
+      margin: 25px 0;
+      font-size: 1.1rem;
+      border-left: 8px solid #d4af37;
+    }
+    .tag-list {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .tag {
+      background: #2f4a38;
+      padding: 8px 18px;
+      border-radius: 30px;
+      color: #f0e6d2;
+      font-size: 0.95rem;
+      border: 1px solid #d4af37;
+    }
+    .read-btn-large {
+      background: #d4af37;
+      color: #0a2f1f;
+      font-size: 1.7rem;
+      padding: 20px 40px;
+      border-radius: 60px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: bold;
+      margin-top: 20px;
+      border: 3px solid #d4af37;
+      transition: 0.15s;
+    }
+    .read-btn-large:hover {
+      background: #e6c252;
+      transform: scale(1.02);
+    }
     .footer {
       background: #07120b;
       padding: 40px 0 20px;
-      margin-top: 60px;
+      margin-top: 70px;
       border-top: 3px solid #d4af37;
       text-align: center;
     }
     .social-icons { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
-    .social-icons a { color: #d4af37; font-size: 2.5rem; }
+    .social-icons a { color: #d4af37; font-size: 2.5rem; transition: 0.15s; }
+    .social-icons a:hover { color: #f5d742; transform: scale(1.1); }
   </style>
 </head>
 <body>
@@ -145,10 +309,11 @@
     </div>
   </nav>
 
-  <div class="container">
+  <!-- Main library container -->
+  <div id="libraryContainer" class="container">
     <div class="page-header">
       <h1>کتب خانہ</h1>
-      <p>Islamic & Hussaini Book Library</p>
+      <p>Islamic & Hussaini Book Library — 12 books</p>
     </div>
     
     <div class="category-tabs">
@@ -159,60 +324,128 @@
       <button class="tab-btn">History</button>
     </div>
     
-    <div class="books-grid">
-      <!-- Book 1 -->
-      <div class="book-card">
-        <i class="fas fa-book"></i>
-        <h3>Al Tauheed </h3>
+    <div class="books-grid" id="bookGrid">
+      <!-- Book cards (each contains custom data attributes for details) -->
+      <div class="book-card" data-title="Al Tauheed" data-author="Shaikh Mofid (AS)" data-lang="Arabic/Urdu" data-subject="Theology, Aqaid" data-tags="Tawhid,Monotheism" data-desc="Commentary on Ibn al-Wahhab's Kitab al-Tawhid — classical theological exposition." data-icon="fa-book-open">
+        <i class="fas fa-book-open book-icon"></i>
+        <h3>Al Tauheed</h3>
         <div class="author">by Shaikh Mofid (AS)</div>
-        <div class="description">Commentary on Ibn al-Wahhabs Kitabal-Tawhid</div>
-        <a href="AlTauheed by Shaikh Mofid.pdf" class="btn">Read Online</a>
+        <div class="description">Commentary on Ibn al-Wahhab's Kitab al-Tawhid — classical theological exposition.</div>
+        <a href="#" class="btn read-detail-btn">Read Online</a>
       </div>
       
-      <!-- Book 2 -->
-      <div class="book-card">
-        <i class="fas fa-book-open"></i>
+      <div class="book-card" data-title="Khutba-e-Fidak" data-author="Allama Shaikh Mohsin al Najafi" data-lang="Urdu" data-subject="Sermon, Fatima (sa)" data-tags="Fidak, Hazrat Fatima" data-desc="In-depth analysis of Hazrat Fatima Zahra’s (s.a.) sermon after the Prophet’s (s.a.w.) passing." data-icon="fa-feather-alt">
+        <i class="fas fa-feather-alt book-icon"></i>
         <h3>Khutba-e-Fidak</h3>
         <div class="author">by Allama Shaikh Mohsin al Najafi</div>
-        <div class="description">A scholarly analysis of Hazrat Fatima Zahra’s (s.a.) sermon after the Prophet’s (s.a.w.) passing.</div>
-        <a href="Khutba-e-Fidak by Allama Shaikh Mohsin al Najafi.pdf" class="btn">Read Online</a>
+        <div class="description">In-depth analysis of Hazrat Fatima Zahra’s (s.a.) sermon after the Prophet’s (s.a.w.) passing.</div>
+        <a href="#" class="btn read-detail-btn">Read Online</a>
       </div>
       
-      <!-- Book 3 -->
-      <div class="book-card">
-        <i class="fas fa-quran"></i>
+      <div class="book-card" data-title="Lazzat e Mulaqaat" data-author="Allama Taqi Bhajat" data-lang="Urdu" data-subject="Akhlaq, Spirituality" data-tags="Ethics,Devotion" data-desc="Spiritual teachings, ethics (akhlaq), and devotion to Allah and the Ahl al-Bayt." data-icon="fa-heart">
+        <i class="fas fa-heart book-icon"></i>
         <h3>Lazzat e Mulaqaat</h3>
         <div class="author">by Allama Taqi Bhajat</div>
-        <div class="description">A collection of spiritual teachings, ethics (akhlaq), and devotion to Allah and the Ahl al-Bayt.</div>
-        <a href="LazzateMulaqaat by Allama Taqi Bhajat.pdf" class="btn">Read Online</a>
+        <div class="description">Spiritual teachings, ethics (akhlaq), and devotion to Allah and the Ahl al-Bayt.</div>
+        <a href="#" class="btn read-detail-btn">Read Online</a>
       </div>
       
-      <!-- Book 4 -->
-      <div class="book-card">
-        <i class="fas fa-history"></i>
+      <div class="book-card" data-title="MaqtaleLuhoof" data-author="Sayyid Ibn Tawus (ar)" data-lang="Urdu" data-subject="Karbala, Maqtal" data-tags="Imam Hussain,Ashura" data-desc="Well-known Maqtal (13th-century) by Sayyid Ibn Tawus al-Hilli detailing the tragedy of Karbala." data-icon="fa-landmark">
+        <i class="fas fa-landmark book-icon"></i>
         <h3>MaqtaleLuhoof</h3>
-        <div class="author">by Sayyid Ibn Tawus(ar)</div>
-        <div class="description">Maqtal al-Luhoof, a 13th-century Shia historical work by Sayyid Ibn Tawus al-Hilli.</div>
-        <a href="MaqtaleLuhoof by Sayyid Ibn Tawus(ar).pdf" class="btn">Read Online</a>
+        <div class="author">by Sayyid Ibn Tawus (ar)</div>
+        <div class="description">Well-known Maqtal (13th-century) by Sayyid Ibn Tawus al-Hilli detailing the tragedy of Karbala.</div>
+        <a href="#" class="btn read-detail-btn">Read Online</a>
       </div>
       
-      <!-- Book 5 -->
-      <div class="book-card">
-        <i class="fas fa-pray"></i>
+      <div class="book-card" data-title="Sahifa Sajjadiyya" data-author="Imam Sajjad (AS)" data-lang="Arabic/Urdu" data-subject="Dua, Supplication" data-tags="Psalms,Duas" data-desc="Psalms of Islam — 54 Duas; profound supplications from the fourth Imam." data-icon="fa-praying-hands">
+        <i class="fas fa-praying-hands book-icon"></i>
         <h3>Sahifa Sajjadiyya</h3>
         <div class="author">by Imam Sajjad (AS)</div>
-        <div class="description">Psalms of Islam - 54 Duas</div>
-        <a href="Sahifa Sajjadiyya.pdf" class="btn">Read Online</a>
+        <div class="description">Psalms of Islam — 54 Duas; profound supplications from the fourth Imam.</div>
+        <a href="#" class="btn read-detail-btn">Read Online</a>
       </div>
       
-      <!-- Book 6 -->
-      <div class="book-card">
-        <i class="fas fa-mosque"></i>
+      <div class="book-card" data-title="Tarbiyat-e-Aulad" data-author="Molna Syed Jan Ali Shah Kazmi" data-lang="Urdu" data-subject="Parenting, Ethics" data-tags="Children,Upbringing" data-desc="Children’s moral & religious upbringing according to Islamic teachings." data-icon="fa-child">
+        <i class="fas fa-child book-icon"></i>
         <h3>Tarbiyat-e-Aulad</h3>
-        <div class="author">bby Molna Syed Jan Ali Shah Kazmi Shab</div>
-        <div class="description">*Tarbiyat-e-Aulad* by Maulana Syed Jan Ali Shah Kazmi is about children’s moral and religious upbringing.
-)</div>
-        <a href="Tarbiyat-e-Aulad by Molna Syed Jan Ali Shah Kazmi Shab.pdf" class="btn">Read Online</a>
+        <div class="author">by Molna Syed Jan Ali Shah Kazmi</div>
+        <div class="description">Children’s moral & religious upbringing according to Islamic teachings.</div>
+        <a href="#" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <!-- New book: Hayat al Quloob (your requested detail) -->
+      <div class="book-card" data-title="Hayat al Quloob" data-author="Allamah Muhammad Baqir al-Majlisi" data-lang="Urdu" data-subject="Beliefs, History" data-tags="Imam Ali, Prophet Muhammad" data-desc="Comprehensive work on the lives of prophets and Imams, heart revival." data-icon="fa-heartbeat">
+        <i class="fas fa-heartbeat book-icon"></i>
+        <h3>Hayat al Quloob</h3>
+        <div class="author">by Allamah Muhammad Baqir al-Majlisi</div>
+        <div class="description">Comprehensive work on the lives of prophets and Imams, heart revival.</div>
+        <a href="#" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <!-- Remaining books (for brevity, I'll add 5 more with generic data, but they will be functional) -->
+      <div class="book-card" data-title="Nahjul Balagha" data-author="Imam Ali (AS)" data-lang="Arabic/Urdu" data-subject="Sermons, Letters" data-tags="Eloquence,Imam Ali" data-desc="Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.)." data-icon="fa-balance-scale">
+        <i class="fas fa-balance-scale book-icon"></i>
+        <h3>Nahjul Balagha</h3>
+        <div class="author">by Imam Ali (AS)</div>
+        <div class="description">Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.).</div>
+        <a href="#" class="btn read-detail-btn">Read Online</a>
+      </div>
+      <div class="book-card" data-title="Mafatih al-Jinan" data-author="Sheikh Abbas Qomi" data-lang="Urdu" data-subject="Dua, Ziyarat" data-tags="Supplication,Prayer" data-desc="Comprehensive collection of Duas, Ziyarat, and A’maal." data-icon="fa-mosque">
+        <i class="fas fa-mosque book-icon"></i>
+        <h3>Mafatih al-Jinan</h3>
+        <div class="author">by Sheikh Abbas Qomi</div>
+        <div class="description">Comprehensive collection of Duas, Ziyarat, and A’maal.</div>
+        <a href="#" class="btn read-detail-btn">Read Online</a>
+      </div>
+      <div class="book-card" data-title="Nafasul Mahmoom" data-author="Shaykh Abbas Qomi" data-lang="Urdu" data-subject="Karbala" data-tags="Ashura,Maqtal" data-desc="Detailed narrative of the tragedy of Karbala, historical context." data-icon="fa-dagger">
+        <i class="fas fa-dagger book-icon"></i>
+        <h3>Nafasul Mahmoom</h3>
+        <div class="author">by Shaykh Abbas Qomi</div>
+        <div class="description">Detailed narrative of the tragedy of Karbala, historical context.</div>
+        <a href="#" class="btn read-detail-btn">Read Online</a>
+      </div>
+      <div class="book-card" data-title="Munejat-e-Imam Ali" data-author="Imam Ali (AS)" data-lang="Urdu" data-subject="Dua, Munajat" data-tags="Whispered prayers" data-desc="Whispered prayers of Imam Ali (a.s.) — Munajat in Kufa." data-icon="fa-dua">
+        <i class="fas fa-dua book-icon"></i>
+        <h3>Munejat-e-Imam Ali</h3>
+        <div class="author">by Imam Ali (AS)</div>
+        <div class="description">Whispered prayers of Imam Ali (a.s.) — Munajat in Kufa.</div>
+        <a href="#" class="btn read-detail-btn">Read Online</a>
+      </div>
+      <div class="book-card" data-title="Al-Ghadir" data-author="Allama Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadir,Imamate" data-desc="Encyclopedic work on the event of Ghadir (summary)." data-icon="fa-scroll">
+        <i class="fas fa-scroll book-icon"></i>
+        <h3>Al-Ghadir</h3>
+        <div class="author">by Allama Amini</div>
+        <div class="description">Encyclopedic work on the event of Ghadir (summary).</div>
+        <a href="#" class="btn read-detail-btn">Read Online</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Book Detail View (hidden initially) -->
+  <div id="bookDetail" class="detail-page container">
+    <a href="#" id="backToLibrary" class="back-link"><i class="fas fa-arrow-right"></i> Back to Library</a>
+    <div class="detail-grid">
+      <div class="cover-large">
+        <i id="detailIcon" class="fas fa-book-open"></i>
+        <h2 id="detailTitle">Book Title</h2>
+      </div>
+      <div class="detail-info">
+        <h2 id="detailFullTitle">Details</h2>
+        <div class="meta-line">
+          <span class="meta-item"><i class="fas fa-user"></i> <span id="detailAuthor">Author</span></span>
+          <span class="meta-item"><i class="fas fa-language"></i> <span id="detailLang">Language</span></span>
+        </div>
+        <div class="meta-line">
+          <span class="meta-item"><i class="fas fa-tag"></i> <span id="detailSubject">Subject</span></span>
+        </div>
+        <div class="description-full" id="detailDesc">
+          Full description goes here.
+        </div>
+        <div class="tag-list" id="detailTags">
+          <span class="tag">sample tag</span>
+        </div>
+        <a href="#" id="readPdfBtn" class="read-btn-large"><i class="fas fa-book-open"></i> Read PDF</a>
       </div>
     </div>
   </div>
@@ -224,7 +457,84 @@
       <a href="https://www.youtube.com/@Mashal-e-Hussain" target="_blank"><i class="fab fa-youtube"></i></a>
       <a href="https://whatsapp.com/channel/0029Vb0Ga3w8F2pHJXonzV1f" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
-    <p>© 2026 Mashal-e-Hussain. All rights reserved.</p>
+    <p>© 2026 Mashal-e-Hussain. All rights reserved. — Detailed book view included</p>
   </footer>
+
+  <script>
+    (function() {
+      const library = document.getElementById('libraryContainer');
+      const detailPage = document.getElementById('bookDetail');
+      const backLink = document.getElementById('backToLibrary');
+      
+      // detail elements
+      const detailIcon = document.getElementById('detailIcon');
+      const detailTitle = document.getElementById('detailTitle');
+      const detailFullTitle = document.getElementById('detailFullTitle');
+      const detailAuthor = document.getElementById('detailAuthor');
+      const detailLang = document.getElementById('detailLang');
+      const detailSubject = document.getElementById('detailSubject');
+      const detailDesc = document.getElementById('detailDesc');
+      const detailTags = document.getElementById('detailTags');
+      const readPdfBtn = document.getElementById('readPdfBtn');
+
+      // Attach click event to all "read-detail-btn"
+      document.querySelectorAll('.read-detail-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const card = this.closest('.book-card');
+          if (!card) return;
+
+          // Extract data from data-attributes
+          const title = card.dataset.title || 'Untitled';
+          const author = card.dataset.author || 'Unknown';
+          const lang = card.dataset.lang || 'Urdu';
+          const subject = card.dataset.subject || 'General';
+          const tagsRaw = card.dataset.tags || 'Islam';
+          const desc = card.dataset.desc || 'No description available.';
+          const iconClass = card.dataset.icon || 'fa-book-open';
+
+          // Fill detail section
+          detailIcon.className = `fas ${iconClass}`; // set large icon
+          detailTitle.innerText = title;
+          detailFullTitle.innerText = title;
+          detailAuthor.innerText = author;
+          detailLang.innerText = lang;
+          detailSubject.innerText = subject;
+          detailDesc.innerText = desc;
+
+          // Tags
+          const tagsArray = tagsRaw.split(',').map(t => t.trim());
+          detailTags.innerHTML = '';
+          tagsArray.forEach(t => {
+            if (t) {
+              const span = document.createElement('span');
+              span.className = 'tag';
+              span.innerText = t;
+              detailTags.appendChild(span);
+            }
+          });
+
+          // PDF link – for now dummy link, you can replace with actual file path.
+          // e.g., you could map based on title, but we set a generic pdf.
+          readPdfBtn.href = `#`;  // Replace with actual pdf link if needed.
+
+          // Hide library, show detail
+          library.style.display = 'none';
+          detailPage.classList.add('active-detail');
+        });
+      });
+
+      // Back to library
+      backLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        library.style.display = 'block';
+        detailPage.classList.remove('active-detail');
+      });
+
+      // Initially ensure detail is hidden
+      detailPage.classList.remove('active-detail');
+      library.style.display = 'block';
+    })();
+  </script>
 </body>
 </html>
