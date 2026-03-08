@@ -6,7 +6,7 @@
   <title>Mashal-e-Hussain | Noha · Majlis · Matam Dari</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23d4af37'>🕋</text></svg>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Keep Amiri/Scheherazade for other text, add Noto Nastaliq Urdu for the main heading -->
+  <!-- Fonts: Amiri, Scheherazade, and Noto Nastaliq Urdu for logo/heading -->
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s; }
@@ -50,7 +50,7 @@
     .nav-links a { color: #efefef; text-decoration: none; font-size: 1.1rem; padding-bottom: 5px; border-bottom: 2px solid transparent; }
     .nav-links a:hover, .nav-links a.active { color: #d4af37; border-bottom-color: #d4af37; }
     
-    /* ===== SLIDESHOW HERO ===== */
+    /* ===== SLIDESHOW HERO (LOCAL IMAGES FROM /pics) ===== */
     .hero {
       position: relative;
       text-align: center;
@@ -92,7 +92,6 @@
       color: #d4af37;
       margin-bottom: 20px;
       text-shadow: 3px 3px 0 #1a2e1a;
-      /* Ensure the main heading also uses Noto Nastaliq Urdu, but the word mark is logo. Keep optional */
       font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
     }
     .hero-description {
@@ -180,7 +179,7 @@
 <body>
   <nav class="navbar">
     <div class="nav-container">
-      <a href="index.html" class="logo">مشعل حسین</a> <!-- Now uses Noto Nastaliq Urdu -->
+      <a href="index.html" class="logo">مشعل حسین</a> <!-- Noto Nastaliq Urdu applied -->
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>
         <a href="Admin%20Contact.html">Admin Contact</a>
@@ -191,16 +190,25 @@
   </nav>
 
   <main>
-    <!-- Hero section with rotating landscape background -->
+    <!-- Hero section with rotating background from local "pics" folder -->
     <section class="hero">
-      <!-- Slideshow container (landscape wallpapers) -->
+      <!-- Slideshow container using local images from /pics directory -->
       <div class="slideshow-container" id="slideshow">
-        <!-- slides will be generated via JS, but we also add static divs as fallback / manual -->
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop');"></div> <!-- wide landscape 1 -->
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1490682143684-14369e18dce8?q=80&w=2070&auto=format&fit=crop');"></div> <!-- landscape 2 -->
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop');"></div> <!-- landscape 3 -->
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1426604966848-d7adac402b1b?q=80&w=2070&auto=format&fit=crop');"></div> <!-- mountain lake -->
-        <!-- Add your own pictures above or extend. You can replace URLs with your own. -->
+        <!-- 
+          ==============================================
+          LOCAL IMAGES FROM YOUR "pics" DIRECTORY
+          Replace these filenames with your actual images.
+          Add as many as you like – just keep the pattern.
+          ==============================================
+        -->
+        <div class="slide active" style="background-image: url('pics/landscape-1.jpg');"></div>
+        <div class="slide" style="background-image: url('pics/landscape-2.jpg');"></div>
+        <div class="slide" style="background-image: url('pics/landscape-3.jpg');"></div>
+        <div class="slide" style="background-image: url('pics/landscape-4.jpg');"></div>
+        <div class="slide" style="background-image: url('pics/landscape-5.jpg');"></div>
+        <!-- You can add more slides below, e.g.:
+        <div class="slide" style="background-image: url('pics/my-custom-pic.jpg');"></div>
+        -->
       </div>
       <div class="hero-overlay"></div> <!-- dark overlay -->
       <h1>مشعل حسین</h1>
@@ -242,7 +250,7 @@
     <p>© 2026 Mashal-e-Hussain. All rights reserved.</p>
   </footer>
 
-  <!-- Simple slideshow script -->
+  <!-- Slideshow script (unchanged, works with local paths) -->
   <script>
     (function() {
       const slides = document.querySelectorAll('.slide');
@@ -265,10 +273,15 @@
       setInterval(nextSlide, 5000);
     })();
   </script>
+
   <!-- 
-    Notes for adding pictures: 
-    In the slideshow container (div with id "slideshow"), replace the src or add new <div class="slide" style="background-image: url('YOUR_IMAGE_URL');"></div>
-    Ensure each slide has class "slide". The first slide should have "active" class.
+    ===== INSTRUCTIONS FOR ADDING YOUR OWN PICTURES =====
+    1. Place your images inside the "pics" folder (relative to this HTML file).
+    2. In the slideshow container (div with class "slideshow-container"), 
+       add or modify the <div class="slide" style="background-image: url('pics/YOUR_FILENAME.jpg');"></div>
+    3. Make sure the first slide has class "slide active" and the others just "slide".
+    4. Supported formats: .jpg, .jpeg, .png, .webp, etc.
+    5. The slides will rotate automatically every 5 seconds.
   -->
 </body>
 </html>
