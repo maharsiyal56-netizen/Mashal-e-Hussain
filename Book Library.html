@@ -2,14 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Book Library - Mashal-e-Hussain</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23d4af37'>🕋</text></svg>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
   <style>
-    /* === EXACT SAME STYLING AS YOUR ORIGINAL (no changes) === */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* === ENHANCED RESPONSIVE STYLING === */
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+    
     body {
       font-family: 'Segoe UI', 'Amiri', sans-serif;
       background-color: #0a0f0c;
@@ -17,69 +27,130 @@
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.05"><path d="M60 40 L140 40 L160 80 L140 120 L60 120 L40 80 L60 40" fill="none" stroke="%23d4af37" stroke-width="1.5"/><circle cx="100" cy="80" r="12" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M70 150 Q100 170 130 150" stroke="%23d4af37" fill="none" stroke-width="1.2"/></svg>');
       background-repeat: repeat;
       line-height: 1.5;
+      overflow-x: hidden;
+      width: 100%;
     }
+    
+    /* Enhanced Navbar */
     .navbar {
       background: #0a120e;
-      padding: 15px 0;
+      padding: clamp(10px, 2vw, 15px) 0;
       border-bottom: 2px solid #d4af37;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(10, 18, 14, 0.95);
     }
+    
     .nav-container {
-      max-width: 1300px;
+      max-width: min(1400px, 95%);
       margin: 0 auto;
-      padding: 0 25px;
+      padding: 0 clamp(15px, 3vw, 25px);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      gap: clamp(10px, 2vw, 15px);
     }
-    .logo { font-family: 'Amiri', serif; font-size: 2.2rem; color: #d4af37; text-decoration: none; }
-    .nav-links { display: flex; gap: 25px; flex-wrap: wrap; }
-    .nav-links a { color: #efefef; text-decoration: none; font-size: 1.1rem; padding-bottom: 5px; border-bottom: 2px solid transparent; transition: 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: #d4af37; border-bottom-color: #d4af37; }
     
-    .container { max-width: 1300px; margin: 40px auto; padding: 0 20px; }
+    .logo { 
+      font-family: 'Amiri', serif; 
+      font-size: clamp(1.5rem, 4vw, 2.5rem); 
+      color: #d4af37; 
+      text-decoration: none;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .nav-links { 
+      display: flex; 
+      gap: clamp(12px, 3vw, 25px); 
+      flex-wrap: wrap; 
+    }
+    
+    .nav-links a { 
+      color: #efefef; 
+      text-decoration: none; 
+      font-size: clamp(0.9rem, 2vw, 1.2rem); 
+      padding-bottom: 5px; 
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .nav-links a:hover, 
+    .nav-links a.active { 
+      color: #d4af37; 
+      border-bottom-color: #d4af37; 
+      transform: translateY(-2px);
+    }
+    
+    /* Enhanced Container */
+    .container { 
+      max-width: min(1400px, 95%); 
+      margin: clamp(20px, 5vw, 40px) auto; 
+      padding: 0 clamp(15px, 3vw, 20px); 
+      width: 100%;
+    }
+    
+    /* Enhanced Header */
     .page-header {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: clamp(25px, 6vh, 50px);
     }
+    
     .page-header h1 {
-      font-size: 3.8rem;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
       color: #d4af37;
       font-family: 'Noto Nastaliq Urdu', serif;
-      margin-bottom: 15px;
+      margin-bottom: clamp(10px, 2vh, 15px);
       text-shadow: 0 2px 5px rgba(0,0,0,0.6);
       letter-spacing: 1px;
+      line-height: 1.2;
+      word-break: break-word;
     }
+    
     .page-header p {
-      font-size: 1.3rem;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
       color: #bfa98e;
       border-top: 1px dashed #5a7c66;
       display: inline-block;
-      padding-top: 12px;
+      padding-top: clamp(8px, 2vh, 12px);
+      max-width: 90%;
+      margin: 0 auto;
     }
     
+    /* Enhanced Category Tabs */
     .category-tabs {
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: clamp(8px, 2vw, 15px);
       flex-wrap: wrap;
-      margin-bottom: 45px;
+      margin-bottom: clamp(25px, 5vh, 45px);
     }
+    
     .tab-btn {
       background: #1a2c21;
       border: 2px solid #3e5f4b;
       color: white;
-      padding: 12px 28px;
+      padding: clamp(8px, 2vh, 12px) clamp(15px, 3vw, 28px);
       border-radius: 40px;
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.2s ease;
       font-weight: 500;
       box-shadow: 0 4px 0 #0a2f1f;
+      white-space: nowrap;
     }
+    
+    @media (max-width: 480px) {
+      .tab-btn {
+        white-space: normal;
+        min-width: calc(50% - 10px);
+        text-align: center;
+      }
+    }
+    
     .tab-btn.active {
       background: #d4af37;
       color: #0a2f1f;
@@ -88,172 +159,528 @@
       box-shadow: 0 4px 0 #8f731f;
     }
     
+    .tab-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #0a2f1f;
+    }
+    
+    /* Enhanced Books Grid */
     .books-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+      gap: clamp(15px, 3vw, 30px);
     }
+    
+    /* Enhanced Book Card */
     .book-card {
       background: #16261e;
       border: 2px solid #3e5f4b;
-      border-radius: 28px;
-      padding: 28px 20px 25px;
+      border-radius: clamp(20px, 4vw, 28px);
+      padding: clamp(15px, 3vw, 28px) clamp(12px, 2vw, 20px) clamp(15px, 3vw, 25px);
       text-align: center;
       box-shadow: 0 10px 0 #0a2f1f, 0 6px 15px rgba(0,0,0,0.5);
-      transition: transform 0.25s ease, box-shadow 0.25s;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: flex;
       flex-direction: column;
+      height: 100%;
     }
+    
     .book-card:hover {
       transform: translateY(-7px);
       box-shadow: 0 14px 0 #0a2f1f, 0 12px 25px rgba(0,0,0,0.6);
       border-color: #d4af37;
     }
-    /* ----- FRONT PIC (A4 aspect) added inside card ----- */
+    
+    /* Enhanced Book Front (A4 aspect) */
     .book-front {
       width: 100%;
-      aspect-ratio: 1 / 1.414; /* ≈ A4 portrait ratio (1:√2) */
+      aspect-ratio: 1 / 1.414;
       background: #1f3327;
       border: 2px solid #d4af37;
-      border-radius: 18px;
-      margin-bottom: 20px;
+      border-radius: clamp(12px, 3vw, 18px);
+      margin-bottom: clamp(12px, 3vh, 20px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       box-shadow: inset 0 0 0 1px #5a8b6f, 0 6px 0 #0a2f1f;
-      overflow: hidden;  /* keep image inside */
+      overflow: hidden;
     }
+    
     .book-front img {
       width: 100%;
       height: 100%;
-      object-fit: cover;      /* cover entire box */
+      object-fit: cover;
       display: block;
-      border-radius: 16px;
+      border-radius: clamp(10px, 2vw, 16px);
       transition: transform 0.2s;
     }
+    
     .book-front img:hover {
       transform: scale(1.02);
     }
-    /* fallback if image missing – replaced by icon via data attr */
+    
     .book-front.fallback {
       background: #1f3327;
       color: #d4af37;
-      font-size: 3.8rem;
+      font-size: clamp(3rem, 8vw, 3.8rem);
     }
-    /* keep old icon styling for fallback, but we prefer images */
-    .book-icon { display: none; }  /* hide old icon, we now use front image */
-
-    .book-card h3 {
-      font-size: 1.8rem;
+    
+    .book-front i {
+      font-size: clamp(3rem, 8vw, 5rem);
       color: #d4af37;
-      margin-bottom: 8px;
+    }
+    
+    .book-card h3 {
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      color: #d4af37;
+      margin-bottom: clamp(5px, 1vh, 8px);
       font-family: 'Amiri', serif;
       line-height: 1.2;
+      word-break: break-word;
     }
+    
     .book-card .author {
       color: #bfa98e;
-      margin-bottom: 12px;
+      margin-bottom: clamp(8px, 2vh, 12px);
       font-style: italic;
-      font-size: 1.05rem;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
       border-bottom: 1px dotted #5a7c66;
-      padding-bottom: 10px;
-      margin-inline: 10px;
+      padding-bottom: clamp(5px, 1.5vh, 10px);
+      margin-inline: 5px;
+      word-break: break-word;
     }
+    
     .book-card .description {
-      font-size: 0.96rem;
-      margin-bottom: 22px;
+      font-size: clamp(0.85rem, 2vw, 0.96rem);
+      margin-bottom: clamp(15px, 3vh, 22px);
       color: #d0d5d0;
       flex: 1;
       padding: 0 5px;
+      word-break: break-word;
     }
+    
     .book-card .btn {
       background: #d4af37;
       color: #0a2f1f;
       border: none;
-      padding: 12px 18px;
+      padding: clamp(8px, 2vh, 12px) clamp(12px, 3vw, 18px);
       border-radius: 50px;
       text-decoration: none;
       display: inline-block;
       font-weight: bold;
-      font-size: 1.05rem;
-      transition: 0.15s;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      transition: all 0.15s ease;
       border: 2px solid transparent;
-      margin-top: 10px;
+      margin-top: 5px;
       width: fit-content;
       align-self: center;
+      box-shadow: 0 4px 0 #8f731f;
     }
+    
     .book-card .btn:hover {
       background: #e6c45e;
       border-color: #ffffff88;
       color: #000;
-      transform: scale(1.02);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #8f731f;
     }
-    /* Detail page styling (exactly as before, but updated to show A4 cover) */
+    
+    .book-card .btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #8f731f;
+    }
+    
+    /* Enhanced Detail Page */
     .detail-page {
-      max-width: 1100px;
-      margin: 40px auto;
+      max-width: min(1200px, 95%);
+      margin: clamp(20px, 5vw, 40px) auto;
       background: #132016;
       border: 2px solid #d4af37;
-      border-radius: 40px;
-      padding: 40px;
+      border-radius: clamp(25px, 5vw, 40px);
+      padding: clamp(20px, 5vw, 40px);
       box-shadow: 0 20px 0 #0a2f1f;
       display: none;
     }
-    .detail-page.active-detail { display: block; }
+    
+    .detail-page.active-detail { 
+      display: block; 
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
     .back-link {
-      display: inline-flex; align-items: center; gap: 8px; color: #bfa98e;
-      text-decoration: none; font-size: 1.2rem; margin-bottom: 30px;
-      border: 1px solid #5a7c66; padding: 8px 20px; border-radius: 40px;
-      transition: 0.2s;
+      display: inline-flex; 
+      align-items: center; 
+      gap: 8px; 
+      color: #bfa98e;
+      text-decoration: none; 
+      font-size: clamp(1rem, 2.5vw, 1.2rem); 
+      margin-bottom: clamp(20px, 4vh, 30px);
+      border: 1px solid #5a7c66; 
+      padding: clamp(6px, 1.5vh, 8px) clamp(15px, 3vw, 20px); 
+      border-radius: 40px;
+      transition: all 0.2s ease;
     }
-    .back-link:hover { background: #2a3f31; color: #d4af37; border-color: #d4af37; }
-    .detail-grid { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
+    
+    .back-link:hover { 
+      background: #2a3f31; 
+      color: #d4af37; 
+      border-color: #d4af37;
+      transform: translateX(-5px);
+    }
+    
+    .back-link i {
+      transition: transform 0.2s;
+    }
+    
+    .back-link:hover i {
+      transform: translateX(-3px);
+    }
+    
+    .detail-grid { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: clamp(20px, 5vw, 40px); 
+      align-items: flex-start; 
+    }
+    
     .cover-large {
-      flex: 1 1 300px; max-width: 380px; background: #1f3327;
-      border-radius: 32px; padding: 20px; border: 2px solid #d4af37;
-      box-shadow: 0 10px 0 #0a2f1f; text-align: center;
+      flex: 1 1 min(300px, 100%); 
+      max-width: 400px; 
+      background: #1f3327;
+      border-radius: clamp(25px, 5vw, 32px); 
+      padding: clamp(15px, 3vw, 20px); 
+      border: 2px solid #d4af37;
+      box-shadow: 0 10px 0 #0a2f1f; 
+      text-align: center;
+      margin: 0 auto;
     }
-    /* A4 cover in detail view */
+    
     .cover-large .front-large {
       width: 100%;
-      aspect-ratio: 1 / 1.414;  /* A4 */
+      aspect-ratio: 1 / 1.414;
       background: #0a2f1f;
-      border-radius: 24px;
+      border-radius: clamp(18px, 4vw, 24px);
       border: 2px solid #d4af37;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+    
     .cover-large .front-large img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 22px;
+      border-radius: clamp(16px, 3vw, 22px);
     }
-    .cover-large h2 { font-size: 2.2rem; color: #d4af37; margin: 15px 0 5px; font-family: 'Amiri'; }
-    .detail-info { flex: 2 1 400px; }
-    .detail-info h2 { font-size: 2.5rem; color: #d4af37; border-bottom: 2px solid #d4af37; padding-bottom: 10px; margin-bottom: 25px; }
-    .meta-line { display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 25px; background: #1a2f21; padding: 15px 20px; border-radius: 50px; }
-    .meta-item { display: flex; align-items: center; gap: 8px; font-size: 1.2rem; }
-    .meta-item i { color: #d4af37; width: 25px; }
-    .description-full { background: #1f3327; padding: 25px; border-radius: 30px; margin: 25px 0; font-size: 1.1rem; border-left: 8px solid #d4af37; }
-    .tag-list { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
-    .tag { background: #2f4a38; padding: 8px 18px; border-radius: 30px; color: #f0e6d2; font-size: 0.95rem; border: 1px solid #d4af37; }
+    
+    .cover-large .front-large i {
+      font-size: clamp(4rem, 10vw, 8rem);
+      color: #d4af37;
+    }
+    
+    .cover-large h2 { 
+      font-size: clamp(1.5rem, 5vw, 2.2rem); 
+      color: #d4af37; 
+      margin: clamp(10px, 3vh, 15px) 0 5px; 
+      font-family: 'Amiri';
+      word-break: break-word;
+    }
+    
+    .detail-info { 
+      flex: 2 1 min(400px, 100%); 
+    }
+    
+    .detail-info h2 { 
+      font-size: clamp(1.8rem, 6vw, 2.5rem); 
+      color: #d4af37; 
+      border-bottom: 2px solid #d4af37; 
+      padding-bottom: clamp(8px, 2vh, 10px); 
+      margin-bottom: clamp(15px, 3vh, 25px); 
+      word-break: break-word;
+    }
+    
+    .meta-line { 
+      display: flex; 
+      gap: clamp(15px, 4vw, 30px); 
+      flex-wrap: wrap; 
+      margin-bottom: clamp(15px, 3vh, 25px); 
+      background: #1a2f21; 
+      padding: clamp(10px, 2vh, 15px) clamp(12px, 3vw, 20px); 
+      border-radius: 50px;
+    }
+    
+    .meta-item { 
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem); 
+      flex-wrap: wrap;
+    }
+    
+    .meta-item i { 
+      color: #d4af37; 
+      width: 20px; 
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+    }
+    
+    .description-full { 
+      background: #1f3327; 
+      padding: clamp(15px, 4vh, 25px); 
+      border-radius: clamp(20px, 5vw, 30px); 
+      margin: clamp(15px, 3vh, 25px) 0; 
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem); 
+      border-left: 8px solid #d4af37;
+      word-break: break-word;
+    }
+    
+    .tag-list { 
+      display: flex; 
+      gap: clamp(8px, 2vw, 10px); 
+      flex-wrap: wrap; 
+      margin: clamp(15px, 3vh, 20px) 0; 
+    }
+    
+    .tag { 
+      background: #2f4a38; 
+      padding: clamp(6px, 1.5vh, 8px) clamp(12px, 3vw, 18px); 
+      border-radius: 30px; 
+      color: #f0e6d2; 
+      font-size: clamp(0.85rem, 2vw, 0.95rem); 
+      border: 1px solid #d4af37;
+      transition: all 0.2s;
+    }
+    
+    .tag:hover {
+      background: #3e5f4b;
+      transform: scale(1.05);
+    }
+    
     .read-btn-large {
-      background: #d4af37; color: #0a2f1f; font-size: 1.7rem; padding: 20px 40px;
-      border-radius: 60px; text-decoration: none; display: inline-block; font-weight: bold;
-      margin-top: 20px; border: 3px solid #d4af37; transition: 0.15s;
+      background: #d4af37; 
+      color: #0a2f1f; 
+      font-size: clamp(1.2rem, 4vw, 1.7rem); 
+      padding: clamp(12px, 3vh, 20px) clamp(20px, 5vw, 40px);
+      border-radius: 60px; 
+      text-decoration: none; 
+      display: inline-block; 
+      font-weight: bold;
+      margin-top: clamp(15px, 3vh, 20px); 
+      border: 3px solid #d4af37; 
+      transition: all 0.15s ease;
+      box-shadow: 0 8px 0 #8f731f;
     }
-    .read-btn-large:hover { background: #e6c252; transform: scale(1.02); }
+    
+    .read-btn-large:hover { 
+      background: #e6c252; 
+      transform: translateY(-3px);
+      box-shadow: 0 11px 0 #8f731f;
+    }
+    
+    .read-btn-large:active {
+      transform: translateY(3px);
+      box-shadow: 0 5px 0 #8f731f;
+    }
+    
+    /* Enhanced Footer */
     .footer {
-      background: #07120b; padding: 40px 0 20px; margin-top: 70px;
-      border-top: 3px solid #d4af37; text-align: center;
+      background: linear-gradient(180deg, #07120b, #0a1a0f);
+      padding: clamp(25px, 5vw, 40px) 0 clamp(12px, 3vw, 20px);
+      margin-top: clamp(40px, 8vh, 70px);
+      border-top: 3px solid #d4af37;
+      text-align: center;
     }
-    .social-icons { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
-    .social-icons a { color: #d4af37; font-size: 2.5rem; transition: 0.15s; }
-    .social-icons a:hover { color: #f5d742; transform: scale(1.1); }
+    
+    .social-icons { 
+      display: flex; 
+      justify-content: center; 
+      gap: clamp(20px, 5vw, 30px); 
+      margin-bottom: clamp(15px, 3vh, 20px); 
+      flex-wrap: wrap;
+    }
+    
+    .social-icons a { 
+      color: #d4af37; 
+      font-size: clamp(2rem, 5vw, 2.5rem); 
+      transition: all 0.15s ease;
+    }
+    
+    .social-icons a:hover { 
+      color: #f5d742; 
+      transform: translateY(-5px) scale(1.1);
+    }
+    
+    .footer p {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: #a0a0a0;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+    
+    /* TV & Large Screen Optimization */
+    @media (min-width: 1920px) {
+      html {
+        font-size: 18px;
+      }
+      
+      .container {
+        max-width: 1600px;
+      }
+      
+      .books-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+    
+    /* Desktop Optimization */
+    @media (min-width: 1200px) and (max-width: 1919px) {
+      .books-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    /* Tablet Optimization */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .books-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .detail-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .cover-large {
+        max-width: 350px;
+      }
+    }
+    
+    /* Mobile Landscape */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .book-card .btn {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+      }
+    }
+    
+    /* Small Mobile */
+    @media (max-width: 480px) {
+      .nav-links {
+        justify-content: center;
+        width: 100%;
+      }
+      
+      .nav-links a {
+        font-size: 0.9rem;
+        padding: 5px 8px;
+      }
+      
+      .books-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .book-card {
+        max-width: 350px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      
+      .meta-line {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      
+      .meta-item {
+        width: 100%;
+      }
+      
+      .cover-large {
+        max-width: 280px;
+      }
+      
+      .read-btn-large {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* Ultra Small Devices */
+    @media (max-width: 320px) {
+      .category-tabs {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .tab-btn {
+        width: 100%;
+        min-width: 100%;
+      }
+      
+      .book-card {
+        padding: 12px;
+      }
+      
+      .book-front {
+        margin-bottom: 10px;
+      }
+    }
+    
+    /* High Resolution TV */
+    @media (min-width: 2560px) {
+      html {
+        font-size: 22px;
+      }
+      
+      .container {
+        max-width: 2200px;
+      }
+      
+      .books-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+    
+    /* Print Styles */
+    @media print {
+      .navbar, .footer, .tab-btn, .btn, .read-btn-large {
+        display: none;
+      }
+      
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .book-card {
+        break-inside: avoid;
+        border: 1px solid #000;
+      }
+    }
+    
+    /* Loading Animation */
+    @keyframes cardPulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    
+    .book-front img[src=""] {
+      animation: cardPulse 1.5s infinite;
+    }
   </style>
 </head>
 <body>
@@ -285,11 +712,9 @@
     </div>
     
     <div class="books-grid" id="bookGrid">
-      <!-- ========== EXISTING BOOKS with added FRONT PIC (A4) ========== 
-           data-pic attribute holds the image file name. We'll also keep old data fields. 
-           We store the image path in data-pic. In case image missing, we show a generated fallback. -->
+      <!-- ========== EXISTING BOOKS with added FRONT PIC (A4) ========== -->
       <div class="book-card" data-title="Al Tauheed" data-author="Shaikh Mofid (AS)" data-lang="Arabic/Urdu" data-subject="Theology, Aqaid" data-tags="Tawhid,Monotheism" data-desc="Commentary on Ibn al-Wahhab's Kitab al-Tawhid — classical theological exposition." data-pic="al-tauheed-urdu.jpg" data-icon="fa-book-open">
-        <div class="book-front"><img src="al-tauheed-urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-book-open\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="al-tauheed-urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-book-open\'></i>';"></div>
         <h3>Al Tauheed</h3>
         <div class="author">by Shaikh Mofid (AS)</div>
         <div class="description">Commentary on Ibn al-Wahhab's Kitab al-Tawhid — classical theological exposition.</div>
@@ -297,7 +722,7 @@
       </div>
       
       <div class="book-card" data-title="Khutba-e-Fidak" data-author="Allama Shaikh Mohsin al Najafi" data-lang="Urdu" data-subject="Sermon, Fatima (sa)" data-tags="Fidak, Hazrat Fatima" data-desc="In-depth analysis of Hazrat Fatima Zahra’s (s.a.) sermon after the Prophet’s (s.a.w.) passing." data-pic="Khutba-e-Fidak.jpg" data-icon="fa-feather-alt">
-        <div class="book-front"><img src="Khutba-e-Fidak.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-feather-alt\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="Khutba-e-Fidak.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-feather-alt\'></i>';"></div>
         <h3>Khutba-e-Fidak</h3>
         <div class="author">by Allama Shaikh Mohsin al Najafi</div>
         <div class="description">In-depth analysis of Hazrat Fatima Zahra’s (s.a.) sermon after the Prophet’s (s.a.w.) passing.</div>
@@ -305,7 +730,7 @@
       </div>
       
       <div class="book-card" data-title="Lazzat e Mulaqaat" data-author="Allama Taqi Bhajat" data-lang="Urdu" data-subject="Akhlaq, Spirituality" data-tags="Ethics,Devotion" data-desc="Spiritual teachings, ethics (akhlaq), and devotion to Allah and the Ahl al-Bayt." data-pic="Lazzat-e-Mulaqat.jpg" data-icon="fa-heart">
-        <div class="book-front"><img src="Lazzat-e-Mulaqat.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-heart\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="Lazzat-e-Mulaqat.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-heart\'></i>';"></div>
         <h3>Lazzat e Mulaqaat</h3>
         <div class="author">by Allama Taqi Bhajat</div>
         <div class="description">Spiritual teachings, ethics (akhlaq), and devotion to Allah and the Ahl al-Bayt.</div>
@@ -313,7 +738,7 @@
       </div>
       
       <div class="book-card" data-title="MaqtaleLuhoof" data-author="Sayyid Ibn Tawus (ar)" data-lang="Urdu" data-subject="Karbala, Maqtal" data-tags="Imam Hussain,Ashura" data-desc="Well-known Maqtal (13th-century) by Sayyid Ibn Tawus al-Hilli detailing the tragedy of Karbala." data-pic="Maqtaleluhoof_urdu.jpg" data-icon="fa-landmark">
-        <div class="book-front"><img src="Maqtaleluhoof_urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-landmark\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="Maqtaleluhoof_urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-landmark\'></i>';"></div>
         <h3>Maqtal-e-Luhoof</h3>
         <div class="author">by Sayyid Ibn Tawus (ar)</div>
         <div class="description">Well-known Maqtal (13th-century) by Sayyid Ibn Tawus al-Hilli detailing the tragedy of Karbala.</div>
@@ -321,7 +746,7 @@
       </div>
       
       <div class="book-card" data-title="Sahifa Sajjadiyya" data-author="Imam Sajjad (AS)" data-lang="Arabic/Urdu" data-subject="Dua, Supplication" data-tags="Psalms,Duas" data-desc="Psalms of Islam — 54 Duas; profound supplications from the fourth Imam." data-pic="Sahifa Sajjadiyya.png" data-icon="fa-praying-hands">
-        <div class="book-front"><img src="Sahifa Sajjadiyya.png" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-praying-hands\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="Sahifa Sajjadiyya.png" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-praying-hands\'></i>';"></div>
         <h3>Sahifa Sajjadiyya</h3>
         <div class="author">by Imam Sajjad (AS)</div>
         <div class="description">Psalms of Islam — 54 Duas; profound supplications from the fourth Imam.</div>
@@ -329,7 +754,7 @@
       </div>
       
       <div class="book-card" data-title="Tarbiyat-e-Aulad" data-author="Molna Syed Jan Ali Shah Kazmi" data-lang="Urdu" data-subject="Parenting, Ethics" data-tags="Children,Upbringing" data-desc="Children’s moral & religious upbringing according to Islamic teachings." data-pic="tarbiyateaulad.jpg" data-icon="fa-child">
-        <div class="book-front"><img src="tarbiyateaulad.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-child\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="tarbiyateaulad.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-child\'></i>';"></div>
         <h3>Tarbiyat-e-Aulad</h3>
         <div class="author">by Molna Syed Jan Ali Shah Kazmi</div>
         <div class="description">Children’s moral & religious upbringing according to Islamic teachings.</div>
@@ -338,7 +763,7 @@
       
       <!-- ========== 7 VOLUMES OF AL‑GHADEER ========== -->
       <div class="book-card" data-title="Al‑Ghadeer (Vol. 1)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 1: Detailed proofs of the event of Ghadeer from Sunni sources. Must‑read." data-pic="AL-ghadeer.jpg" data-icon="fa-scroll">
-        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
         <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 1)</span></h3>
         <div class="author">by Allama Abdul Hussain Amini</div>
         <div class="description">Vol 01: Al‑Ghadeer discusses the event of Ghadeer with documented proofs from Sunni sources.</div>
@@ -346,7 +771,7 @@
       </div>
       
       <div class="book-card" data-title="Al‑Ghadeer (Vol. 2)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 2: Continuation of authentic traditions and historical testimonies about Wilayah." data-pic="AL-ghadeer.jpg" data-icon="fa-scroll">
-        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
         <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 2-3)</span></h3>
         <div class="author">by Allama Abdul Hussain Amini</div>
         <div class="description">Vol 02-03: Further Sunni references on the event of Ghadeer and the superiority of Imam Ali (as).</div>
@@ -354,7 +779,7 @@
       </div>
       
       <div class="book-card" data-title="Al‑Ghadeer (Vol. 3)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 3: Analysis of chains of narration and companions who narrated the Ghadeer tradition." data-pic="AL-ghadeer.jpg" data-icon="fa-scroll">
-        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
         <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 4-5)</span></h3>
         <div class="author">by Allama Abdul Hussain Amini</div>
         <div class="description">Vol 04-05: Detailed study of narrators and textual variants of the Ghadeer sermon.</div>
@@ -362,7 +787,7 @@
       </div>
       
       <div class="book-card" data-title="Al‑Ghadeer (Vol. 4)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 4: The poetic evidence – poems composed about Ghadeer from the first century onward." data-pic="AL-ghadeer.jpg" data-icon="fa-scroll">
-        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
         <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 6)</span></h3>
         <div class="author">by Allama Abdul Hussain Amini</div>
         <div class="description">Vol 06: Collection of odes and elegies by companions and successors celebrating Ghadeer.</div>
@@ -370,7 +795,7 @@
       </div>
       
       <div class="book-card" data-title="Al‑Ghadeer (Vol. 5)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 5: Biographies of the poets and scholars who affirmed the event of Ghadeer." data-pic="AL-ghadeer.jpg" data-icon="fa-scroll">
-        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
         <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 7-9)</span></h3>
         <div class="author">by Allama Abdul Hussain Amini</div>
         <div class="description">Vol 07-09: Biographical accounts of the great personalities who endorsed the tradition.</div>
@@ -378,7 +803,7 @@
       </div>
       
       <div class="book-card" data-title="Al‑Ghadeer (Vol. 6)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 6: The event of Ghadeer in the books of tafsir (Qur’anic exegesis) – a comprehensive review." data-pic="AL-ghadeer.jpg" data-icon="fa-scroll">
-        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
         <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 10-11)</span></h3>
         <div class="author">by Allama Abdul Hussain Amini</div>
         <div class="description">Vol 10-11: How classical commentators interpreted the verse of tabligh and ikmaal in relation to Ghadeer.</div>
@@ -387,9 +812,9 @@
       
   
       
-      <!-- ========== REMAINING BOOKS (Nahjul Balagha, Mafatih, etc.) ========= -->
+      <!-- ========== REMAINING BOOKS ========= -->
       <div class="book-card" data-title="Nahjul Balagha" data-author="Imam Ali (AS)" data-lang="Arabic/Urdu" data-subject="Sermons and letters of Mola Ali" data-tags="Eloquence,Imam Ali" data-desc="Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.)." data-pic="Nahjulbalagha_urdu.jpg" data-icon="fa-balance-scale">
-        <div class="book-front"><img src="Nahjulbalagha_urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-balance-scale\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="Nahjulbalagha_urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-balance-scale\'></i>';"></div>
         <h3>Nahjul Balagha Part 01</h3>
         <div class="author">by Imam Ali (AS)</div>
         <div class="description">Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.).</div>
@@ -397,7 +822,7 @@
       </div>
       
       <div class="book-card" data-title="Nahjul Balagha" data-author="Imam Ali (AS)" data-lang="Urdu" data-subject="Sermons and letters of Mola Ali" data-tags="Sermons and letters of Mola Ali" data-desc="Comprehensive collection of Duas, Ziyarat, and A’maal." data-pic="Nahjulbalagha_urdu.jpg" data-icon="fa-mosque">
-        <div class="book-front"><img src="Nahjulbalagha_urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-mosque\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="Nahjulbalagha_urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-mosque\'></i>';"></div>
         <h3>Nahjul Balagha Part 02</h3>
         <div class="author">by Imam Ali (AS)</div>
         <div class="description">Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.)</div>
@@ -405,7 +830,7 @@
       </div>
       
       <div class="book-card" data-title="Nahjul Balagha" data-author="Imam Ali (AS)" data-lang="Urdu" data-subject="Sermons and letters of Mola Ali" data-tags="Nahjul Balagha" data-desc="Detailed narrative of the tragedy of Karbala, historical context." data-pic="Nahjulbalagha_urdu.jpg" data-icon="fa-dagger">
-        <div class="book-front"><img src="Nahjulbalagha_urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-dagger\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="Nahjulbalagha_urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-dagger\'></i>';"></div>
         <h3>Nahjul Balagha Part 03</h3>
         <div class="author">by Imam Ali (AS)</div>
         <div class="description">Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.)</div>
@@ -413,7 +838,7 @@
       </div>
       
       <div class="book-card" data-title="Qayam Hazrat e mukhtar" data-author="Syed Abu Fazil Rizvi Ardkani" data-lang="Urdu" data-subject="History of Hazrat Mukhtar" data-tags="Whispered prayers" data-desc="Whispered prayers of Imam Ali (a.s.) — Munajat in Kufa." data-pic="Qayam-Hazrat-e-mukhtar.jpg" data-icon="fa-dua">
-        <div class="book-front"><img src="Qayam-Hazrat-e-mukhtar.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-dua\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="Qayam-Hazrat-e-mukhtar.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-dua\'></i>';"></div>
         <h3>Qayam Hazrat e mukhtar</h3>
         <div class="author">by Syed Abu Fazil Rizvi Ardkani</div>
         <div class="description">Qayam Hazrat-e-Mukhtar is a historical book about the uprising of Hazrat Mukhtar, focusing on his movement for justice after the tragedy of Karbala.</div>
@@ -421,7 +846,7 @@
       </div>
       
       <div class="book-card" data-title="14 Sitary" data-author="Allama Najm-ul-Hasan Kararvi" data-lang="Urdu" data-subject="History, life of 14 Masoomeen" data-tags="14 Sitary,14 imam" data-desc="Brief overview of the event of Ghadeer (summary version)." data-pic="14Sitaray.jpg" data-icon="fa-scroll">
-        <div class="book-front"><img src="14Sitaray.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.outerHTML='<i class=\'fas fa-scroll\' style=\'font-size:5rem; color:#d4af37;\'></i>';"></div>
+        <div class="book-front"><img src="14Sitaray.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
         <h3>14 Sitary </h3>
         <div class="author">by Allama Najm-ul-Hasan Kararvi</div>
         <div class="description">14 Sitaray is a book detailing the lives and history of the 14 Masoomeen, from Prophet Muhammad (PBUH) and Bibi Fatima to Mola Ali and Imam Mahdi (12 Imams).</div>
@@ -430,13 +855,13 @@
     </div>
   </div>
 
-  <!-- BOOK DETAIL VIEW (also displays front cover A4) -->
+  <!-- BOOK DETAIL VIEW -->
   <div id="bookDetail" class="detail-page container">
     <a href="#" id="backToLibrary" class="back-link"><i class="fas fa-arrow-right"></i> Back to Library</a>
     <div class="detail-grid">
       <div class="cover-large">
         <div class="front-large" id="detailCoverContainer">
-          <img id="detailCoverImg" src="" alt="cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-book-open\' style=\'font-size:8rem; color:#d4af37;\'></i>';">
+          <img id="detailCoverImg" src="" alt="cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-book-open\'></i>';">
         </div>
         <h2 id="detailTitle">Al Ghadeer</h2>
       </div>
@@ -462,22 +887,21 @@
 
   <footer class="footer">
     <div class="social-icons">
-      <a href="https://www.facebook.com/profile.php?id=61583506752176" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/mashal_e_hussain/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@Mashal-e-Hussain" target="_blank"><i class="fab fa-youtube"></i></a>
-      <a href="https://whatsapp.com/channel/0029Vb0Ga3w8F2pHJXonzV1f" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61583506752176" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/mashal_e_hussain/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@Mashal-e-Hussain" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+      <a href="https://whatsapp.com/channel/0029Vb0Ga3w8F2pHJXonzV1f" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
     </div>
     <p>© 2026 Mashal-e-Hussain. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript (updated to handle cover images) -->
+  <!-- Enhanced JavaScript -->
   <script>
     (function() {
       const library = document.getElementById('libraryContainer');
       const detailPage = document.getElementById('bookDetail');
       const backLink = document.getElementById('backToLibrary');
       
-      const detailCoverImg = document.getElementById('detailCoverImg');
       const detailCoverContainer = document.getElementById('detailCoverContainer');
       const detailTitle = document.getElementById('detailTitle');
       const detailFullTitle = document.getElementById('detailFullTitle');
@@ -488,32 +912,28 @@
       const detailTags = document.getElementById('detailTags');
       const readPdfBtn = document.getElementById('readPdfBtn');
 
-      // Helper to clean up any previous fallback icon inside detail cover
-      function resetDetailCover() {
-        // Remove any extra icon that might have been injected by onerror
-        const container = detailCoverContainer;
-        // Ensure container only has the img element (or we rebuild)
-        if (container.children.length > 1) {
-          // If there's an icon, replace with just img
-          container.innerHTML = '<img id="detailCoverImg" src="" alt="cover" onerror="this.style.display=\'none\'; this.parentElement.innerHTML=\'<i class=\\\'fas fa-book-open\\\' style=\\\'font-size:8rem; color:#d4af37;\\\'></i>\';">';
-          // re-assign reference
-          window.location.reload(); // lazy but simple – better reassign:
-        }
-        // safer: reassign variable
+      // Function to reset detail cover
+      function setDetailCover(pic) {
+        // Clear container
+        detailCoverContainer.innerHTML = '';
+        
+        // Create new img element
         const newImg = document.createElement('img');
         newImg.id = 'detailCoverImg';
         newImg.alt = 'cover';
         newImg.onerror = function() {
-          this.style.display = 'none';
-          this.parentElement.innerHTML = '<i class="fas fa-book-open" style="font-size:8rem; color:#d4af37;"></i>';
+          detailCoverContainer.innerHTML = '<i class="fas fa-book-open"></i>';
         };
-        container.innerHTML = ''; // clear
-        container.appendChild(newImg);
-        // update global reference
-        window.detailCoverImg = newImg;
-        return newImg;
+        
+        if (pic) {
+          newImg.src = pic;
+          detailCoverContainer.appendChild(newImg);
+        } else {
+          detailCoverContainer.innerHTML = '<i class="fas fa-book-open"></i>';
+        }
       }
 
+      // Handle read detail button clicks
       document.querySelectorAll('.read-detail-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
           e.preventDefault();
@@ -527,35 +947,13 @@
           const subject = card.dataset.subject || 'General';
           const tagsRaw = card.dataset.tags || 'Islam';
           const desc = card.dataset.desc || 'No description available.';
-          const pic = card.dataset.pic || '';     // front cover image filename
+          const pic = card.dataset.pic || '';
           
-          // Get the PDF link from the button inside card
+          // Get PDF link
           const pdfLink = card.querySelector('a.btn') ? card.querySelector('a.btn').getAttribute('href') : '#';
 
-          // Reset detail cover container to fresh state
-          const container = document.getElementById('detailCoverContainer');
-          // Remove all children
-          while (container.firstChild) container.removeChild(container.firstChild);
-          
-          // Create new img element
-          const newImg = document.createElement('img');
-          newImg.id = 'detailCoverImg';
-          newImg.alt = 'cover';
-          newImg.onerror = function() {
-            // on error, replace container with icon
-            this.style.display = 'none';
-            container.innerHTML = '<i class="fas fa-book-open" style="font-size:8rem; color:#d4af37;"></i>';
-          };
-          
-          // Set the image source
-          if (pic) {
-            newImg.src = pic;
-          } else {
-            // if no pic attribute, fallback immediately to icon
-            newImg.onerror.call(newImg);
-          }
-          
-          container.appendChild(newImg);
+          // Set cover image
+          setDetailCover(pic);
           
           // Update all text fields
           detailTitle.innerText = title;
@@ -580,9 +978,10 @@
           // Set PDF button link
           readPdfBtn.href = pdfLink;
 
-          // Hide library, show detail
+          // Hide library, show detail with smooth transition
           library.style.display = 'none';
           detailPage.classList.add('active-detail');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       });
 
@@ -590,10 +989,31 @@
         e.preventDefault();
         library.style.display = 'block';
         detailPage.classList.remove('active-detail');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
+      // Category tabs functionality
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          // Add your category filtering logic here
+        });
+      });
+
+      // Initial state
       detailPage.classList.remove('active-detail');
       library.style.display = 'block';
+      
+      // Handle image loading errors for book fronts
+      document.querySelectorAll('.book-front img').forEach(img => {
+        img.addEventListener('error', function() {
+          const fallbackIcon = this.getAttribute('data-fallback') || 'fa-book-open';
+          this.parentElement.classList.add('fallback');
+          this.outerHTML = `<i class="fas ${fallbackIcon}"></i>`;
+        });
+      });
     })();
   </script>
 </body>
