@@ -64,6 +64,7 @@
       display: flex; 
       gap: clamp(15px, 3vw, 30px); 
       flex-wrap: wrap; 
+      align-items: center;
     }
     
     .nav-links a { 
@@ -82,8 +83,29 @@
       border-bottom-color: #d4af37; 
       transform: translateY(-2px);
     }
+
+    /* New About Me button style - distinct but harmonious */
+    .about-btn {
+      background-color: #d4af37;
+      color: #0a120e !important;
+      padding: 8px 18px !important;
+      border-radius: 40px;
+      font-weight: 700 !important;
+      border: 2px solid #d4af37;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      margin-left: 5px;
+    }
+
+    .about-btn:hover {
+      background-color: transparent !important;
+      color: #d4af37 !important;
+      transform: translateY(-2px) !important;
+      border-color: #d4af37;
+      box-shadow: 0 6px 12px rgba(212, 175, 55, 0.4);
+    }
     
-    /* Enhanced Hero Section */
+    /* Enhanced Hero Section — description removed, only overlay + title */
     .hero {
       position: relative;
       text-align: center;
@@ -143,22 +165,6 @@
       position: relative;
       z-index: 2;
       line-height: 1.2;
-    }
-    
-    .hero-description {
-      max-width: min(1000px, 90%);
-      margin: 0 auto;
-      font-size: clamp(1rem, 3vw, 1.9rem);
-      font-family: 'Scheherazade New', serif;
-      background: rgba(10, 18, 14, 0.8);
-      backdrop-filter: blur(5px);
-      padding: clamp(15px, 4vw, 30px) clamp(20px, 5vw, 40px);
-      border-radius: clamp(30px, 8vw, 80px);
-      border: 2px solid #d4af37;
-      color: #fff8e7;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
     
     /* Enhanced Social Hub */
@@ -337,6 +343,11 @@
         padding: 5px 8px;
       }
       
+      .about-btn {
+        padding: 5px 12px !important;
+        font-size: 0.9rem !important;
+      }
+
       .social-card {
         padding: 20px 10px;
       }
@@ -365,11 +376,6 @@
       
       .social-grid {
         grid-template-columns: 1fr;
-      }
-      
-      .hero-description {
-        padding: 12px 15px;
-        font-size: 0.9rem;
       }
     }
     
@@ -425,6 +431,8 @@
       <a href="index.html" class="logo">Mash’al-e-Hussain</a>
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>
+        <!-- New About Me button in navbar -->
+        <a href="#" class="about-btn">About Me</a>
         <a href="Admin%20Contact.html">Admin Contact</a>
         <a href="Book%20Library.html">Book Library</a>
         <a href="Event%20Gallery.html">Event Gallery</a>
@@ -443,9 +451,7 @@
       </div>
       <div class="hero-overlay"></div>
       <h1>مشعل حسین</h1>
-      <div class="hero-description">
-        Mash'al-e-Hussain is a platform for Noha, Majlis, and Matam Dari. We aim to spread the message of Imam Hussain (AS) with authentic and original content.
-      </div>
+      <!-- Description block completely removed — only title remains -->
     </section>
 
     <section class="social-hub">
@@ -506,11 +512,16 @@
       // Image Error Handling
       slides.forEach(slide => {
         const img = new Image();
-        img.src = slide.style.backgroundImage.slice(5, -2);
-        img.onerror = function() {
-          slide.style.backgroundColor = '#1a2a1a';
-          console.log('Image failed to load:', this.src);
-        };
+        // extract URL from background-image: url('...')
+        const bg = slide.style.backgroundImage;
+        if (bg && bg !== 'none') {
+          const url = bg.slice(5, -2).replace(/['"]/g, '');
+          img.src = url;
+          img.onerror = function() {
+            slide.style.backgroundColor = '#1a2a1a';
+            console.log('Image failed to load:', this.src);
+          };
+        }
       });
     });
   </script>
