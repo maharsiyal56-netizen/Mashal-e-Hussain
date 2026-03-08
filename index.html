@@ -6,21 +6,14 @@
   <title>Mashal-e-Hussain | Noha · Majlis · Matam Dari</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23d4af37'>🕋</text></svg>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Fonts: Amiri, Scheherazade, and Noto Nastaliq Urdu for logo/heading -->
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', 'Amiri', sans-serif;
       background-color: #0a0f0c;
       color: #e5e5e5;
       line-height: 1.6;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.05"><path d="M60 40 L140 40 L160 80 L140 120 L60 120 L40 80 L60 40" fill="none" stroke="%23d4af37" stroke-width="1.5"/><circle cx="100" cy="80" r="12" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M70 150 Q100 170 130 150" stroke="%23d4af37" fill="none" stroke-width="1.2"/></svg>');
-      background-repeat: repeat;
-    }
-    body.light-mode {
-      background-color: #f9f6f0;
-      color: #1e2b1e;
     }
     .navbar {
       background: #0a120e;
@@ -39,7 +32,6 @@
       align-items: center;
       flex-wrap: wrap;
     }
-    /* Logo uses Noto Nastaliq Urdu as requested */
     .logo { 
       font-family: 'Noto Nastaliq Urdu', 'Amiri', serif; 
       font-size: 2.2rem; 
@@ -50,7 +42,7 @@
     .nav-links a { color: #efefef; text-decoration: none; font-size: 1.1rem; padding-bottom: 5px; border-bottom: 2px solid transparent; }
     .nav-links a:hover, .nav-links a.active { color: #d4af37; border-bottom-color: #d4af37; }
     
-    /* ===== SLIDESHOW HERO (LOCAL IMAGES FROM /pics) ===== */
+    /* ===== FIXED SLIDESHOW ===== */
     .hero {
       position: relative;
       text-align: center;
@@ -59,27 +51,42 @@
       border-radius: 40px;
       overflow: hidden;
       isolation: isolate;
-      background-color: #1a2a1a; /* fallback */
+      min-height: 500px; /* Fixed height ensure visibility */
+      background-color: #1a2a1a;
     }
 
-    /* Slideshow container */
     .slideshow-container {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: -2;
     }
+    
     .slide {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
     }
+    
     .slide.active {
       opacity: 1;
+      z-index: 1;
     }
-    /* Dark overlay remains for readability */
+    
+    /* Debug border - remove after fixing */
+    .slide {
+      border: 2px solid red; /* Temporary - shows slide boundaries */
+    }
+    
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -93,7 +100,10 @@
       margin-bottom: 20px;
       text-shadow: 3px 3px 0 #1a2e1a;
       font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
+      position: relative;
+      z-index: 2;
     }
+    
     .hero-description {
       max-width: 850px;
       margin: 0 auto;
@@ -105,6 +115,8 @@
       border-radius: 70px;
       border: 1px solid #d4af37;
       color: #fff8e7;
+      position: relative;
+      z-index: 2;
     }
     
     .social-hub {
@@ -179,7 +191,7 @@
 <body>
   <nav class="navbar">
     <div class="nav-container">
-      <a href="index.html" class="logo">Mash’al-e-Hussain</a> <!-- Noto Nastaliq Urdu applied -->
+      <a href="index.html" class="logo">Mash’al-e-Hussain</a>
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>
         <a href="Admin%20Contact.html">Admin Contact</a>
@@ -190,27 +202,23 @@
   </nav>
 
   <main>
-    <!-- Hero section with rotating background from local "pics" folder -->
     <section class="hero">
-      <!-- Slideshow container using local images from /pics directory -->
       <div class="slideshow-container" id="slideshow">
-        <!-- 
-          ==============================================
-          LOCAL IMAGES FROM YOUR "pics" DIRECTORY
-          Replace these filenames with your actual images.
-          Add as many as you like – just keep the pattern.
-          ==============================================
+        <!-- Option 1: Online images for testing (uncomment to test) -->
+        <!--
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1490682143684-14369e18dce8?w=500');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500');"></div>
         -->
-        <div class="slide active" style="background-image: url('pics/Slide1.jpg');"></div>
-        <div class="slide" style="background-image: url('pics/Slide2.jpg');"></div>
-        <div class="slide" style="background-image: url('pics/Slide3.jpg');"></div>
-        <div class="slide" style="background-image: url('pics/Slide4.jpg');"></div>
-        <div class="slide" style="background-image: url('pics/Slide5.jpg');"></div>
-        <!-- You can add more slides below, e.g.:
-        <div class="slide" style="background-image: url('pics/my-custom-pic.jpg');"></div>
-        -->
+        
+        <!-- Option 2: Local images - make sure paths are correct -->
+        <div class="slide active" style="background-image: url('./pics/Slide1.jpg');"></div>
+        <div class="slide" style="background-image: url('./pics/Slide2.jpg');"></div>
+        <div class="slide" style="background-image: url('./pics/Slide3.jpg');"></div>
+        <div class="slide" style="background-image: url('./pics/Slide4.jpg');"></div>
+        <div class="slide" style="background-image: url('./pics/Slide5.jpg');"></div>
       </div>
-      <div class="hero-overlay"></div> <!-- dark overlay -->
+      <div class="hero-overlay"></div>
       <h1>مشعل حسین</h1>
       <div class="hero-description">
         Mash'al-e-Hussain is a platform for Noha, Majlis, and Matam Dari. We aim to spread the message of Imam Hussain (AS) with authentic and original content.
@@ -250,38 +258,59 @@
     <p>© 2026 Mashal-e-Hussain. All rights reserved.</p>
   </footer>
 
-  <!-- Slideshow script (unchanged, works with local paths) -->
+  <!-- FIXED SLIDESHOW SCRIPT -->
   <script>
-    (function() {
+    // Wait for page to fully load
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Page loaded, starting slideshow...');
+      
       const slides = document.querySelectorAll('.slide');
-      if (slides.length <= 1) return; // no need for rotation if only one
+      console.log('Total slides found:', slides.length);
+      
+      if (slides.length <= 1) {
+        console.log('Not enough slides for rotation');
+        return;
+      }
+
+      // Log first slide background to check
+      if (slides[0]) {
+        console.log('First slide background:', window.getComputedStyle(slides[0]).backgroundImage);
+      }
 
       let currentIndex = 0;
       const totalSlides = slides.length;
 
-      // Function to show the next slide
+      // Function to show next slide
       function nextSlide() {
         // Remove active class from current slide
         slides[currentIndex].classList.remove('active');
-        // Move to next slide, loop if needed
+        
+        // Move to next slide
         currentIndex = (currentIndex + 1) % totalSlides;
+        
         // Add active class to new slide
         slides[currentIndex].classList.add('active');
+        
+        console.log('Showing slide:', currentIndex + 1);
       }
 
-      // Change slide every 5 seconds (5000 ms) — you can adjust
-      setInterval(nextSlide, 5000);
-    })();
+      // Clear any existing interval
+      if (window.slideInterval) {
+        clearInterval(window.slideInterval);
+      }
+      
+      // Start slideshow - change every 5 seconds
+      window.slideInterval = setInterval(nextSlide, 5000);
+      
+      // Also manually trigger first slide to ensure visibility
+      slides.forEach((slide, index) => {
+        if (index === 0) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+    });
   </script>
-
-  <!-- 
-    ===== INSTRUCTIONS FOR ADDING YOUR OWN PICTURES =====
-    1. Place your images inside the "pics" folder (relative to this HTML file).
-    2. In the slideshow container (div with class "slideshow-container"), 
-       add or modify the <div class="slide" style="background-image: url('pics/YOUR_FILENAME.jpg');"></div>
-    3. Make sure the first slide has class "slide active" and the others just "slide".
-    4. Supported formats: .jpg, .jpeg, .png, .webp, etc.
-    5. The slides will rotate automatically every 5 seconds.
-  -->
 </body>
 </html>
