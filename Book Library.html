@@ -8,9 +8,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* === ENHANCED RESPONSIVE STYLING (identical to original, plus small additions) === */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { font-size: 16px; scroll-behavior: smooth; }
+    /* === ENHANCED RESPONSIVE STYLING === */
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+    
     body {
       font-family: 'Segoe UI', 'Amiri', sans-serif;
       background-color: #0a0f0c;
@@ -21,71 +30,865 @@
       overflow-x: hidden;
       width: 100%;
     }
-    .navbar { background: #0a120e; padding: clamp(10px,2vw,15px)0; border-bottom:2px solid #d4af37; position:sticky; top:0; z-index:1000; backdrop-filter:blur(10px); background:rgba(10,18,14,0.95); }
-    .nav-container { max-width:min(1400px,95%); margin:0 auto; padding:0 clamp(15px,3vw,25px); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:clamp(10px,2vw,15px); }
-    .logo { font-family:'Amiri',serif; font-size:clamp(1.5rem,4vw,2.5rem); color:#d4af37; text-decoration:none; text-shadow:2px 2px 4px rgba(0,0,0,0.3); }
-    .nav-links { display:flex; gap:clamp(12px,3vw,25px); flex-wrap:wrap; }
-    .nav-links a { color:#efefef; text-decoration:none; font-size:clamp(0.9rem,2vw,1.2rem); padding-bottom:5px; border-bottom:2px solid transparent; transition:all 0.3s ease; font-weight:500; }
-    .nav-links a:hover, .nav-links a.active { color:#d4af37; border-bottom-color:#d4af37; transform:translateY(-2px); }
-    .container { max-width:min(1400px,95%); margin:clamp(20px,5vw,40px) auto; padding:0 clamp(15px,3vw,20px); width:100%; }
-    .page-header { text-align:center; margin-bottom:clamp(25px,6vh,50px); }
-    .page-header h1 { font-size:clamp(2.5rem,8vw,4.5rem); color:#d4af37; font-family:'Noto Nastaliq Urdu',serif; margin-bottom:clamp(10px,2vh,15px); text-shadow:0 2px 5px rgba(0,0,0,0.6); letter-spacing:1px; line-height:1.2; word-break:break-word; }
-    .page-header p { font-size:clamp(1rem,2.5vw,1.4rem); color:#bfa98e; border-top:1px dashed #5a7c66; display:inline-block; padding-top:clamp(8px,2vh,12px); max-width:90%; margin:0 auto; }
-    .category-tabs { display:flex; justify-content:center; gap:clamp(8px,2vw,15px); flex-wrap:wrap; margin-bottom:clamp(25px,5vh,45px); }
-    .tab-btn { background:#1a2c21; border:2px solid #3e5f4b; color:white; padding:clamp(8px,2vh,12px) clamp(15px,3vw,28px); border-radius:40px; font-size:clamp(0.9rem,2vw,1.1rem); cursor:pointer; transition:all 0.2s ease; font-weight:500; box-shadow:0 4px 0 #0a2f1f; white-space:nowrap; }
-    @media (max-width:480px){ .tab-btn { white-space:normal; min-width:calc(50% - 10px); text-align:center; } }
-    .tab-btn.active { background:#d4af37; color:#0a2f1f; font-weight:bold; border-color:#d4af37; box-shadow:0 4px 0 #8f731f; }
-    .tab-btn:hover { transform:translateY(-2px); box-shadow:0 6px 0 #0a2f1f; }
-    .special-buttons-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin:20px auto 40px auto; }
-    .special-btn-wrapper { flex:1 1 200px; max-width:280px; min-width:160px; }
-    .btn-special { background:linear-gradient(145deg,#0f4c2b,#1a6a3b); border:3px solid #d4af37; color:#fef9e6; padding:15px 10px; border-radius:60px; font-size:1.5rem; font-family:'Noto Nastaliq Urdu','Amiri',serif; font-weight:bold; text-decoration:none; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; width:100%; box-shadow:0 8px 0 #0a3d1e,0 8px 20px rgba(0,0,0,0.6); transition:all 0.2s cubic-bezier(0.175,0.885,0.32,1.275); text-shadow:2px 2px 0 #0a3d1e; text-align:center; }
-    .btn-special i { font-size:2rem; color:#ffd966; filter:drop-shadow(2px 2px 2px #0a3d1e); }
-    .btn-special .sub-text { font-size:1rem; color:#f0e68c; background:rgba(0,0,0,0.3); padding:4px 12px; border-radius:40px; margin-top:5px; letter-spacing:0.5px; font-family:'Segoe UI',sans-serif; text-transform:uppercase; }
-    .btn-special:hover { background:linear-gradient(145deg,#1a6a3b,#2b8a4c); transform:translateY(-5px); box-shadow:0 13px 0 #0a3d1e,0 12px 30px rgba(0,0,0,0.7); border-color:#ffdf7e; }
-    .btn-special:active { transform:translateY(3px); box-shadow:0 5px 0 #0a3d1e; }
-    .books-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(250px,100%),1fr)); gap:clamp(15px,3vw,30px); }
-    .book-card { background:#16261e; border:2px solid #3e5f4b; border-radius:clamp(20px,4vw,28px); padding:clamp(15px,3vw,28px) clamp(12px,2vw,20px) clamp(15px,3vw,25px); text-align:center; box-shadow:0 10px 0 #0a2f1f,0 6px 15px rgba(0,0,0,0.5); transition:all 0.25s cubic-bezier(0.175,0.885,0.32,1.275); display:flex; flex-direction:column; height:100%; }
-    .book-card:hover { transform:translateY(-7px); box-shadow:0 14px 0 #0a2f1f,0 12px 25px rgba(0,0,0,0.6); border-color:#d4af37; }
-    .book-front { width:100%; aspect-ratio:1/1.414; background:#1f3327; border:2px solid #d4af37; border-radius:clamp(12px,3vw,18px); margin-bottom:clamp(12px,3vh,20px); display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:inset 0 0 0 1px #5a8b6f,0 6px 0 #0a2f1f; overflow:hidden; }
-    .book-front img { width:100%; height:100%; object-fit:cover; display:block; border-radius:clamp(10px,2vw,16px); transition:transform 0.2s; }
-    .book-front img:hover { transform:scale(1.02); }
-    .book-front.fallback { background:#1f3327; color:#d4af37; font-size:clamp(3rem,8vw,3.8rem); }
-    .book-card h3 { font-size:clamp(1.3rem,4vw,1.8rem); color:#d4af37; margin-bottom:clamp(5px,1vh,8px); font-family:'Amiri',serif; line-height:1.2; word-break:break-word; }
-    .book-card .author { color:#bfa98e; margin-bottom:clamp(8px,2vh,12px); font-style:italic; font-size:clamp(0.9rem,2vw,1.05rem); border-bottom:1px dotted #5a7c66; padding-bottom:clamp(5px,1.5vh,10px); margin-inline:5px; word-break:break-word; }
-    .book-card .btn { background:#d4af37; color:#0a2f1f; border:none; padding:clamp(8px,2vh,12px) clamp(12px,3vw,18px); border-radius:50px; text-decoration:none; display:inline-block; font-weight:bold; font-size:clamp(0.9rem,2vw,1.05rem); transition:all 0.15s ease; border:2px solid transparent; margin-top:5px; width:fit-content; align-self:center; box-shadow:0 4px 0 #8f731f; }
-    .book-card .btn:hover { background:#e6c45e; border-color:#ffffff88; color:#000; transform:translateY(-2px); box-shadow:0 6px 0 #8f731f; }
-    .detail-page { max-width:min(1200px,95%); margin:clamp(20px,5vw,40px) auto; background:#132016; border:2px solid #d4af37; border-radius:clamp(25px,5vw,40px); padding:clamp(20px,5vw,40px); box-shadow:0 20px 0 #0a2f1f; display:none; }
-    .detail-page.active-detail { display:block; animation:fadeIn 0.5s ease; }
-    /* special pages : Ziyarat, Hadith, Dua pages */
-    .ziyarat-page, .hadith-page, .dua-page {
-      max-width:min(1200px,95%); margin:clamp(20px,5vw,40px) auto; background:#132016; border:2px solid #d4af37; border-radius:clamp(25px,5vw,40px); padding:clamp(30px,6vw,50px); box-shadow:0 20px 0 #0a2f1f; display:none;
+    
+    /* Enhanced Navbar */
+    .navbar {
+      background: #0a120e;
+      padding: clamp(10px, 2vw, 15px) 0;
+      border-bottom: 2px solid #d4af37;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(10, 18, 14, 0.95);
     }
-    .ziyarat-page.active-detail, .hadith-page.active-detail, .dua-page.active-detail { display:block; animation:fadeIn 0.5s ease; }
-    .arabic-text-block {
-      font-family:'Amiri','Noto Naskh Arabic',serif; font-size:clamp(1.3rem,3vw,1.9rem); line-height:2.2; text-align:right; direction:rtl; background:#1f3327; padding:30px 25px; border-radius:30px; border:1px solid #5a7c66; margin-bottom:30px; max-height:600px; overflow-y:auto; color:#f0ead6; box-shadow:inset 0 0 15px rgba(0,0,0,0.5);
+    
+    .nav-container {
+      max-width: min(1400px, 95%);
+      margin: 0 auto;
+      padding: 0 clamp(15px, 3vw, 25px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: clamp(10px, 2vw, 15px);
     }
-    .arabic-text-block p { margin-bottom:20px; word-break:break-word; }
-    .arabic-text-block .translation { font-family:'Segoe UI','Amiri',sans-serif; font-size:1rem; color:#bfa98e; direction:ltr; text-align:left; margin-top:5px; border-top:1px dashed #5a7c66; padding-top:5px; }
-    .audio-player-section { background:#1a2f21; border-radius:60px; padding:20px 30px; margin:30px 0 20px; border:2px solid #d4af37; text-align:center; }
-    .audio-player-section h3 { color:#d4af37; font-size:1.8rem; margin-bottom:15px; font-family:'Noto Nastaliq Urdu',serif; }
-    .audio-player-section audio { width:100%; max-width:600px; margin:0 auto; border-radius:40px; background:#0a2f1f; }
-    .significance-panel {
-      background:#0f2a1b; border-radius:40px; border:2px solid #d4af37; padding:25px; margin-top:30px;
+    
+    .logo { 
+      font-family: 'Amiri', serif; 
+      font-size: clamp(1.5rem, 4vw, 2.5rem); 
+      color: #d4af37; 
+      text-decoration: none;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
-    .significance-panel h3 { color:#d4af37; font-size:2rem; border-bottom:2px solid #d4af37; padding-bottom:10px; margin-bottom:20px; font-family:'Noto Nastaliq Urdu',serif; }
-    .significance-eng, .significance-urdu { font-size:1.2rem; line-height:1.8; color:#efefcf; margin-bottom:20px; }
-    .significance-urdu { font-family:'Noto Nastaliq Urdu','Jameel Noori Nastaleeq','Amiri',serif; font-size:1.4rem; line-height:2.2; background:#1c3a27; padding:20px; border-radius:30px; border:1px solid #d4af37; }
-    .lang-toggle { display:flex; gap:15px; justify-content:center; margin:15px 0; }
-    .lang-btn { background:#2f4a38; color:white; border:2px solid #d4af37; padding:8px 20px; border-radius:40px; cursor:pointer; font-weight:bold; transition:0.2s; }
-    .lang-btn.active { background:#d4af37; color:#0a2f1f; }
-    @keyframes fadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-    .back-link { display:inline-flex; align-items:center; gap:8px; color:#bfa98e; text-decoration:none; font-size:clamp(1rem,2.5vw,1.2rem); margin-bottom:clamp(20px,4vh,30px); border:1px solid #5a7c66; padding:clamp(6px,1.5vh,8px) clamp(15px,3vw,20px); border-radius:40px; transition:all 0.2s ease; }
-    .back-link:hover { background:#2a3f31; color:#d4af37; border-color:#d4af37; transform:translateX(-5px); }
-    .footer { background:linear-gradient(180deg,#07120b,#0a1a0f); padding:clamp(25px,5vw,40px) 0 clamp(12px,3vw,20px); margin-top:clamp(40px,8vh,70px); border-top:3px solid #d4af37; text-align:center; }
-    .social-icons { display:flex; justify-content:center; gap:clamp(20px,5vw,30px); margin-bottom:clamp(15px,3vh,20px); flex-wrap:wrap; }
-    .social-icons a { color:#d4af37; font-size:clamp(2rem,5vw,2.5rem); transition:all 0.15s ease; }
-    .social-icons a:hover { color:#f5d742; transform:translateY(-5px) scale(1.1); }
-    .footer p { font-size:clamp(0.85rem,2vw,1rem); color:#a0a0a0; max-width:90%; margin:0 auto; }
+    
+    .nav-links { 
+      display: flex; 
+      gap: clamp(12px, 3vw, 25px); 
+      flex-wrap: wrap; 
+    }
+    
+    .nav-links a { 
+      color: #efefef; 
+      text-decoration: none; 
+      font-size: clamp(0.9rem, 2vw, 1.2rem); 
+      padding-bottom: 5px; 
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .nav-links a:hover, 
+    .nav-links a.active { 
+      color: #d4af37; 
+      border-bottom-color: #d4af37; 
+      transform: translateY(-2px);
+    }
+    
+    /* Enhanced Container */
+    .container { 
+      max-width: min(1400px, 95%); 
+      margin: clamp(20px, 5vw, 40px) auto; 
+      padding: 0 clamp(15px, 3vw, 20px); 
+      width: 100%;
+    }
+    
+    /* Enhanced Header */
+    .page-header {
+      text-align: center;
+      margin-bottom: clamp(25px, 6vh, 50px);
+    }
+    
+    .page-header h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      color: #d4af37;
+      font-family: 'Noto Nastaliq Urdu', serif;
+      margin-bottom: clamp(10px, 2vh, 15px);
+      text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+      letter-spacing: 1px;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    
+    .page-header p {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: #bfa98e;
+      border-top: 1px dashed #5a7c66;
+      display: inline-block;
+      padding-top: clamp(8px, 2vh, 12px);
+      max-width: 90%;
+      margin: 0 auto;
+    }
+    
+    /* Enhanced Category Tabs */
+    .category-tabs {
+      display: flex;
+      justify-content: center;
+      gap: clamp(8px, 2vw, 15px);
+      flex-wrap: wrap;
+      margin-bottom: clamp(25px, 5vh, 45px);
+    }
+    
+    .tab-btn {
+      background: #1a2c21;
+      border: 2px solid #3e5f4b;
+      color: white;
+      padding: clamp(8px, 2vh, 12px) clamp(15px, 3vw, 28px);
+      border-radius: 40px;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      box-shadow: 0 4px 0 #0a2f1f;
+      white-space: nowrap;
+    }
+    
+    @media (max-width: 480px) {
+      .tab-btn {
+        white-space: normal;
+        min-width: calc(50% - 10px);
+        text-align: center;
+      }
+    }
+    
+    .tab-btn.active {
+      background: #d4af37;
+      color: #0a2f1f;
+      font-weight: bold;
+      border-color: #d4af37;
+      box-shadow: 0 4px 0 #8f731f;
+    }
+    
+    .tab-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #0a2f1f;
+    }
+    
+    /* --- Special Buttons Container (Flex for multiple buttons) --- */
+    .special-buttons-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px auto 40px auto;
+    }
+    .special-btn-wrapper {
+        flex: 1 1 200px; /* Grow and shrink, base width 200px */
+        max-width: 280px;
+        min-width: 160px;
+    }
+    .btn-special {
+        background: linear-gradient(145deg, #0f4c2b, #1a6a3b);
+        border: 3px solid #d4af37;
+        color: #fef9e6;
+        padding: 15px 10px;
+        border-radius: 60px;
+        font-size: 1.5rem;
+        font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
+        font-weight: bold;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        width: 100%;
+        box-shadow: 0 8px 0 #0a3d1e, 0 8px 20px rgba(0,0,0,0.6);
+        transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-shadow: 2px 2px 0 #0a3d1e;
+        text-align: center;
+    }
+    .btn-special i {
+        font-size: 2rem;
+        color: #ffd966;
+        filter: drop-shadow(2px 2px 2px #0a3d1e);
+    }
+    .btn-special .sub-text {
+        font-size: 1rem;
+        color: #f0e68c;
+        background: rgba(0,0,0,0.3);
+        padding: 4px 12px;
+        border-radius: 40px;
+        margin-top: 5px;
+        letter-spacing: 0.5px;
+        font-family: 'Segoe UI', sans-serif;
+        text-transform: uppercase;
+    }
+    .btn-special:hover {
+        background: linear-gradient(145deg, #1a6a3b, #2b8a4c);
+        transform: translateY(-5px);
+        box-shadow: 0 13px 0 #0a3d1e, 0 12px 30px rgba(0,0,0,0.7);
+        border-color: #ffdf7e;
+    }
+    .btn-special:active {
+        transform: translateY(3px);
+        box-shadow: 0 5px 0 #0a3d1e;
+    }
+    /* --- End Special Buttons Style --- */
+
+    /* Enhanced Books Grid */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+      gap: clamp(15px, 3vw, 30px);
+    }
+    
+    /* Enhanced Book Card */
+    .book-card {
+      background: #16261e;
+      border: 2px solid #3e5f4b;
+      border-radius: clamp(20px, 4vw, 28px);
+      padding: clamp(15px, 3vw, 28px) clamp(12px, 2vw, 20px) clamp(15px, 3vw, 25px);
+      text-align: center;
+      box-shadow: 0 10px 0 #0a2f1f, 0 6px 15px rgba(0,0,0,0.5);
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .book-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 14px 0 #0a2f1f, 0 12px 25px rgba(0,0,0,0.6);
+      border-color: #d4af37;
+    }
+    
+    /* Enhanced Book Front (A4 aspect) */
+    .book-front {
+      width: 100%;
+      aspect-ratio: 1 / 1.414;
+      background: #1f3327;
+      border: 2px solid #d4af37;
+      border-radius: clamp(12px, 3vw, 18px);
+      margin-bottom: clamp(12px, 3vh, 20px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 0 0 1px #5a8b6f, 0 6px 0 #0a2f1f;
+      overflow: hidden;
+    }
+    
+    .book-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: clamp(10px, 2vw, 16px);
+      transition: transform 0.2s;
+    }
+    
+    .book-front img:hover {
+      transform: scale(1.02);
+    }
+    
+    .book-front.fallback {
+      background: #1f3327;
+      color: #d4af37;
+      font-size: clamp(3rem, 8vw, 3.8rem);
+    }
+    
+    .book-front i {
+      font-size: clamp(3rem, 8vw, 5rem);
+      color: #d4af37;
+    }
+    
+    .book-card h3 {
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      color: #d4af37;
+      margin-bottom: clamp(5px, 1vh, 8px);
+      font-family: 'Amiri', serif;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    
+    .book-card .author {
+      color: #bfa98e;
+      margin-bottom: clamp(8px, 2vh, 12px);
+      font-style: italic;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      border-bottom: 1px dotted #5a7c66;
+      padding-bottom: clamp(5px, 1.5vh, 10px);
+      margin-inline: 5px;
+      word-break: break-word;
+    }
+    
+    .book-card .description {
+      font-size: clamp(0.85rem, 2vw, 0.96rem);
+      margin-bottom: clamp(15px, 3vh, 22px);
+      color: #d0d5d0;
+      flex: 1;
+      padding: 0 5px;
+      word-break: break-word;
+    }
+    
+    .book-card .btn {
+      background: #d4af37;
+      color: #0a2f1f;
+      border: none;
+      padding: clamp(8px, 2vh, 12px) clamp(12px, 3vw, 18px);
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: bold;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      transition: all 0.15s ease;
+      border: 2px solid transparent;
+      margin-top: 5px;
+      width: fit-content;
+      align-self: center;
+      box-shadow: 0 4px 0 #8f731f;
+    }
+    
+    .book-card .btn:hover {
+      background: #e6c45e;
+      border-color: #ffffff88;
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #8f731f;
+    }
+    
+    .book-card .btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #8f731f;
+    }
+    
+    /* Enhanced Detail Page (for books) */
+    .detail-page {
+      max-width: min(1200px, 95%);
+      margin: clamp(20px, 5vw, 40px) auto;
+      background: #132016;
+      border: 2px solid #d4af37;
+      border-radius: clamp(25px, 5vw, 40px);
+      padding: clamp(20px, 5vw, 40px);
+      box-shadow: 0 20px 0 #0a2f1f;
+      display: none;
+    }
+    
+    .detail-page.active-detail { 
+      display: block; 
+      animation: fadeIn 0.5s ease;
+    }
+    
+    /* --- Ziyarat Page Style --- */
+    .ziyarat-page {
+      max-width: min(1200px, 95%);
+      margin: clamp(20px, 5vw, 40px) auto;
+      background: #132016;
+      border: 2px solid #d4af37;
+      border-radius: clamp(25px, 5vw, 40px);
+      padding: clamp(30px, 6vw, 50px);
+      box-shadow: 0 20px 0 #0a2f1f;
+      display: none;
+    }
+    .ziyarat-page.active-detail {
+        display: block;
+        animation: fadeIn 0.5s ease;
+    }
+    .ziyarat-header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #d4af37;
+        padding-bottom: 20px;
+    }
+    .ziyarat-header h2 {
+        font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
+        font-size: clamp(2.5rem, 6vw, 3.5rem);
+        color: #d4af37;
+        margin-bottom: 10px;
+    }
+    .ziyarat-header p {
+        font-size: 1.2rem;
+        color: #bfa98e;
+    }
+    .arabic-ziyarat {
+        font-family: 'Amiri', 'Noto Naskh Arabic', serif;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        line-height: 2.2;
+        text-align: right;
+        direction: rtl;
+        background: #1f3327;
+        padding: 30px 25px;
+        border-radius: 30px;
+        border: 1px solid #5a7c66;
+        margin-bottom: 30px;
+        max-height: 600px;
+        overflow-y: auto;
+        color: #f0ead6;
+        box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+    }
+    .arabic-ziyarat p {
+        margin-bottom: 20px;
+        word-break: break-word;
+    }
+    .arabic-ziyarat .translation {
+        font-family: 'Segoe UI', 'Amiri', sans-serif;
+        font-size: 1rem;
+        color: #bfa98e;
+        direction: ltr;
+        text-align: left;
+        margin-top: 5px;
+        border-top: 1px dashed #5a7c66;
+        padding-top: 5px;
+    }
+    /* Audio Player Style */
+    .audio-player-section {
+        background: #1a2f21;
+        border-radius: 60px;
+        padding: 20px 30px;
+        margin: 30px 0 20px;
+        border: 2px solid #d4af37;
+        text-align: center;
+    }
+    .audio-player-section h3 {
+        color: #d4af37;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        font-family: 'Noto Nastaliq Urdu', serif;
+    }
+    .audio-player-section audio {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        border-radius: 40px;
+        background: #0a2f1f;
+    }
+    /* --- Hadith Kisa Page Style (same as Ziyarat) --- */
+    .hadith-page {
+      max-width: min(1200px, 95%);
+      margin: clamp(20px, 5vw, 40px) auto;
+      background: #132016;
+      border: 2px solid #d4af37;
+      border-radius: clamp(25px, 5vw, 40px);
+      padding: clamp(30px, 6vw, 50px);
+      box-shadow: 0 20px 0 #0a2f1f;
+      display: none;
+    }
+    .hadith-page.active-detail {
+        display: block;
+        animation: fadeIn 0.5s ease;
+    }
+    .hadith-header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #d4af37;
+        padding-bottom: 20px;
+    }
+    .hadith-header h2 {
+        font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
+        font-size: clamp(2.5rem, 6vw, 3.5rem);
+        color: #d4af37;
+        margin-bottom: 10px;
+    }
+    .hadith-header p {
+        font-size: 1.2rem;
+        color: #bfa98e;
+    }
+    .arabic-hadith {
+        font-family: 'Amiri', 'Noto Naskh Arabic', serif;
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+        line-height: 2.2;
+        text-align: right;
+        direction: rtl;
+        background: #1f3327;
+        padding: 30px 25px;
+        border-radius: 30px;
+        border: 1px solid #5a7c66;
+        margin-bottom: 30px;
+        max-height: 600px;
+        overflow-y: auto;
+        color: #f0ead6;
+        box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+    }
+    .arabic-hadith p {
+        margin-bottom: 20px;
+        word-break: break-word;
+    }
+    .arabic-hadith .translation {
+        font-family: 'Segoe UI', 'Amiri', sans-serif;
+        font-size: 1rem;
+        color: #bfa98e;
+        direction: ltr;
+        text-align: left;
+        margin-top: 5px;
+        border-top: 1px dashed #5a7c66;
+        padding-top: 5px;
+    }
+    /* --- End Hadith Kisa Page Style --- */
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .back-link {
+      display: inline-flex; 
+      align-items: center; 
+      gap: 8px; 
+      color: #bfa98e;
+      text-decoration: none; 
+      font-size: clamp(1rem, 2.5vw, 1.2rem); 
+      margin-bottom: clamp(20px, 4vh, 30px);
+      border: 1px solid #5a7c66; 
+      padding: clamp(6px, 1.5vh, 8px) clamp(15px, 3vw, 20px); 
+      border-radius: 40px;
+      transition: all 0.2s ease;
+    }
+    
+    .back-link:hover { 
+      background: #2a3f31; 
+      color: #d4af37; 
+      border-color: #d4af37;
+      transform: translateX(-5px);
+    }
+    
+    .back-link i {
+      transition: transform 0.2s;
+    }
+    
+    .back-link:hover i {
+      transform: translateX(-3px);
+    }
+    
+    .detail-grid { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: clamp(20px, 5vw, 40px); 
+      align-items: flex-start; 
+    }
+    
+    .cover-large {
+      flex: 1 1 min(300px, 100%); 
+      max-width: 400px; 
+      background: #1f3327;
+      border-radius: clamp(25px, 5vw, 32px); 
+      padding: clamp(15px, 3vw, 20px); 
+      border: 2px solid #d4af37;
+      box-shadow: 0 10px 0 #0a2f1f; 
+      text-align: center;
+      margin: 0 auto;
+    }
+    
+    .cover-large .front-large {
+      width: 100%;
+      aspect-ratio: 1 / 1.414;
+      background: #0a2f1f;
+      border-radius: clamp(18px, 4vw, 24px);
+      border: 2px solid #d4af37;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .cover-large .front-large img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: clamp(16px, 3vw, 22px);
+    }
+    
+    .cover-large .front-large i {
+      font-size: clamp(4rem, 10vw, 8rem);
+      color: #d4af37;
+    }
+    
+    .cover-large h2 { 
+      font-size: clamp(1.5rem, 5vw, 2.2rem); 
+      color: #d4af37; 
+      margin: clamp(10px, 3vh, 15px) 0 5px; 
+      font-family: 'Amiri';
+      word-break: break-word;
+    }
+    
+    .detail-info { 
+      flex: 2 1 min(400px, 100%); 
+    }
+    
+    .detail-info h2 { 
+      font-size: clamp(1.8rem, 6vw, 2.5rem); 
+      color: #d4af37; 
+      border-bottom: 2px solid #d4af37; 
+      padding-bottom: clamp(8px, 2vh, 10px); 
+      margin-bottom: clamp(15px, 3vh, 25px); 
+      word-break: break-word;
+    }
+    
+    .meta-line { 
+      display: flex; 
+      gap: clamp(15px, 4vw, 30px); 
+      flex-wrap: wrap; 
+      margin-bottom: clamp(15px, 3vh, 25px); 
+      background: #1a2f21; 
+      padding: clamp(10px, 2vh, 15px) clamp(12px, 3vw, 20px); 
+      border-radius: 50px;
+    }
+    
+    .meta-item { 
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem); 
+      flex-wrap: wrap;
+    }
+    
+    .meta-item i { 
+      color: #d4af37; 
+      width: 20px; 
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+    }
+    
+    .description-full { 
+      background: #1f3327; 
+      padding: clamp(15px, 4vh, 25px); 
+      border-radius: clamp(20px, 5vw, 30px); 
+      margin: clamp(15px, 3vh, 25px) 0; 
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem); 
+      border-left: 8px solid #d4af37;
+      word-break: break-word;
+    }
+    
+    .tag-list { 
+      display: flex; 
+      gap: clamp(8px, 2vw, 10px); 
+      flex-wrap: wrap; 
+      margin: clamp(15px, 3vh, 20px) 0; 
+    }
+    
+    .tag { 
+      background: #2f4a38; 
+      padding: clamp(6px, 1.5vh, 8px) clamp(12px, 3vw, 18px); 
+      border-radius: 30px; 
+      color: #f0e6d2; 
+      font-size: clamp(0.85rem, 2vw, 0.95rem); 
+      border: 1px solid #d4af37;
+      transition: all 0.2s;
+    }
+    
+    .tag:hover {
+      background: #3e5f4b;
+      transform: scale(1.05);
+    }
+    
+    .read-btn-large {
+      background: #d4af37; 
+      color: #0a2f1f; 
+      font-size: clamp(1.2rem, 4vw, 1.7rem); 
+      padding: clamp(12px, 3vh, 20px) clamp(20px, 5vw, 40px);
+      border-radius: 60px; 
+      text-decoration: none; 
+      display: inline-block; 
+      font-weight: bold;
+      margin-top: clamp(15px, 3vh, 20px); 
+      border: 3px solid #d4af37; 
+      transition: all 0.15s ease;
+      box-shadow: 0 8px 0 #8f731f;
+    }
+    
+    .read-btn-large:hover { 
+      background: #e6c252; 
+      transform: translateY(-3px);
+      box-shadow: 0 11px 0 #8f731f;
+    }
+    
+    .read-btn-large:active {
+      transform: translateY(3px);
+      box-shadow: 0 5px 0 #8f731f;
+    }
+    
+    /* Enhanced Footer */
+    .footer {
+      background: linear-gradient(180deg, #07120b, #0a1a0f);
+      padding: clamp(25px, 5vw, 40px) 0 clamp(12px, 3vw, 20px);
+      margin-top: clamp(40px, 8vh, 70px);
+      border-top: 3px solid #d4af37;
+      text-align: center;
+    }
+    
+    .social-icons { 
+      display: flex; 
+      justify-content: center; 
+      gap: clamp(20px, 5vw, 30px); 
+      margin-bottom: clamp(15px, 3vh, 20px); 
+      flex-wrap: wrap;
+    }
+    
+    .social-icons a { 
+      color: #d4af37; 
+      font-size: clamp(2rem, 5vw, 2.5rem); 
+      transition: all 0.15s ease;
+    }
+    
+    .social-icons a:hover { 
+      color: #f5d742; 
+      transform: translateY(-5px) scale(1.1);
+    }
+    
+    .footer p {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: #a0a0a0;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+    
+    /* TV & Large Screen Optimization */
+    @media (min-width: 1920px) {
+      html {
+        font-size: 18px;
+      }
+      
+      .container {
+        max-width: 1600px;
+      }
+      
+      .books-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+    
+    /* Desktop Optimization */
+    @media (min-width: 1200px) and (max-width: 1919px) {
+      .books-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    /* Tablet Optimization */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .books-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .detail-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .cover-large {
+        max-width: 350px;
+      }
+    }
+    
+    /* Mobile Landscape */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .book-card .btn {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+      }
+    }
+    
+    /* Small Mobile */
+    @media (max-width: 480px) {
+      .nav-links {
+        justify-content: center;
+        width: 100%;
+      }
+      
+      .nav-links a {
+        font-size: 0.9rem;
+        padding: 5px 8px;
+      }
+      
+      .books-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .book-card {
+        max-width: 350px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      
+      .meta-line {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      
+      .meta-item {
+        width: 100%;
+      }
+      
+      .cover-large {
+        max-width: 280px;
+      }
+      
+      .read-btn-large {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* Ultra Small Devices */
+    @media (max-width: 320px) {
+      .category-tabs {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .tab-btn {
+        width: 100%;
+        min-width: 100%;
+      }
+      
+      .book-card {
+        padding: 12px;
+      }
+      
+      .book-front {
+        margin-bottom: 10px;
+      }
+    }
+    
+    /* High Resolution TV */
+    @media (min-width: 2560px) {
+      html {
+        font-size: 22px;
+      }
+      
+      .container {
+        max-width: 2200px;
+      }
+      
+      .books-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+    
+    /* Print Styles */
+    @media print {
+      .navbar, .footer, .tab-btn, .btn, .read-btn-large, .btn-special {
+        display: none;
+      }
+      
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .book-card {
+        break-inside: avoid;
+        border: 1px solid #000;
+      }
+    }
+    
+    /* Loading Animation */
+    @keyframes cardPulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    
+    .book-front img[src=""] {
+      animation: cardPulse 1.5s infinite;
+    }
   </style>
 </head>
 <body>
@@ -101,198 +904,831 @@
     </div>
   </nav>
 
-  <!-- MAIN LIBRARY CONTAINER (same as original, all books kept) -->
+  <!-- MAIN LIBRARY CONTAINER -->
   <div id="libraryContainer" class="container">
-    <div class="page-header"><h1>کُتُب خانَہ</h1><p>Islamic & Hussaini Book Library — including 7 volumes of Al‑Ghadeer</p></div>
-    <div class="category-tabs"><button class="tab-btn active">All Books</button><button class="tab-btn">Nahjul Balagha</button><button class="tab-btn">Karbala</button><button class="tab-btn">Dua & Ziyarat</button><button class="tab-btn">History</button></div>
-    <!-- special buttons -->
-    <div class="special-buttons-container">
-        <div class="special-btn-wrapper"><a href="#" id="openZiyaratBtn" class="btn-special"><i class="fas fa-pray"></i> زیارت عاشوراء</a></div>
-        <div class="special-btn-wrapper"><a href="#" id="hadithKisaBtn" class="btn-special"><i class="fas fa-scroll"></i> حدیث کساء</a></div>
-        <!-- Dua Kumayl now active -->
-        <div class="special-btn-wrapper"><a href="#" id="duaKumaylBtn" class="btn-special"><i class="fas fa-hands"></i> دعائے کمیل</a></div>
-        <!-- Dua Tawassul now active -->
-        <div class="special-btn-wrapper"><a href="#" id="duaTawassulBtn" class="btn-special"><i class="fas fa-link"></i> دعائے توسل</a></div>
+    <div class="page-header">
+      <h1>کُتُب خانَہ</h1>
+      <p>Islamic & Hussaini Book Library — including 7 volumes of Al‑Ghadeer</p>
     </div>
     
+    <div class="category-tabs">
+      <button class="tab-btn active">All Books</button>
+      <button class="tab-btn">Nahjul Balagha</button>
+      <button class="tab-btn">Karbala</button>
+      <button class="tab-btn">Dua & Ziyarat</button>
+      <button class="tab-btn">History</button>
+    </div>
+
+    <!-- ========== SPECIAL BUTTONS CONTAINER ========== -->
+    <div class="special-buttons-container">
+        <!-- Ziyarat Ashura Button -->
+        <div class="special-btn-wrapper">
+            <a href="#" id="openZiyaratBtn" class="btn-special">
+                <i class="fas fa-pray"></i> زیارت عاشوراء
+            </a>
+        </div>
+        <!-- Hadith Kisa Button (Now Active) -->
+        <div class="special-btn-wrapper">
+            <a href="#" id="hadithKisaBtn" class="btn-special">
+                <i class="fas fa-scroll"></i> حدیث کساء
+            </a>
+        </div>
+        <!-- Dua Kumayl Button (Coming Soon) -->
+        <div class="special-btn-wrapper">
+            <a href="#" id="duaKumaylBtn" class="btn-special">
+                <i class="fas fa-hands"></i> دعائے کمیل
+                <span class="sub-text">Coming Soon</span>
+            </a>
+        </div>
+        <!-- Dua Tawassul Button (Coming Soon) -->
+        <div class="special-btn-wrapper">
+            <a href="#" id="duaTawassulBtn" class="btn-special">
+                <i class="fas fa-link"></i> دعائے توسل
+                <span class="sub-text">Coming Soon</span>
+            </a>
+        </div>
+    </div>
+    <!-- ============================================== -->
+    
     <div class="books-grid" id="bookGrid">
-      <!-- all existing book cards exactly as provided (shortened for brevity) -->
-      <div class="book-card" data-title="Al Tauheed" data-author="Shaikh Mofid (AS)" data-lang="Arabic/Urdu" data-subject="Theology, Aqaid" data-tags="Tawhid,Monotheism" data-desc="Commentary on Ibn al-Wahhab's Kitab al-Tawhid" data-pic="al-tauheed-urdu.jpg" data-icon="fa-book-open"><div class="book-front"><img src="al-tauheed-urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-book-open\'></i>';"></div><h3>Al Tauheed</h3><div class="author">by Shaikh Mofid (AS)</div><div class="description">Commentary on Kitab al-Tawhid</div><a href="AlTauheed.pdf" class="btn read-detail-btn">Read Online</a></div>
-      <div class="book-card" data-title="Khutba-e-Fidak" data-author="Allama Shaikh Mohsin al Najafi" data-lang="Urdu" data-subject="Sermon, Fatima (sa)" data-tags="Fidak, Hazrat Fatima" data-desc="In-depth analysis of Hazrat Fatima Zahra’s (s.a.) sermon" data-pic="Khutba-e-Fidak.jpg" data-icon="fa-feather-alt"><div class="book-front"><img src="Khutba-e-Fidak.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-feather-alt\'></i>';"></div><h3>Khutba-e-Fidak</h3><div class="author">by Allama Shaikh Mohsin al Najafi</div><div class="description">In-depth analysis of Hazrat Fatima Zahra’s (s.a.) sermon</div><a href="Khutba-e-Fidak.pdf" class="btn read-detail-btn">Read Online</a></div>
-      <!-- plus others ... (truncated for space, but kept identical) -->
+      <!-- ========== EXISTING BOOKS ========== -->
+      <div class="book-card" data-title="Al Tauheed" data-author="Shaikh Mofid (AS)" data-lang="Arabic/Urdu" data-subject="Theology, Aqaid" data-tags="Tawhid,Monotheism" data-desc="Commentary on Ibn al-Wahhab's Kitab al-Tawhid — classical theological exposition." data-pic="al-tauheed-urdu.jpg" data-icon="fa-book-open">
+        <div class="book-front"><img src="al-tauheed-urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-book-open\'></i>';"></div>
+        <h3>Al Tauheed</h3>
+        <div class="author">by Shaikh Mofid (AS)</div>
+        <div class="description">Commentary on Ibn al-Wahhab's Kitab al-Tawhid — classical theological exposition.</div>
+        <a href="AlTauheed by Shaikh Mofid.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Khutba-e-Fidak" data-author="Allama Shaikh Mohsin al Najafi" data-lang="Urdu" data-subject="Sermon, Fatima (sa)" data-tags="Fidak, Hazrat Fatima" data-desc="In-depth analysis of Hazrat Fatima Zahra’s (s.a.) sermon after the Prophet’s (s.a.w.) passing." data-pic="Khutba-e-Fidak.jpg" data-icon="fa-feather-alt">
+        <div class="book-front"><img src="Khutba-e-Fidak.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-feather-alt\'></i>';"></div>
+        <h3>Khutba-e-Fidak</h3>
+        <div class="author">by Allama Shaikh Mohsin al Najafi</div>
+        <div class="description">In-depth analysis of Hazrat Fatima Zahra’s (s.a.) sermon after the Prophet’s (s.a.w.) passing.</div>
+        <a href="Khutba-e-Fidak.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Lazzat e Mulaqaat" data-author="Allama Taqi Bhajat" data-lang="Urdu" data-subject="Akhlaq, Spirituality" data-tags="Ethics,Devotion" data-desc="Spiritual teachings, ethics (akhlaq), and devotion to Allah and the Ahl al-Bayt." data-pic="Lazzat-e-Mulaqat.jpg" data-icon="fa-heart">
+        <div class="book-front"><img src="Lazzat-e-Mulaqat.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-heart\'></i>';"></div>
+        <h3>Lazzat e Mulaqaat</h3>
+        <div class="author">by Allama Taqi Bhajat</div>
+        <div class="description">Spiritual teachings, ethics (akhlaq), and devotion to Allah and the Ahl al-Bayt.</div>
+        <a href="LazzateMulaqaat by Allama Taqi Bhajat.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="MaqtaleLuhoof" data-author="Sayyid Ibn Tawus (ar)" data-lang="Urdu" data-subject="Karbala, Maqtal" data-tags="Imam Hussain,Ashura" data-desc="Well-known Maqtal (13th-century) by Sayyid Ibn Tawus al-Hilli detailing the tragedy of Karbala." data-pic="Maqtaleluhoof_urdu.jpg" data-icon="fa-landmark">
+        <div class="book-front"><img src="Maqtaleluhoof_urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-landmark\'></i>';"></div>
+        <h3>Maqtal-e-Luhoof</h3>
+        <div class="author">by Sayyid Ibn Tawus (ar)</div>
+        <div class="description">Well-known Maqtal (13th-century) by Sayyid Ibn Tawus al-Hilli detailing the tragedy of Karbala.</div>
+        <a href="MaqtaleLuhoof by Sayyid Ibn Tawus(ar).pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Sahifa Sajjadiyya" data-author="Imam Sajjad (AS)" data-lang="Arabic/Urdu" data-subject="Dua, Supplication" data-tags="Psalms,Duas" data-desc="Psalms of Islam — 54 Duas; profound supplications from the fourth Imam." data-pic="Sahifa Sajjadiyya.png" data-icon="fa-praying-hands">
+        <div class="book-front"><img src="Sahifa Sajjadiyya.png" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-praying-hands\'></i>';"></div>
+        <h3>Sahifa Sajjadiyya</h3>
+        <div class="author">by Imam Sajjad (AS)</div>
+        <div class="description">Psalms of Islam — 54 Duas; profound supplications from the fourth Imam.</div>
+        <a href="Sahifa Sajjadiyya.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Tarbiyat-e-Aulad" data-author="Molna Syed Jan Ali Shah Kazmi" data-lang="Urdu" data-subject="Parenting, Ethics" data-tags="Children,Upbringing" data-desc="Children’s moral & religious upbringing according to Islamic teachings." data-pic="tarbiyateaulad.jpg" data-icon="fa-child">
+        <div class="book-front"><img src="tarbiyateaulad.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-child\'></i>';"></div>
+        <h3>Tarbiyat-e-Aulad</h3>
+        <div class="author">by Molna Syed Jan Ali Shah Kazmi</div>
+        <div class="description">Children’s moral & religious upbringing according to Islamic teachings.</div>
+        <a href="Tarbiyat-e-Aulad by Molna Syed Jan Ali Shah Kazmi Shab.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <!-- ========== 7 VOLUMES OF AL‑GHADEER ========== -->
+      <div class="book-card" data-title="Al‑Ghadeer (Vol. 1)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 1: Detailed proofs of the event of Ghadeer from Sunni sources. Must‑read." data-pic="AL-ghadeer.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
+        <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 1)</span></h3>
+        <div class="author">by Allama Abdul Hussain Amini</div>
+        <div class="description">Vol 01: Al‑Ghadeer discusses the event of Ghadeer with documented proofs from Sunni sources.</div>
+        <a href="Ghadeer-01.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Al‑Ghadeer (Vol. 2)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 2: Continuation of authentic traditions and historical testimonies about Wilayah." data-pic="AL-ghadeer.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
+        <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 2-3)</span></h3>
+        <div class="author">by Allama Abdul Hussain Amini</div>
+        <div class="description">Vol 02-03: Further Sunni references on the event of Ghadeer and the superiority of Imam Ali (as).</div>
+        <a href="Ghadeer-02-03.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Al‑Ghadeer (Vol. 3)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 3: Analysis of chains of narration and companions who narrated the Ghadeer tradition." data-pic="AL-ghadeer.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
+        <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 4-5)</span></h3>
+        <div class="author">by Allama Abdul Hussain Amini</div>
+        <div class="description">Vol 04-05: Detailed study of narrators and textual variants of the Ghadeer sermon.</div>
+        <a href="Ghadeer-04-05.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Al‑Ghadeer (Vol. 4)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 4: The poetic evidence – poems composed about Ghadeer from the first century onward." data-pic="AL-ghadeer.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
+        <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 6)</span></h3>
+        <div class="author">by Allama Abdul Hussain Amini</div>
+        <div class="description">Vol 06: Collection of odes and elegies by companions and successors celebrating Ghadeer.</div>
+        <a href="Ghadeer-06.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Al‑Ghadeer (Vol. 5)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 5: Biographies of the poets and scholars who affirmed the event of Ghadeer." data-pic="AL-ghadeer.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
+        <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 7-9)</span></h3>
+        <div class="author">by Allama Abdul Hussain Amini</div>
+        <div class="description">Vol 07-09: Biographical accounts of the great personalities who endorsed the tradition.</div>
+        <a href="Ghadeer-07-08-09.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Al‑Ghadeer (Vol. 6)" data-author="Allama Abdul Hussain Amini" data-lang="Urdu" data-subject="History, Imamate" data-tags="Ghadeer,Imam Ali" data-desc="Volume 6: The event of Ghadeer in the books of tafsir (Qur’anic exegesis) – a comprehensive review." data-pic="AL-ghadeer.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="AL-ghadeer.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
+        <h3>Al‑Ghadeer <span style="font-size:1.2rem; color:#bfa98e;">(Vol. 10-11)</span></h3>
+        <div class="author">by Allama Abdul Hussain Amini</div>
+        <div class="description">Vol 10-11: How classical commentators interpreted the verse of tabligh and ikmaal in relation to Ghadeer.</div>
+        <a href="Ghadeer-10-11.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+  
+      
+      <!-- ========== REMAINING BOOKS ========= -->
+      <div class="book-card" data-title="Nahjul Balagha" data-author="Imam Ali (AS)" data-lang="Arabic/Urdu" data-subject="Sermons and letters of Mola Ali" data-tags="Eloquence,Imam Ali" data-desc="Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.)." data-pic="Nahjulbalagha_urdu.jpg" data-icon="fa-balance-scale">
+        <div class="book-front"><img src="Nahjulbalagha_urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-balance-scale\'></i>';"></div>
+        <h3>Nahjul Balagha Part 01</h3>
+        <div class="author">by Imam Ali (AS)</div>
+        <div class="description">Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.).</div>
+        <a href="Nahjul-Balagah-1.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Nahjul Balagha" data-author="Imam Ali (AS)" data-lang="Urdu" data-subject="Sermons and letters of Mola Ali" data-tags="Sermons and letters of Mola Ali" data-desc="Comprehensive collection of Duas, Ziyarat, and A’maal." data-pic="Nahjulbalagha_urdu.jpg" data-icon="fa-mosque">
+        <div class="book-front"><img src="Nahjulbalagha_urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-mosque\'></i>';"></div>
+        <h3>Nahjul Balagha Part 02</h3>
+        <div class="author">by Imam Ali (AS)</div>
+        <div class="description">Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.)</div>
+        <a href="Nahjul-Balagah-2.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Nahjul Balagha" data-author="Imam Ali (AS)" data-lang="Urdu" data-subject="Sermons and letters of Mola Ali" data-tags="Nahjul Balagha" data-desc="Detailed narrative of the tragedy of Karbala, historical context." data-pic="Nahjulbalagha_urdu.jpg" data-icon="fa-dagger">
+        <div class="book-front"><img src="Nahjulbalagha_urdu.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-dagger\'></i>';"></div>
+        <h3>Nahjul Balagha Part 03</h3>
+        <div class="author">by Imam Ali (AS)</div>
+        <div class="description">Peak of Eloquence: sermons, letters, and sayings of Imam Ali (a.s.)</div>
+        <a href="Nahjul-Balagah-3.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="Qayam Hazrat e mukhtar" data-author="Syed Abu Fazil Rizvi Ardkani" data-lang="Urdu" data-subject="History of Hazrat Mukhtar" data-tags="Whispered prayers" data-desc="Whispered prayers of Imam Ali (a.s.) — Munajat in Kufa." data-pic="Qayam-Hazrat-e-mukhtar.jpg" data-icon="fa-dua">
+        <div class="book-front"><img src="Qayam-Hazrat-e-mukhtar.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-dua\'></i>';"></div>
+        <h3>Qayam Hazrat e mukhtar</h3>
+        <div class="author">by Syed Abu Fazil Rizvi Ardkani</div>
+        <div class="description">Qayam Hazrat-e-Mukhtar is a historical book about the uprising of Hazrat Mukhtar, focusing on his movement for justice after the tragedy of Karbala.</div>
+        <a href="QayameHazrateMukhtar.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
+      
+      <div class="book-card" data-title="14 Sitary" data-author="Allama Najm-ul-Hasan Kararvi" data-lang="Urdu" data-subject="History, life of 14 Masoomeen" data-tags="14 Sitary,14 imam" data-desc="Brief overview of the event of Ghadeer (summary version)." data-pic="14Sitaray.jpg" data-icon="fa-scroll">
+        <div class="book-front"><img src="14Sitaray.jpg" alt="cover" onerror="this.parentElement.classList.add('fallback'); this.innerHTML='<i class=\'fas fa-scroll\'></i>';"></div>
+        <h3>14 Sitary </h3>
+        <div class="author">by Allama Najm-ul-Hasan Kararvi</div>
+        <div class="description">14 Sitaray is a book detailing the lives and history of the 14 Masoomeen, from Prophet Muhammad (PBUH) and Bibi Fatima to Mola Ali and Imam Mahdi (12 Imams).</div>
+        <a href="14Sitaray.pdf" class="btn read-detail-btn">Read Online</a>
+      </div>
     </div>
   </div>
 
-  <!-- ========== ZIYARAT PAGE (exactly as given) ========== -->
-  <div id="ziyaratPage" class="ziyarat-page container">... (full content from original, not repeated for brevity) ...</div>
-  <!-- ========== HADITH KISA PAGE (as original) ========== -->
-  <div id="hadithPage" class="hadith-page container">... (full content from original, not repeated) ...</div>
+  <!-- BOOK DETAIL VIEW (for regular books) -->
+  <div id="bookDetail" class="detail-page container">
+    <a href="#" id="backToLibrary" class="back-link"><i class="fas fa-arrow-right"></i> Back to Library</a>
+    <div class="detail-grid">
+      <div class="cover-large">
+        <div class="front-large" id="detailCoverContainer">
+          <img id="detailCoverImg" src="" alt="cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-book-open\'></i>';">
+        </div>
+        <h2 id="detailTitle">Al Ghadeer</h2>
+      </div>
+      <div class="detail-info">
+        <h2 id="detailFullTitle">Details</h2>
+        <div class="meta-line">
+          <span class="meta-item"><i class="fas fa-user"></i> <span id="detailAuthor">Allama Abdul Hussain Amini</span></span>
+          <span class="meta-item"><i class="fas fa-language"></i> <span id="detailLang">Urdu</span></span>
+        </div>
+        <div class="meta-line">
+          <span class="meta-item"><i class="fas fa-tag"></i> <span id="detailSubject">History, Imamate</span></span>
+        </div>
+        <div class="description-full" id="detailDesc">
+          Al‑Ghadeer is a multi‑volume book by Allama Abdul Hussain Amini that exhaustively documents the event of Ghadeer using only Sunni sources. It proves the authenticity of the Prophet’s declaration at Ghadeer Khumm.
+        </div>
+        <div class="tag-list" id="detailTags">
+          <span class="tag">Ghadeer</span><span class="tag">Imam Ali</span>
+        </div>
+        <a href="#" id="readPdfBtn" class="read-btn-large"><i class="fas fa-book-open"></i> Read PDF</a>
+      </div>
+    </div>
+  </div>
 
-  <!-- ========== DUA KUMYAIL PAGE (NEW - fully implemented) ========== -->
-  <div id="duaKumaylPage" class="dua-page container">
-    <a href="#" id="backFromDuaKumayl" class="back-link"><i class="fas fa-arrow-right"></i> Back to Library</a>
+  <!-- ========== ZIYARAT ASHOURA PAGE ========== -->
+  <div id="ziyaratPage" class="ziyarat-page container">
+    <a href="#" id="backFromZiyarat" class="back-link"><i class="fas fa-arrow-right"></i> Back to Library</a>
     <div class="ziyarat-header">
-        <h2>دعائے کمیل</h2>
-        <p>Dua Kumayl | اَللَّهُمَّ إِنِّي أَسْألُكَ بِرَحْمَتِكَ الَّتِي وَسِعَتْ كُلَّ شَيْءٍ</p>
+        <h2>زیارت عاشوراء</h2>
+        <p>Ziyarat Ashura | اللَّهُمَّ الْعَنْ قَتَلَةَ الْحُسَيْنِ</p>
     </div>
-    <div class="arabic-text-block" id="kumaylArabic">
-        <!-- Full Arabic text with translation lines (condensed for length, but showing structure) -->
-        <p>بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ<br>اَللَّهُمَّ إِنِّي أَسْألُكَ بِرَحْمَتِكَ الَّتِي وَسِعَتْ كُلَّ شَيْءٍ<br><span class="translation">O Allah, I ask You by Your mercy, which embraces all things;</span></p>
-        <p>وَبِقُوَّتِكَ الَّتِي قَهَرْتَ بِهَا كُلَّ شَيْءٍ<br><span class="translation">And by Your strength, through which You dominatest all things,</span></p>
-        <p>وَخَضَعَ لَهَا كُلُّ شَيْءٍ<br><span class="translation">And toward which all things are humble</span></p>
-        <p>وَذَلَّ لَهَا كُلُّ شَيْءٍ<br><span class="translation">And before which all things are lowly;</span></p>
-        <p>وَبِجَبرُوتِكَ الَّتِي غَلَبْتَ بِهَا كُلَّ شَيْءٍ<br><span class="translation">And by Your invincibility through which You overwhelmest all things,</span></p>
-        <p>... (continues with full Dua Kumayl as provided, same style) ...</p>
-        <p>وَصَلَّى اللَّهُ عَلَى رَسُولِهِ وَالأَئِمَّةِ الْمَيَامِينَ مِنْ آلِهِ وَسَلَّمَ تَسْلِيماً كَثِيراً<br><span class="translation">And Allah bless His messenger and the holy Imams of his household and give them abundant peace!</span></p>
+    <div class="arabic-ziyarat">
+        <!-- Ziyarat Ashura Full Text in Arabic -->
+        <p>بِسْمِ اللهِ الرّحْمٰنِ الرّحِیْمِ</p>
+        <p>اَلسَّلاَمُ عَلَيْكَ يَا أَبَا عَبْدِ ٱللَّهِ<br>اَلسَّلاَمُ عَلَيْكَ يَا بْنَ رَسُولِ ٱللَّهِ<br>السَّلاَمُ عَلَيكَ يَا خِيَرَةِ ٱللَّهِ وَٱبْنَ خَيرَتِهِ<br>اَلسَّلاَمُ عَلَيْكَ يَا بْنَ أَمِيرِ ٱلْمُؤْمِنِينَ<br>وَٱبْنَ سَيِّدِ ٱلْوَصِيِّينَ<br>اَلسَّلاَمُ عَلَيْكَ يَا بْنَ فَاطِمَةَ<br>سَيِّدَةِ نِسَاءِ ٱلْعَالَمِينَ<br>اَلسَّلاَمُ عَلَيْكَ يَا ثَارَ ٱللَّهِ وَٱبْنَ ثَارِهِ وَٱلْوِتْرَ ٱلْمَوْتُورَ<br>اَلسَّلاَمُ عَلَيْكَ وَعَلَىٰ ٱلأَرْوَاحِ ٱلَّتِي حَلَّتْ بِفِنَائِكَ<br>عَلَيْكُمْ مِنِّي جَمِيعاً سَلاَمُ ٱللَّهِ أَبَداً مَا بَقيتُ وَبَقِيَ ٱللَّيْلُ وَٱلنَّهَارُ</p>
+        <p>يَا أَبَا عَبْدِ ٱللَّهِ لَقَدْ عَظُمَتِ ٱلرَّزِيَّةُ وَجَلَّتْ وَعَظُمَتِ ٱلْمُصيبَةُ بِكَ عَلَيْنَا وَعَلَىٰ جَمِيعِ أَهْلِ ٱلإِسْلاَمِ وَجَلَّتْ وَعَظُمَتْ مُصيبَتُكَ فِي ٱلسَّمَاوَاتِ عَلَىٰ جَمِيعِ أَهْلِ ٱلسَّمَاوَاتِ فَلَعَنَ ٱللَّهُ أُمَّةً أَسَّسَتْ أَسَاسَ ٱلظُّلْمِ وَٱلْجَوْرِ عَلَيْكُمْ أَهْلَ ٱلْبَيْتِ وَلَعَنَ ٱللَّهُ أُمَّةً دَفَعَتْكُمْ عَنْ مَقَامِكُمْ وَأَزَالَتْكُمْ عَنْ مَرَاتِبِكُمُ ٱلَّتِي رَتَّبَكُمُ ٱللَّهُ فِيهَا وَلَعَنَ ٱللَّهُ أُمَّةً قَتَلَتْكُمْ وَلَعَنَ ٱللَّهُ ٱلْمُمَهِّدِينَ لَهُمْ بِٱلتَّمْكِينِ مِنْ قِتَالِكُمْ بَرِئْتُ إِلَىٰ ٱللَّهِ وَإِلَيْكُمْ مِنْهُمْ وَمِنْ أَشْيَاعِهِمْ وَأَتْبَاعِهِمْ وَأَوْلِيَائِهِمْ</p>
+        <p>يَا أَبَا عَبْدِ ٱللَّهِ إِنِّي سِلْمٌ لِمَنْ سَالَمَكُمْ وَحَرْبٌ لِمَنْ حَارَبَكُمْ إِلَىٰ يَوْمِ ٱلْقِيَامَةِ وَلَعَنَ ٱللَّهُ آلَ زِيَادٍ وَآلَ مَرْوَانَ وَلَعَنَ ٱللَّهُ بَنِي أُمَيَّةَ قَاطِبَةً وَلَعَنَ ٱللَّهُ ٱبْنَ مَرْجَانَةَ وَلَعَنَ ٱللَّهُ عُمَرَ بْنَ سَعْدٍ وَلَعَنَ ٱللَّهُ شِمْراً وَلَعَنَ ٱللَّهُ أُمَّةً أَسْرَجَتْ وَأَلْجَمَتْ وَتَنَقَّبَتْ لِقِتَالِكَ</p>
+        <p>بِأَبِي أَنْتَ وَأُمِّي لَقَدْ عَظُمَ مُصَابِي بِكَ فَأَسْأَلُ ٱللَهَ ٱلَّذِي أَكْرَمَ مَقَامَكَ وَأَكْرَمَنِي بِكَ أَنْ يَرْزُقَنِي طَلَبَ ثَأْرِكَ مَعَ إِمَامٍ مَنْصُورٍ مِنْ أَهْلِ بَيْتِ مُحَمَّدٍ صَلَّىٰ ٱللَّهُ عَلَيْهِ وَآلِهِ</p>
+        <p>اَللَّهُمَّ ٱجْعَلْنِي عِنْدَكَ وَجِيهاً بِٱلْحُسَيْنِ عَلَيْهِ ٱلسَّلاَمُ فِي ٱلدُّنْيَا وَٱلآخِرَةِ</p>
+        <p>يَا أَبَا عَبْدِ ٱللَّهِ إِنِّي أَتَقَرَّبُ إِلَىٰ ٱللَّهِ وَإِلَىٰ رَسُولِهِ وَإِلَىٰ أَمِيرِ ٱلْمُؤْمِنِينَ وَإِلَىٰ فَاطِمَةَ وَإِلَىٰ ٱلْحَسَنِ وَإِلَيْكَ بِمُوَالاَتِكَ وَبِٱلْبَرَاءَةِ مِمَّنْ قَاتَلَكَ وَنَصَبَ لَكَ ٱلْحَرْبَ وَبِٱلْبَرَاءَةِ مِمَّنْ أَسَّسَ أَسَاسَ ٱلظُّلْمِ وَٱلْجَوْرِ عَلَيْكُمْ وَأَبْرَأُ إِلَىٰ ٱللَّهِ وَإِلَىٰ رَسُولِهِ مِمَّنْ أَسَّسَ أَسَاسَ ذٰلِكَ وَبَنَىٰ عَلَيْهِ بُنْيَانَهُ وَجَرَىٰ فِي ظُلْمِهِ وَجَوْرِهِ عَلَيْكُمْ وَعلىٰ أَشْيَاعِكُمْ بَرِئْتُ إِلَىٰ ٱللَّهِ وَإِلَيْكُمْ مِنْهُمْ وَأَتَقَرَّبُ إِلَىٰ ٱللَّهِ ثُمَّ إِلَيْكُمْ بِمُوَالاَتِكُمْ وَمُوَالاَةِ وَلِيِّكُمْ وَبِٱلْبَرَاءَةِ مِنْ أَعْدَائِكُمْ وَٱلنَّاصِبِينَ لَكُمُ ٱلْحَرْبَ وَبِٱلْبَرَاءَةِ مِنْ أَشْيَاعِهِمْ وَأَتْبَاعِهِمْ</p>
+        <p>إِنِّي سِلْمٌ لِمَنْ سَالَمَكُمْ وَحَرْبٌ لِمَنْ حَارَبَكُمْ وَوَلِيٌّ لِمَنْ وَالاَكُمْ وَعَدُوٌّ لِمَنْ عَادَاكُمْ فَأَسْأَلُ ٱللَهَ ٱلَّذِي أَكْرَمَنِي بِمَعْرِفَتِكُمْ وَمَعْرِفَةِ أَوْلِيَائِكُمْ وَرَزَقَنِيَ ٱلْبَرَاءَةَ مِنْ أَعْدَائِكُمْ أَنْ يَجْعَلَنِي مَعَكُمْ فِي ٱلدُّنْيَا وَٱلآخِرَةِ وَأَنْ يُثَبِّتَ لِي عِنْدَكُمْ قَدَمَ صِدْقٍ فِي ٱلدُّنْيَا وَٱلآخِرَةِ</p>
+        <p>وَأَسْأَلُهُ أَنْ يُبَلِّغَنِيَ ٱلْمَقَامَ ٱلْمَحْمُودَ لَكُمْ عِنْدَ ٱللَّهِ وَأَنْ يَرْزُقَنِي طَلَبَ ثَأْرِي مَعَ إِمَامِ هُدىًٰ ظَاهِرٍ نَاطِقٍ بِٱلْحَقِّ مِنْكُمْ</p>
+        <p>وَأَسْأَلُ ٱللَّهَ بِحَقِّكُمْ وَبِٱلشَّأْنِ ٱلَّذِي لَكُمْ عِنْدَهُ أَنْ يُعْطِيَنِي بِمُصَابِي بِكُمْ أَفْضَلَ مَا يُعْطِي مُصَاباً بِمُصِيبَتِهِ مُصِيبَةً مَا أَعْظَمَهَا وَأَعْظَمَ رَزِيَّتَهَا فِي ٱلإِسْلاَمِ وَفِي جَمِيعِ ٱلسَّمَاوَاتِ وَٱلأَرْضِ</p>
+        <p>اَللَّهُمَّ ٱجْعَلْنِي فِي مَقَامِي هٰذَا مِمَّنْ تَنَالُهُ مِنْكَ صَلَوَاتٌ وَرَحْمَةٌ وَمَغْفِرَةٌ</p>
+        <p>اَللَّهُمَّ ٱجْعَلْ مَحْيَايَ مَحْيَا مُحَمَّدٍ وَآلِ مُحَمَّدٍ وَمَمَاتِي مَمَاتَ مُحَمَّدٍ وَآلِ مُحَمَّدٍ</p>
+        <p>اَللَّهُمَّ إِنَّ هٰذَا يَوْمٌ تَبَرَّكَتْ بِهِ بَنُو أُمَيَّةَ وَٱبْنُ آكِلَةِ ٱلأَكبَادِ ٱللَّعِينُ ٱبْنُ ٱللَّعِينِ عَلَىٰ لِسَانِكَ وَلِسَانِ نَبِيِّكَ صَلَّىٰ ٱللَّهُ عَلَيْهِ وَآلِهِ فِي كُلِّ مَوْطِنٍ وَمَوْقِفٍ وَقَفَ فِيهِ نَبِيُّكَ صَلَّىٰ ٱللَّهُ عَلَيْهِ وَآلِهِ</p>
+        <p>اَللَّهُمَّ ٱلْعَنْ أَبَا سُفْيَانَ وَمُعَاوِيَةَ وَيَزيدَ بْنَ مُعَاوِيَةَ عَلَيْهِمْ مِنْكَ ٱللَّعْنَةُ أَبَدَ ٱلآبِدِينَ</p>
+        <p>وَهٰذَا يَوْمٌ فَرِحَتْ بِهِ آلُ زِيَادٍ وَآلُ مَرْوَانَ بِقَتْلِهِمُ ٱلْحُسَيْنَ صَلَوَاتُ ٱللَّهِ عَلَيْهِ</p>
+        <p>اَللَّهُمَّ فَضَاعِفْ عَلَيْهِمُ ٱللَّعْنَ مِنْكَ وَٱلْعَذَابَ ٱلأَلِيمَ</p>
+        <p>اَللَّهُمَّ إِنِّي أَتَقَرَّبُ إِلَيْكَ فِي هٰذَا ٱلْيَوْمِ وَفِي مَوْقِفِي هٰذَا وَأَيَّامِ حَيَاتِي بِٱلْبَرَاءَةِ مِنْهُمْ وَٱللَّعْنَةِ عَلَيْهِمْ وَبِٱلْمُوَالاَةِ لِنَبِيِّكَ وَآلِ نَبِيِّكَ عَلَيْهِ وَعَلَيْهِمُ ٱلسَّلاَمُ</p>
+        <p>— <strong>Then repeat 100 times (or once):</strong><br>اَللَّهُمَّ ٱلْعَنْ أَوَّلَ ظَالِمٍ ظَلَمَ حَقَّ مُحَمَّدٍ وَآلِ مُحَمَّدٍ وَآخِرَ تَابِعٍ لَهُ عَلَىٰ ذٰلِكَ</p>
+        <p>اَللَّهُمَّ ٱلْعَنِ ٱلْعِصَابَةَ ٱلَّتِي جَاهَدَتِ ٱلْحُسَيْنَ وَشَايَعَتْ وَبَايَعَتْ وَتَابَعَتْ عَلَىٰ قَتْلِهِ اَللَّهُمَّ ٱلْعَنْهُمْ جَمِيعاً</p>
+        <p>— <strong>Then repeat 100 times (or once):</strong><br>اَلسَّلاَمُ عَلَيْكَ يَا أَبَا عَبْدِ ٱللَّهِ وَعَلَىٰ ٱلأَرْوَاحِ ٱلَّتِي حَلَّتْ بِفِنَائِكَ عَلَيْكَ مِنِّي سَلاَمُ ٱللَّهِ أَبَداً مَا بَقيتُ وَبَقِيَ ٱللَّيْلُ وَٱلنَّهَارُ وَلاَ جَعَلَهُ ٱللَّهُ آخِرَ ٱلْعَهْدِ مِنِّي لِزِيَارَتِكُمْ اَلسَّلاَمُ عَلَىٰ ٱلْحُسَيْنِ وَعَلَىٰ عَلِيِّ بْنِ ٱلْحُسَيْنِ وَعَلَىٰ أَوْلاَدِ ٱلْحُسَيْنِ وَعَلَىٰ أَصْحَابِ ٱلْحُسَيْنِ</p>
+        <p>— <strong>Then say:</strong><br>اَللَّهُمَّ خُصَّ أَنْتَ أَوَّلَ ظَالِمٍ بِٱللَّعْنِ مِنِّي وَٱبْدَأْ بِهِ أَوَّلًا ثُمَّ ٱلْعَنِ ٱلثَّانِيَ وَٱلثَّالِثَ وَٱلرَّابِعَ اَللَّهُمَّ ٱلْعَنْ يَزِيدَ خَامِساً وَٱلْعَنْ عُبَيْدَ ٱللَّهِ بْنَ زِيَادٍ وَٱبْنَ مَرْجَانَةَ وَعُمَرَ بْنَ سَعْدٍ وَشِمْراً وَآلَ أَبِي سُفْيَانَ وَآلَ زِيَادٍ وَآلَ مَرْوَانَ إِلَىٰ يَوْمِ ٱلْقِيَامَةِ</p>
+        <p>— <strong>Then prostrate and say:</strong><br>اَللَّهُمَّ لَكَ ٱلْحَمْدُ حَمْدَ ٱلشَّاكِرِينَ لَكَ عَلَىٰ مُصَابِهِمْ اَلْحَمْدُ لِلَّهِ عَلَىٰ عَظِيمِ رَزِيَّتِي اَللَّهُمَّ ٱرْزُقْنِي شَفَاعَةَ ٱلْحُسَيْنِ يَوْمَ ٱلْوُرُودِ وَثَبِّتْ لِي قَدَمَ صِدْقٍ عِنْدَكَ مَعَ ٱلْحُسَيْنِ وَأَصْحَابِ ٱلْحُسَيْنِ ٱلَّذينَ بَذَلُوٱ مُهَجَهُمْ دُونَ ٱلْحُسَيْنِ عَلَيْهِ ٱلسَّلاَمُ</p>
     </div>
-    <!-- audio -->
+    
+    <!-- Audio Player for Ziyarat Ashura (MP3) -->
     <div class="audio-player-section">
-        <h3><i class="fas fa-headphones-alt"></i> تلاوة دعائے کمیل</h3>
-        <audio controls><source src="kumayl.mp3" type="audio/mpeg">Your browser does not support audio.</audio>
-        <p style="color:#bfa98e; margin-top:10px;">بہترین آواز میں دعائے کمیل سنیں</p>
-    </div>
-    <!-- Significance panel with English & Urdu toggle -->
-    <div class="significance-panel">
-        <h3>Significance of Dua Kumayl</h3>
-        <div class="lang-toggle">
-            <span class="lang-btn active" id="showEngKumayl">English</span>
-            <span class="lang-btn" id="showUrduKumayl">اردو</span>
-        </div>
-        <div id="kumaylSignificanceEng" class="significance-eng">
-          <p>Kumayl Ibn Ziyad Nakha'i was a confidant amongst the companions of Imam Ali Ibn Abi Talib (as.) and this sublime Du'a was first heard from the beautiful, though anguished, voice of Imam Ali. According to Allama Majlisi (on whom be Allah's Mercy) Kumayl had attended an assembly in the Mosque at Basra which was addressed by Imam Ali in the course of which the night of the 15th of Shaban was mentioned. Imam Ali said-"Whosoever keeps awake in devoutness on this night and recites the Du'a of Prophet Khizr, undoubtedly that person's supplication will be responded to and granted. When the assembly at the Mosque had dispersed, Kumayl called at the house where Imam Ali was staying, and requested him to acquaint him with Prophet Khizr's "Du'a". Imam Ali asked Kumayl to sit down, record and memorise the "Du'a" which Imam Ali dictated to Kumayl. Imam Ali then advised Kumayl to recite this "Du'a" on the eve of (i.e. evening preceding) every Friday, or once a month or at least once in every year so that, added Imam Ali, "Allah may protect thee from the evils of the enemies and the plots contrived by impostors. O' Kumayl! in consideration of thy companionship and understanding, I grant thee this honour of entrusting this "Du'a" to thee."</p>
-        </div>
-        <div id="kumaylSignificanceUrdu" class="significance-urdu" style="display:none; font-family:'Noto Nastaliq Urdu','Jameel Noori Nastaleeq',serif;">
-          <p>کُمَیل بن زیاد نخعی، علی ابن ابی طالبؑ کے قریبی اور بااعتماد اصحاب میں سے تھے۔ یہ عظیم دعا سب سے پہلے حضرت علیؑ کی خوبصورت مگر درد بھری آواز سے سنی گئی۔ علامہ محمد باقر مجلسی کے مطابق، کُمَیل ایک مجلس میں موجود تھے جو بصرہ کی مسجد میں منعقد ہوئی تھی اور جس سے حضرت علیؑ خطاب فرما رہے تھے۔ اس مجلس میں ۱۵ شعبان کی رات کا ذکر آیا۔ حضرت علیؑ نے فرمایا: “جو شخص اس رات عبادت میں بیدار رہے اور حضرت خضرؑ کی دعا پڑھے، یقیناً اس کی دعا قبول کی جائے گی اور اس کی حاجت پوری کی جائے گی۔” جب مسجد کی مجلس ختم ہو گئی تو کُمَیل حضرت علیؑ کے گھر حاضر ہوئے اور ان سے درخواست کی کہ وہ انہیں حضرت خضرؑ کی اس دعا سے آگاہ کریں۔ اس پر حضرت علیؑ نے کُمَیل سے فرمایا کہ بیٹھ جاؤ اور اس دعا کو لکھ لو اور یاد کر لو۔ پھر حضرت علیؑ نے یہ دعا کُمَیل کو املا کروائی۔ بعد ازاں حضرت علیؑ نے کُمَیل کو نصیحت فرمائی کہ اس دعا کو ہر جمعہ کی رات (یعنی جمعہ سے پہلے والی شام) پڑھا کرو، یا مہینے میں ایک مرتبہ، یا کم از کم سال میں ایک مرتبہ ضرور پڑھا کرو۔ حضرت علیؑ نے فرمایا: “اللہ تمہیں دشمنوں کی برائیوں اور دھوکہ دینے والوں کی سازشوں سے محفوظ رکھے گا۔ اے کُمَیل! تمہاری رفاقت اور سمجھداری کے باعث میں تمہیں یہ اعزاز دیتا ہوں کہ یہ دعا تمہارے سپرد کر رہا ہوں۔”</p>
-        </div>
+        <h3><i class="fas fa-headphones-alt"></i> تلاوة زیارت عاشوراء</h3>
+        <audio controls>
+            <source src="ziyarat-ashura-imam-hussain.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <p style="color:#bfa98e; margin-top:10px;">بہترین آواز میں زیارت عاشوراء سنیں</p>
     </div>
   </div>
 
-  <!-- ========== DUA TAWASSUL PAGE (NEW - fully implemented) ========== -->
-  <div id="duaTawassulPage" class="dua-page container">
-    <a href="#" id="backFromDuaTawassul" class="back-link"><i class="fas fa-arrow-right"></i> Back to Library</a>
-    <div class="ziyarat-header">
-        <h2>دعائے توسل</h2>
-        <p>Dua Tawassul | اَللَّهُمَّ إِنِّي أَسْأَلُكَ وَأَتَوَجَّهُ إِلَيْكَ بِنَبِيِّكَ نَبِيِّ الرَّحْمَةِ</p>
+  <!-- ========== HADITH E KISA PAGE ========== -->
+  <div id="hadithPage" class="hadith-page container">
+    <a href="#" id="backFromHadith" class="back-link"><i class="fas fa-arrow-right"></i> Back to Library</a>
+    <div class="hadith-header">
+        <h2>حدیث کساء</h2>
+        <p>Hadith al-Kisa | اَللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَ آلِ مُحَمَّدٍ</p>
     </div>
-    <div class="arabic-text-block">
-        <!-- Full text of Dua Tawassul with translation (condensed) -->
-        <p>اَللَّهُمَّ إِنِّي أَسْأَلُكَ وَأَتَوَجَّهُ إِلَيْكَ بِنَبِيِّكَ نَبِيِّ الرَّحْمَةِ مُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَآلِهِ<br><span class="translation">O Allah, I beseech You and turn my face toward You in the name of Your Prophet; the Prophet of Mercy, Muhammad—may Allah send blessings to him and his Household.</span></p>
-        <p>يَا أَبَا الْقَاسِمِ يَا رَسُولَ اللَّهِ يَا إِمَامَ الرَّحْمَةِ يَا سَيِّدَنَا وَمَوْلاَنَا<br><span class="translation">O Abu’l-Qasim! O Allah’s Messenger! O Chief of Mercy! O our master and chief!</span></p>
-        <p>إِنَّا تَوَجَّهْنَا وَاسْتَشْفَعْنَا وَتَوَسَّلْنَا بِكَ إِلَى اللَّهِ وَقَدَّمْنَاكَ بَيْنَ يَدَيْ حَاجَاتِنَا يَا وَجِيهاً عِنْدَ اللَّهِ إِشْفَعْ لَنَا عِنْدَ اللَّهِ<br><span class="translation">We are turning our faces toward you, seeking your intercession and your advocacy for us before Allah; and we are presenting you [as our intermediary] for the settlement of our needs. O well-esteemed with Allah, intercede for us before Allah.</span></p>
-        <p>يَا أَبَا الْحَسَنِ يَا أَمِيرَ الْمُؤْمِنِينَ يَا عَلِيَّ بْنَ أَبِي طَالِبٍ يَا حُجَّةَ اللَّهِ عَلَى خَلْقِهِ يَا سَيِّدَنَا وَمَوْلاَنَا ... <span class="translation">(continues for all 14 Infallibles) ...</span></p>
-        <p>يَا وَصِيَّ الْحَسَنِ وَالْخَلَفُ الْحُجَّةُ أَيُّهَا الْقَائِمُ الْمُنْتَظَرُ الْمَهْدِيُّ يَا بْنَ رَسُولِ اللَّهِ يَا حُجَّةَ اللَّهِ عَلَى خَلْقِهِ يَا سَيِّدَنَا وَمَوْلاَنَا ...<br><span class="translation">O successor of al-Hasan! O descendant and Argument of Allah! O Riser, Awaited, and Well-guided! O son of Allah’s Messenger! ...</span></p>
-        <p>يَا سَادَتِي وَمَوَالِيَّ إِنِّي تَوَجَّهْتُ بِكُمْ أَئِمَّتِي وَعُدَّتِي لِيَوْمِ فَقْرِي وَحَاجَتِي إِلَى اللَّهِ ...<br><span class="translation">O my chiefs and masters! I am turning my face toward Allah in the names of you, for you are my leaders ...</span></p>
-        <p>آمِينَ رَبَّ الْعَالَمِينَ<br><span class="translation">Respond to us, O Lord of the Worlds!</span></p>
+    <div class="arabic-hadith">
+        <!-- Opening Supplication -->
+        <p>اَللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَ آلِ مُحَمَّدٍ<br>
+        <span class="translation">O' Allāh send Your blessings on Muhammad and the family of Muhammad.</span></p>
+        
+        <p>بِسْمِ ٱللَّـهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ<br>
+        <span class="translation">In the Name of Allāh, the All-beneficent, the All-merciful.</span></p>
+        
+        <p>عَنْ فاطِمَةَ الزَّهْراءِ عَلَيْهَا اَلسلام بِنْتِ رَسُول ِاللّه صَلَّى اللهُ عَلَيْهِ وَآلِهِ أَنَّها قالَتْ :<br>
+        <span class="translation">Fatimatuz-Zahra, the daughter of the Prophet (s), peace be on them, is to have thus related ( an event ) :</span></p>
+        
+        <p>دَخَلَ عَلَيَّ أَبِي رَسُولُ اللّهِ صَلَّى اللهُ عَلَيْهِ وَآلِهِ فِي بَعْضِ الاْيَّامِ فَقالَ:<br>
+        <span class="translation">My father, the Prophet (s) of Allah, came to my house one day and said to me:</span></p>
+        
+        <p>السَّلامُ عَلَيْكِ يَا فاطِمَةُ<br>
+        <span class="translation">"Peace be on you, Fatimah"</span></p>
+        
+        <p>فَقُلْتُ: عَلَيْكَ السَّلامُ<br>
+        <span class="translation">I replied : "And upon you be peace"</span></p>
+        
+        <p>قالَ: إِنِّي أَجِدُ فِي بَدَنِي ضُعْفا<br>
+        <span class="translation">Then he said : "I feel weakness in my body"</span></p>
+        
+        <p>فَقُلْتُ لَهُ: أُعِيذُكَ بِاللّهِ يَا أَبَتاهُ مِنَ الضُّعْفِ<br>
+        <span class="translation">I said : "May Allah protect you from weakness, father"</span></p>
+        
+        <p>فَقَالَ: ”يَا فَاطِمَةُ! ٱئْتِينِي بِٱلْكِسَاءِ ٱلْيَمَانِيِّ فَغَطِّينِي بِهِ.<br>
+        <span class="translation">He said : "Fatimah, please bring the Yemeni cloak and cover me with it"</span></p>
+        
+        <p>فَأَتَيْتُهُ بالْكِساءِ الْـيَمانِي فَغَطَّيْتُهُ بِهِ<br>
+        <span class="translation">So, I brought the Yemeni cloak and covered him with it.</span></p>
+        
+        <p>وَصرْتُ أَنْظُرُ إِلَيْهِ وَإِذا وَجْهُهُ يَتَلَأَلَؤُ<br>
+        <span class="translation">Then, I looked at him and saw that his face was shining</span></p>
+        
+        <p>كَأَنَّهُ الْبَدْرُ فِي لَيْلَة تَمامِهِ وَكَمالِهِ<br>
+        <span class="translation">like a full moon with its glory and splendor</span></p>
+        
+        <p>فَمَا كانَتْ إِلاّ ساعَةً وَإِذا بِوَلَدِيَ الْحَسَنِ عليه السلام قَدْ أَقْبَلَ<br>
+        <span class="translation">After a while, my son Hasan came in</span></p>
+        
+        <p>وَقالَ: السَّلامُ عَلَيْكِ يَا أُمَّاهُ<br>
+        <span class="translation">and said : "Peace be on you, mother"</span></p>
+        
+        <p>فَقُلتُ: وَعَلَيْكَ السَّلامُ يَا قُرَّةَ عَيْنِي وَثَمَرَةَ فُؤَادِي<br>
+        <span class="translation">I replied : "And upon you be peace, O light of my eyes, and the delight of my heart"</span></p>
+        
+        <p>فَقَالَ: يَا أُمَّاهُ إِنِّي أَشَمُّ عِنْدَكِ رائِحَةً طَيِّبَةً<br>
+        <span class="translation">He then said : "O Mother! I smell a fragrance so sweet</span></p>
+        
+        <p>كَأَنَّها رائِحَةُ جَدِّي رَسُولِ اللّه صَلَّى اللهُ عَلَيْهِ وَآلِهِ<br>
+        <span class="translation">and so pure as that of my grandfather, the Prophet (s) of Allah"</span></p>
+        
+        <p>فَقُلْتُ: نَعَمْ إِنَّ جَدَّكَ تَحْتَ الْكِساءِ<br>
+        <span class="translation">I replied : "Yes. Your grandfather is underneath the cloak"</span></p>
+        
+        <p>فَأَقْبَلَ الْحَسَنُ نَحْوَ الْكِساءِ وَقالَ: السَّلامُ عَلَيْكَ يَا جَدَّاهُ يَا رَسُولَ اللّهِ<br>
+        <span class="translation">Hasan went near the cloak and said : "Peace be on you, my grandfather, the Prophet (s) of Allah;</span></p>
+        
+        <p>أَتَأْذَنُ لِي أَنْ أَدْخُلَ مَعَكَ تَحْتَ الْكِساءِ<br>
+        <span class="translation">May I enter the cloak with you?"</span></p>
+        
+        <p>فَقالَ: وَعَلَيْكَ السَّلامُ يَا وَلَدِي وَيَا صاحِبَ حَوْضِي<br>
+        <span class="translation">He replied : "And upon you be peace, my son and the master of my fountain (Kauthar),</span></p>
+        
+        <p>قَدْ أَذِنْتُ لَكَ ِ<br>
+        <span class="translation">you are given the permission to enter"</span></p>
+        
+        <p>فَدَخَلَ مَعَهُ تَحْتَ الْكِساء<br>
+        <span class="translation">So, Hasan entered the cloak with him</span></p>
+        
+        <p>فَمَا كانَتْ إِلاَّ ساعَةً وَإِذا بِوَلَدِيَ الْحُسَيْنِ قَدْ أَقْبَلَ وَقالَ<br>
+        <span class="translation">After a while, my Husain came in and said :</span></p>
+        
+        <p>السَّلامُ عَلَيْكِ يَا أُمَّاهُ.<br>
+        <span class="translation">"Peace be on you, mother"</span></p>
+        
+        <p>فَقُلْتُ: وَعَلَيْكَ السَّلامُ يَا وَلَدِي وَيَا قُرَّةَ عَيْنِي وَثَمَرَةَ فُؤَادِي.<br>
+        <span class="translation">I replied : "And upon you be peace, O light of my eyes, and the delight of my heart"</span></p>
+        
+        <p>فَقَالَ لِي: يَا أُمَّاهُ إِنِّي أَشَمُّ عِنْدَكِ رائِحَةً طَيِّبَةً<br>
+        <span class="translation">He then said : "O Mother! I smell a fragrance so sweet</span></p>
+        
+        <p>كَأَنَّها رائِحَةُ جَدِّي رَسُولِ اللّهُ صَلَّى اللهُ عَلَيْهِ وَآلِهِ.<br>
+        <span class="translation">and so pure as that of my grandfather, the Prophet (s) of Allah"</span></p>
+        
+        <p>فَقُلْتُ: نَعَمْ إِنَّ جَدَّكَ وَأَخاكَ تَحْتَ الْكِساءِ.<br>
+        <span class="translation">I replied : "Yes. Your grandfather and your brother are underneath the cloak"</span></p>
+        
+        <p>فَدَنَا الْحُسَيْنُ نَحْوَ الْكِساءِ<br>
+        <span class="translation">Husain stepped towards the cloak</span></p>
+        
+        <p>وَقالَ: السَّلامُ عَلَيْكَ يَا جَدَّاهُ السَّلامُ عَلَيْكَ يَا مَنِ اخْتارَهُ اللّهُ<br>
+        <span class="translation">and said : "Peace be on you, my grandfather, the Chosen of Allah;</span></p>
+        
+        <p>أَتَأْذَنُ لِي أَنْ أَكُونَ مَعَكُما تَحْتَ الْكِساءِ<br>
+        <span class="translation">May I enter the cloak with you?"</span></p>
+        
+        <p>فَقالَ: وَعَلَيْكَ السَّلامُ يَا وَلَدِي<br>
+        <span class="translation">He replied : "And upon you be peace, my son</span></p>
+        
+        <p>وَيَا شافِعَ أُمَّتِي قَدْ أَذِنْتُ لَكَ.<br>
+        <span class="translation">and interceder of my followers, you are given the permission to enter"</span></p>
+        
+        <p>فَدَخَلَ مَعَهُما تَحْتَ الْكِساء<br>
+        <span class="translation">So, Husain entered the cloak with them.</span></p>
+        
+        <p>فَأَ قْبَلَ عِنْدَ ذلِكَ أَبُو الْحَسَنِ عَلِيُّ بْنُ أَبِي طالِبٍ<br>
+        <span class="translation">After a while, Abul Hasan, Ali bin Abi Talib came in</span></p>
+        
+        <p>وَقالَ: السَّلامُ عَلَيْكِ يَا بِنْتَ رَسُولِ اللّهِ.<br>
+        <span class="translation">and said : "Peace be on you, O daughter of the Prophet (s) of Allah"</span></p>
+        
+        <p>فَقُلْتُ: وَعَلَيْكَ السَّلامُ يَا أَبَا الْحَسَنِ وَيَا أَمِيرَ الْمُؤْمِنِينَ.<br>
+        <span class="translation">I replied : "And upon you be peace, O father of Hasan, and the Commander of the faithful"</span></p>
+        
+        <p>فَقالَ: يَا فاطِمَةُ إِنِّي أَشَمُّ عِنْدَكِ رائِحَةً طَيِّبَةً<br>
+        <span class="translation">He then said : "O Fatima! I smell a fragrance so sweet and so pure</span></p>
+        
+        <p>كَانَّهَا رائِحَةُ أَخِي وَابْنِ عَمِّي رَسُولِ اللّه صَلَّى اللهُ عَلَيْهِ وَآلِهِ.<br>
+        <span class="translation">as that of my brother and my cousin, the Prophet (s) of Allah"</span></p>
+        
+        <p>فَقُلْتُ: نَعَمْ هَا هُوَ مَعَ وَلَدَيْكَ تَحْتَ الْكِساءِ<br>
+        <span class="translation">I replied: "Yes. He is underneath the cloak with your two sons"</span></p>
+        
+        <p>فَأَقْبَلَ عَلِيٌّ نَحْوَ الْكِساءِ<br>
+        <span class="translation">So, Ali went near the cloak</span></p>
+        
+        <p>وَقالَ: السَّلامُ عَلَيْكَ يَا رَسُولَ اللّهِ<br>
+        <span class="translation">and said : "Peace be on you, Prophet (s) of Allah;</span></p>
+        
+        <p>وأَتَأْذَنُ لِي أَنْ أَكُونَ مَعَكُمْ تَحْتَ الْكِساءِ<br>
+        <span class="translation">May I enter the cloak with you?"</span></p>
+        
+        <p>قالَ لَهُ: وَعَلَيْكَ السَّلامُ يَا أَخِي ويَا وَصِيِّي<br>
+        <span class="translation">He replied : "And upon you be peace, my brother, my successor,</span></p>
+        
+        <p>وَخَلِيفَتِي وَصاحِبَ لِوَائِي قَدْ أَذِنْتُ لَكَ<br>
+        <span class="translation">my successor, and my standard bearer, you are given the permission to enter"</span></p>
+        
+        <p>فَدَخَلَ عَلِيٌّ تَحْتَ الْكِساءِ<br>
+        <span class="translation">So, Ali entered the cloak with them.</span></p>
+        
+        <p>ثُمَّ أَتَيْتُ نَحْوَ الْكِساءِ<br>
+        <span class="translation">Then I stepped forward</span></p>
+        
+        <p>وَقُلْتُ: السَّلامُ عَلَيْكَ يَا أَبَتاهُ يَا رَسُولَ اللّهِ<br>
+        <span class="translation">and said : "Peace be on you, my father, O Prophet (s) of Allah;</span></p>
+        
+        <p>أَتَأْذَنُ لِي أَنْ أَكُونَ مَعَكُمْ تَحْتَ الْكِساءِ<br>
+        <span class="translation">May I enter the cloak with you?"</span></p>
+        
+        <p>قالَ: وَعَلَيْكِ السَّلامُ يَا بِنْتِي وَيَا بِضْعَتِي قَدْ أَذِنْتُ لَكِ<br>
+        <span class="translation">He replied : "And upon you be peace, my daughter, O part of myself; you are given the permission to enter"</span></p>
+        
+        <p>فَدَخَلْتُ تَحْتَ الْكِساءِ<br>
+        <span class="translation">So, I entered the cloak with them.</span></p>
+        
+        <p>فَلَمَّا اكْتَمَلْنا جَمِيعاً تَحْتَ الْكِساءِ أَخَذَ أَبِي رَسُولُ اللّه بِطَرَفَي الْكِساءِ<br>
+        <span class="translation">Getting together underneath the cloak, my father, the Prophet (s) of Allah, held the two ends of the cloak</span></p>
+        
+        <p>وَأَوْمَأَ بِيَدِهِ ٱلْيُمْـنٰى إِلَى السَّماءِ وَقالَ:<br>
+        <span class="translation">and raised his right hand towards the heavens and prayed :</span></p>
+        
+        <p>اللّهُمَّ إِنَّ هَؤُلاءِ أَهْلُ بَيْتِي وَخاصَّتِي وَحامَّتِي<br>
+        <span class="translation">"O Allah, these are the people of my Household (Ahlul-Bayt). They are my confidants and my supporters.</span></p>
+        
+        <p>لَحْمُهُمْ لَحْمِي وَدَمُهُمْ دَمِي<br>
+        <span class="translation">Their flesh is my flesh and their blood is my blood.</span></p>
+        
+        <p>يُؤْلِمُنِي مَا يُؤْلِمُهُمْ<br>
+        <span class="translation">Whoever hurts them, hurts me too.</span></p>
+        
+        <p>وَيَحْزُنُنِي مَا يَحْزُنُهُمْ<br>
+        <span class="translation">Whoever displeases them, displeases me too.</span></p>
+        
+        <p>أَنَا حَرْبٌ لِمَنْ حارَبَهُمْ<br>
+        <span class="translation">I am at war with those who are at war with them.</span></p>
+        
+        <p>وَسِلْمٌ لِمَنْ سالَمَهُمْ<br>
+        <span class="translation">I am at peace with those who are at peace with them.</span></p>
+        
+        <p>وَعَدُوٌّ لِمَنْ عَاداهُمْ<br>
+        <span class="translation">I am the enemy of their enemies</span></p>
+        
+        <p>وَمُحِبٌّ لِمَنْ أَحَبَّهُمْ<br>
+        <span class="translation">and I am the friend of their friends.</span></p>
+        
+        <p>إِنَّهُمْ مِنِّي وَأَنَا مِنْهُمْ<br>
+        <span class="translation">They are from me and I am from them.</span></p>
+        
+        <p>فَاجْعَلْ صَلَواتِكَ وَبَرَكاتِكَ وَرَحْمَتَكَ<br>
+        <span class="translation">O Allah! Bestow Your Blessings, Benevolence,</span></p>
+        
+        <p>وَغُفْرانَكَ وَرِضْوانَكَ عَلَيَّ<br>
+        <span class="translation">Forgiveness and Your pleasure upon me and upon them.</span></p>
+        
+        <p>وَعَلَيْهِمْ وَأَذْهِبْ عَنْهُمُ الرِّجْسَ وَطَهِّرْهُمْ تَطْهِيراً.<br>
+        <span class="translation">And keep them away from impurity (and flaws) and keep them thoroughly purified"</span></p>
+        
+        <p>فَقالَ اللّهُ عَزَّ وَجَلَّ:<br>
+        <span class="translation">Then the Lord, Almighty Allah said :</span></p>
+        
+        <p>يَا مَلائِكَتِي وَيَا سُكَّانَ سَمَاواتِي<br>
+        <span class="translation">"O My angels! O Residents of My Heavens,</span></p>
+        
+        <p>إِنِّي إمَا خَلَقْتُ سَماءً مَبْنِيَّةً وَلاَ أَرْضاً مَدْحِيَّةً وَلاَ قَمَراً مُنِيراً<br>
+        <span class="translation">verily, I have not created the erected Sky, the stretched earth, the illuminated moon,</span></p>
+        
+        <p>وَلاَ شَمْساً مُضِيئَةً وَلاَ فَلَكاً يَدُورُ وَلاَ بَحْراً يَجْرِي وَلاَ فُلْكاً يَسْرِي<br>
+        <span class="translation">the bright sun, the rotating planets, the flowing seas and the sailing ships,</span></p>
+        
+        <p>إِلاَّ فِي مَحَبَّةِ هَؤلاءِ الْخَمْسَةِ الَّذِينَ هُمْ تَحْتَ الْكِساءِ.<br>
+        <span class="translation">but for the love of these Five underneath the cloak"</span></p>
+        
+        <p>فَقالَ الاْمِينُ جَبْرائِيلُ: يَارَبِّ وَمَنْ تَحْتَ الْكِساءِ<br>
+        <span class="translation">Gabriel, the trusted angel, asked : "Who are under the cloak?"</span></p>
+        
+        <p>فَقالَ عَزَّ وَجَلَّ:<br>
+        <span class="translation">The Almighty answered :</span></p>
+        
+        <p>هُمْ أَهْلُ بَيْتِ النُّبُوَّةِ وَمَعْدِنُ الرِّسالَةِ<br>
+        <span class="translation">"They are the Household of the Prophet (s) and the assets of Prophet hood.</span></p>
+        
+        <p>هُمْ فاطِمَةُ وَأَبُوها وَبَعْلُها وَبَنُوها.<br>
+        <span class="translation">They are : Fatimah, her father, her husband and her two sons"</span></p>
+        
+        <p>فَقالَ جَبْرائِيلُ: يَارَبِّ أَتَأْذَنُ لِي أَنْ أَهْبِطَ إِلَى الاْرْضِ<br>
+        <span class="translation">Gabriel said : "O Lord, May I fly to earth</span></p>
+        
+        <p>لأِكُونَ مَعَهُمْ سادِساً<br>
+        <span class="translation">to be the sixth of them?"</span></p>
+        
+        <p>فَقالَ اللّهُ: نَعَمْ قَدْ أَذِنْتُ لَكَ.<br>
+        <span class="translation">Allah replied: "Yes. You are given the permission"</span></p>
+        
+        <p>فَهَبَطَ الاْمِينُ جَبْرائِيلُ وَقالَ: السَّلامُ عَلَيْكَ يَا رَسُولَ اللّهِ<br>
+        <span class="translation">Gabriel, the trusted, landed near them and said : "Peace be on you, O Prophet (s) of Allah.</span></p>
+        
+        <p>الْعَلِيُّ الاْعْلى يُقْرِئُكَ السَّلام َوَيَخُصُّكَ بِالتَّحِيَّةِ وَالاْكْرامِ<br>
+        <span class="translation">The All-Highest conveys His peace on you and His greetings</span></p>
+        
+        <p>وَيَقُوْلُ لَكَ :وَعِزَّتِي وَجَلالِي<br>
+        <span class="translation">and says: "By My Honor and Glory, O My angels! O Residents of My Heavens,</span></p>
+        
+        <p>إِنِّي مَا خَلَقْتُ سَماءً مَبْنِيَّةً<br>
+        <span class="translation">verily, I have not created the erected Sky,</span></p>
+        
+        <p>وَلاَ أَرْضاً مَدْحِيَّةً وَلاَ قَمَراً مُنِيراً وَلاَ شَمْساً مُضِيئَةً<br>
+        <span class="translation">the stretched earth, the illuminated moon, the bright sun,</span></p>
+        
+        <p>وَلاَ فَلَكاً يَدُورُ وَلاَ بَحْراً يَجْرِي وَلاَ فُلْكاً يَسْرِي<br>
+        <span class="translation">the rotating planets, the flowing seas and the sailing ships,</span></p>
+        
+        <p>إِلاَّ لاِجْلِكُمْ وَمَحَبَّتِكُمْ<br>
+        <span class="translation">but for your sake and love"</span></p>
+        
+        <p>وَقَدْ أَذِنَ لِي أَنْ أَدْخُلَ مَعَكُمْ<br>
+        <span class="translation">and Allah has given me permission to enter the cloak with you.</span></p>
+        
+        <p>فَهَلْ تَأْذَنُ لِي يَا رَسُولَ اللّه<br>
+        <span class="translation">May I join you, O Prophet (s) of Allah?"</span></p>
+        
+        <p>فَقالَ رَسُولُ اللّه: وَعَلَيْكَ السَّلامُ يَا أَمِينَ وَحْي اللّهِ<br>
+        <span class="translation">The Prophet (s) replied : "And peace be on you, O trusted bearer of Allah's Revelations!</span></p>
+        
+        <p>فإِنَّهُ نَعَمْ قَدْ أَذِنْتُ لَكَ.<br>
+        <span class="translation">you are granted the permission"</span></p>
+        
+        <p>فَدَخَلَ جَبْرائِيلُ مَعَنا تَحْتَ الْكِساءِ<br>
+        <span class="translation">So, Gabriel entered the cloak with us</span></p>
+        
+        <p>فَقالَ لاِبِي: إِنَّ اللّهَ قَدْ أَوْحَى إِلَيْكُمْ يَقُولُ:<br>
+        <span class="translation">and said to my father : Allah sends His Revelations to you;</span></p>
+        
+        <p>إِنَّمَا يُرِيدُ اللّهُ لِيُذْهِبَ عَنْكُمُ الرِّجْسَ<br>
+        <span class="translation">"Verily Allah's desire is to keep you away from impurity (and flaws),</span></p>
+        
+        <p>أَهْلَ الْبَيْتِ وَيُطَهِّرَكُمْ تَطْهِيراً.<br>
+        <span class="translation">O People of Household (Ahlul-Bayt) and keep you thoroughly purified"</span></p>
+        
+        <p>فَقالَ عَلِيٌّ لاِبِي: يَا رَسُولَ اللّه أَخْبِرْنِي مَا لِجُلُوسِنا<br>
+        <span class="translation">Then Ali said to my father : "O Prophet (s) of Allah, tell me</span></p>
+        
+        <p>هذَا تَحْتَ الْكِساءِ مِنَ الْفَضْلِ عِنْدَ اللّهُ<br>
+        <span class="translation">what significance has Allah given for getting together underneath this cloak ?"</span></p>
+        
+        <p>فَقالَ النَّبِيُّ صَلَّى اللهُ عَلَيْهِ وَآلِهِ:<br>
+        <span class="translation">The Prophet (s) replied :</span></p>
+        
+        <p>وَالَّذِي بَعَثَنِي بِالْحَقِّ نَبِيَّاً<br>
+        <span class="translation">"By Him who rightfully appointed me a Prophet (s)</span></p>
+        
+        <p>وَاصْطَفانِي بِالرِّسالَةِ نَجِيّاً<br>
+        <span class="translation">and chose me a Messenger for the salvation of the mankind.</span></p>
+        
+        <p>مَا ذُكِرَ خَبَرُنا هذَا فِي مَحْفِلٍ مِنْ مَحافِلِ<br>
+        <span class="translation">whenever and wherever an assembly</span></p>
+        
+        <p>أَهْلِ الاْرْضِ وَفِيهِ جَمْعٌ مِنْ شِيعَتِنا وَمُحِّبِينا<br>
+        <span class="translation">of our followers and friends mention this event,</span></p>
+        
+        <p>إِلاَّ وَنَزَلَتْ عَلَيْهِمُ الرَّحْمَةُ<br>
+        <span class="translation">Allah will bestow on them His Blessings and Mercy;</span></p>
+        
+        <p>وَحَفَّتْ بِهِمُ الْمَلائِكَةُ وَاسْتَغْفَرَتْ لَهُمْ إِلى أَنْ يَتَفَرَّقُوا.<br>
+        <span class="translation">angels will encircle them asking Allah the remission of their sins until the assembly disperses</span></p>
+        
+        <p>فَقالَ عَلِيٌّ عَلَيْهِ السَّلامُ: إِذنْ وَاللّهِ فُزْنَا وَفازَ شِيعَتُنا وَرَبِّ الْكَعْبَةِ.<br>
+        <span class="translation">So Ali said : "Verily, by the Lord of Kabaa! we and our followers are the winners"</span></p>
+        
+        <p>فَقالَ أَبِي رَسُولُ اللّهِ صَلَّى اللهُ عَلَيْهِ وَآلِهِ:<br>
+        <span class="translation">Then my father replied :</span></p>
+        
+        <p>يَا عَلِيُّ وَالَّذِي بَعَثَنِي بِالْحَقِّ نَبِيّاً<br>
+        <span class="translation">"By Him who rightfully appointed me a Prophet</span></p>
+        
+        <p>وَاصْطَفَانِي بِالرِّسالَةِ نَجِيّاً<br>
+        <span class="translation">and chose me a Messenger for the salvation of the mankind,</span></p>
+        
+        <p>مَا ذُكِرَ خَبَرُنا هذَا فِي مَحْفِلٍ مِنْ مَحَافِلِ أَهْلِ الاْرْضِ<br>
+        <span class="translation">whenever and wherever an assembly</span></p>
+        
+        <p>وَفِيهِ جَمْعٌ مِنْ شِيعَتِنا وَمُحِبِّينا<br>
+        <span class="translation">our followers and friends mentions this event,</span></p>
+        
+        <p>وَفِيهِمْ مَهْمُومٌ إِلاَّ وَفَرَّجَ اللّهُ هَمَّهُ<br>
+        <span class="translation">there shall remain none grieved but Allah will remove his grief,</span></p>
+        
+        <p>وَلاَ مَغْمُومٌ إِلاَّ وَكَشَفَ اللّهُ غَمَّهُ<br>
+        <span class="translation">there shall remain none distressed but Allah will dispel his distress,</span></p>
+        
+        <p>وَلاَ طالِبُ حاجَةٍ إِلاَّ وَقَضَى اللّهُ حاجَتَهُ.<br>
+        <span class="translation">there shall remain none wish-seeker but Allah will grant his wish."</span></p>
+        
+        <p>فَقالَ عَلِيٌّ عَلَيْهِ السَّلامُ: إِذن وَاللّه فُزْنا وَسُعِدْنا وَكَذلِكَ شِيعَتُنا<br>
+        <span class="translation">`Ali, peace be upon him, said, "Then, we have won and attained pleasure. I swear it by Allah. So have our adherents;</span></p>
+        
+        <p>فازُوا وَسُعِدُوا فِي الدُّنْيا وَالاْخِرَةِ وَرَبِّ الْكَعْبَةِ.<br>
+        <span class="translation">they have won and attained pleasure in this world and in the Hereafter. I swear it by the Lord of the Ka`bah."</span></p>
+        
+        <p>اَللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَآلِ مُحَمَّدٍ<br>
+        <span class="translation">O' Allāh send Your blessings on Muhammad and the family of Muhammad.</span></p>
     </div>
-    <!-- audio player -->
+    
+    <!-- Audio Player for Hadith Kisa (MP3) -->
     <div class="audio-player-section">
-        <h3><i class="fas fa-headphones-alt"></i> تلاوة دعائے توسل</h3>
-        <audio controls><source src="tawassul.mp3" type="audio/mpeg">Your browser does not support audio.</audio>
-        <p style="color:#bfa98e; margin-top:10px;">بہترین آواز میں دعائے توسل سنیں</p>
-    </div>
-    <!-- Significance panel for Tawassul (brief, but similar style) -->
-    <div class="significance-panel">
-        <h3>Significance of Dua Tawassul</h3>
-        <div class="lang-toggle">
-            <span class="lang-btn active" id="showEngTawassul">English</span>
-            <span class="lang-btn" id="showUrduTawassul">اردو</span>
-        </div>
-        <div id="tawassulSignificanceEng" class="significance-eng">
-            <p>Dua Tawassul is a well-known supplication in which the believer seeks intercession through the fourteen Infallibles (Prophet Muhammad, Fatima, and the twelve Imams). It is recommended to be recited on various occasions, especially on Wednesdays. By tawassul (seeking a means) to the Ahl al-Bayt, one hopes for the acceptance of prayers and fulfillment of needs. The supplication emphasizes their lofty station and our need for their intercession before Allah.</p>
-        </div>
-        <div id="tawassulSignificanceUrdu" class="significance-urdu" style="display:none; font-family:'Noto Nastaliq Urdu','Jameel Noori Nastaleeq',serif;">
-            <p>دعائے توسل ایک معروف دعا ہے جس میں بندہ چودہ معصومین (حضرت محمدؐ، حضرت فاطمہؑ اور بارہ اماموں) کے وسیلے سے اللہ سے التجا کرتا ہے۔ اس دعا کے پڑھنے کی خاص تاکید ہے، خصوصاً بدھ کے دن۔ اہل بیتؑ سے توسل کرتے ہوئے دعا کی قبولیت اور حاجات کی برآوری کی امید کی جاتی ہے۔ یہ دعا ان بزرگ ہستیوں کے مقام اور اللہ کے ہاں ان کی شفاعت کی اہمیت کو واضح کرتی ہے۔</p>
-        </div>
+        <h3><i class="fas fa-headphones-alt"></i> تلاوة حدیث کساء</h3>
+        <audio controls>
+            <source src="H_Kisa.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <p style="color:#bfa98e; margin-top:10px;">بہترین آواز میں حدیث کساء سنیں</p>
     </div>
   </div>
 
-  <!-- footer (same) -->
-  <footer class="footer">...</footer>
+  <footer class="footer">
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61583506752176" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/mashal_e_hussain/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@Mashal-e-Hussain" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+      <a href="https://whatsapp.com/channel/0029Vb0Ga3w8F2pHJXonzV1f" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p>© 2026 Mashal-e-Hussain. All rights reserved.</p>
+  </footer>
 
+  <!-- Enhanced JavaScript -->
   <script>
     (function() {
-      // Existing page elements
+      // Main elements
       const library = document.getElementById('libraryContainer');
+      const bookDetail = document.getElementById('bookDetail');
       const ziyaratPage = document.getElementById('ziyaratPage');
       const hadithPage = document.getElementById('hadithPage');
-      // New dua pages
-      const duaKumaylPage = document.getElementById('duaKumaylPage');
-      const duaTawassulPage = document.getElementById('duaTawassulPage');
       
       // Buttons
       const openZiyaratBtn = document.getElementById('openZiyaratBtn');
+      const backFromZiyarat = document.getElementById('backFromZiyarat');
+      const backToLibrary = document.getElementById('backToLibrary');
+      const backFromHadith = document.getElementById('backFromHadith');
+      
+      // Hadith Kisa Button
       const hadithKisaBtn = document.getElementById('hadithKisaBtn');
+      
+      // Coming Soon Buttons
       const duaKumaylBtn = document.getElementById('duaKumaylBtn');
       const duaTawassulBtn = document.getElementById('duaTawassulBtn');
       
-      // Back buttons
-      document.getElementById('backFromDuaKumayl').addEventListener('click', function(e) {
-        e.preventDefault();
-        library.style.display = 'block';
-        duaKumaylPage.classList.remove('active-detail');
-      });
-      document.getElementById('backFromDuaTawassul').addEventListener('click', function(e) {
-        e.preventDefault();
-        library.style.display = 'block';
-        duaTawassulPage.classList.remove('active-detail');
-      });
-      // existing back buttons ...
-      // (same as original for Ziyarat/Hadith)
+      // Book detail elements
+      const detailCoverContainer = document.getElementById('detailCoverContainer');
+      const detailTitle = document.getElementById('detailTitle');
+      const detailFullTitle = document.getElementById('detailFullTitle');
+      const detailAuthor = document.getElementById('detailAuthor');
+      const detailLang = document.getElementById('detailLang');
+      const detailSubject = document.getElementById('detailSubject');
+      const detailDesc = document.getElementById('detailDesc');
+      const detailTags = document.getElementById('detailTags');
+      const readPdfBtn = document.getElementById('readPdfBtn');
 
-      // open pages
-      openZiyaratBtn.addEventListener('click', (e)=>{ e.preventDefault(); hideAll(); ziyaratPage.classList.add('active-detail'); });
-      hadithKisaBtn.addEventListener('click', (e)=>{ e.preventDefault(); hideAll(); hadithPage.classList.add('active-detail'); });
-      duaKumaylBtn.addEventListener('click', (e)=>{ e.preventDefault(); hideAll(); duaKumaylPage.classList.add('active-detail'); });
-      duaTawassulBtn.addEventListener('click', (e)=>{ e.preventDefault(); hideAll(); duaTawassulPage.classList.add('active-detail'); });
-      
-      function hideAll() {
+      // Function to reset detail cover
+      function setDetailCover(pic) {
+        detailCoverContainer.innerHTML = '';
+        const newImg = document.createElement('img');
+        newImg.id = 'detailCoverImg';
+        newImg.alt = 'cover';
+        newImg.onerror = function() {
+          detailCoverContainer.innerHTML = '<i class="fas fa-book-open"></i>';
+        };
+        if (pic) {
+          newImg.src = pic;
+          detailCoverContainer.appendChild(newImg);
+        } else {
+          detailCoverContainer.innerHTML = '<i class="fas fa-book-open"></i>';
+        }
+      }
+
+      // Handle read detail button clicks (for books)
+      document.querySelectorAll('.read-detail-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const card = this.closest('.book-card');
+          if (!card) return;
+
+          // Hide library and other pages, show book detail
+          library.style.display = 'none';
+          ziyaratPage.classList.remove('active-detail');
+          hadithPage.classList.remove('active-detail');
+          bookDetail.classList.add('active-detail');
+
+          // Extract data
+          const title = card.dataset.title || 'Untitled';
+          const author = card.dataset.author || 'Unknown';
+          const lang = card.dataset.lang || 'Urdu';
+          const subject = card.dataset.subject || 'General';
+          const tagsRaw = card.dataset.tags || 'Islam';
+          const desc = card.dataset.desc || 'No description available.';
+          const pic = card.dataset.pic || '';
+          
+          // Get PDF link
+          const pdfLink = card.querySelector('a.btn') ? card.querySelector('a.btn').getAttribute('href') : '#';
+
+          // Set cover image
+          setDetailCover(pic);
+          
+          // Update all text fields
+          detailTitle.innerText = title;
+          detailFullTitle.innerText = title;
+          detailAuthor.innerText = author;
+          detailLang.innerText = lang;
+          detailSubject.innerText = subject;
+          detailDesc.innerText = desc;
+
+          // Tags
+          const tagsArray = tagsRaw.split(',').map(t => t.trim());
+          detailTags.innerHTML = '';
+          tagsArray.forEach(t => {
+            if (t) {
+              const span = document.createElement('span');
+              span.className = 'tag';
+              span.innerText = t;
+              detailTags.appendChild(span);
+            }
+          });
+
+          // Set PDF button link
+          readPdfBtn.href = pdfLink;
+
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+
+      // Back to library from book detail
+      backToLibrary.addEventListener('click', function(e) {
+        e.preventDefault();
+        library.style.display = 'block';
+        bookDetail.classList.remove('active-detail');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // OPEN ZIYARAT PAGE
+      openZiyaratBtn.addEventListener('click', function(e) {
+        e.preventDefault();
         library.style.display = 'none';
-        ziyaratPage.classList.remove('active-detail');
+        bookDetail.classList.remove('active-detail');
         hadithPage.classList.remove('active-detail');
-        duaKumaylPage.classList.remove('active-detail');
-        duaTawassulPage.classList.remove('active-detail');
+        ziyaratPage.classList.add('active-detail');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // BACK FROM ZIYARAT PAGE
+      backFromZiyarat.addEventListener('click', function(e) {
+        e.preventDefault();
+        library.style.display = 'block';
+        ziyaratPage.classList.remove('active-detail');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // OPEN HADITH KISA PAGE
+      hadithKisaBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        library.style.display = 'none';
+        bookDetail.classList.remove('active-detail');
+        ziyaratPage.classList.remove('active-detail');
+        hadithPage.classList.add('active-detail');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // BACK FROM HADITH PAGE
+      backFromHadith.addEventListener('click', function(e) {
+        e.preventDefault();
+        library.style.display = 'block';
+        hadithPage.classList.remove('active-detail');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // COMING SOON ALERTS
+      if (duaKumaylBtn) {
+        duaKumaylBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          alert('دعائے کمیل کی خصوصیت جلد آرہی ہے۔ (Dua Kumayl coming soon)');
+        });
       }
-      
-      // significance toggle for Kumayl
-      const showEngKumayl = document.getElementById('showEngKumayl');
-      const showUrduKumayl = document.getElementById('showUrduKumayl');
-      const engDivK = document.getElementById('kumaylSignificanceEng');
-      const urduDivK = document.getElementById('kumaylSignificanceUrdu');
-      if(showEngKumayl && showUrduKumayl) {
-        showEngKumayl.addEventListener('click', ()=>{
-          showEngKumayl.classList.add('active'); showUrduKumayl.classList.remove('active');
-          engDivK.style.display = 'block'; urduDivK.style.display = 'none';
-        });
-        showUrduKumayl.addEventListener('click', ()=>{
-          showUrduKumayl.classList.add('active'); showEngKumayl.classList.remove('active');
-          urduDivK.style.display = 'block'; engDivK.style.display = 'none';
-        });
-      }
-      // significance toggle for Tawassul
-      const showEngT = document.getElementById('showEngTawassul');
-      const showUrduT = document.getElementById('showUrduTawassul');
-      const engDivT = document.getElementById('tawassulSignificanceEng');
-      const urduDivT = document.getElementById('tawassulSignificanceUrdu');
-      if(showEngT && showUrduT) {
-        showEngT.addEventListener('click', ()=>{
-          showEngT.classList.add('active'); showUrduT.classList.remove('active');
-          engDivT.style.display = 'block'; urduDivT.style.display = 'none';
-        });
-        showUrduT.addEventListener('click', ()=>{
-          showUrduT.classList.add('active'); showEngT.classList.remove('active');
-          urduDivT.style.display = 'block'; engDivT.style.display = 'none';
+      if (duaTawassulBtn) {
+        duaTawassulBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          alert('دعائے توسل کی خصوصیت جلد آرہی ہے۔ (Dua Tawassul coming soon)');
         });
       }
 
-      // Reattach original back links for ziyarat/hadith (present in original HTML, but ensure)
-      document.getElementById('backFromZiyarat').addEventListener('click', (e)=>{ e.preventDefault(); library.style.display='block'; ziyaratPage.classList.remove('active-detail'); });
-      document.getElementById('backFromHadith').addEventListener('click', (e)=>{ e.preventDefault(); library.style.display='block'; hadithPage.classList.remove('active-detail'); });
-      
-      // default state
+      // Category tabs functionality (placeholder)
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          // Add your category filtering logic here if needed
+        });
+      });
+
+      // Initial state: show library, hide details
       library.style.display = 'block';
+      bookDetail.classList.remove('active-detail');
+      ziyaratPage.classList.remove('active-detail');
+      hadithPage.classList.remove('active-detail');
+      
+      // Handle image loading errors for book fronts
+      document.querySelectorAll('.book-front img').forEach(img => {
+        img.addEventListener('error', function() {
+          const fallbackIcon = this.getAttribute('data-fallback') || 'fa-book-open';
+          this.parentElement.classList.add('fallback');
+          this.outerHTML = `<i class="fas ${fallbackIcon}"></i>`;
+        });
+      });
     })();
   </script>
-  <!-- ensure original Ziyarat/Hadith content is present (copied from original but truncated here) -->
-  <!-- for proper functionality, the full text of those pages from the original code should be placed, but in this answer due to length we keep the structure -->
 </body>
 </html>
