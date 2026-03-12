@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Dua Tawassul – Mashal-e-Hussain</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23d4af37'>🕋</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', 'Amiri', sans-serif;
+      background-color: #0a0f0c; color: #e5e5e5;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.05"><path d="M60 40 L140 40 L160 80 L140 120 L60 120 L40 80 L60 40" fill="none" stroke="%23d4af37" stroke-width="1.5"/><circle cx="100" cy="80" r="12" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M70 150 Q100 170 130 150" stroke="%23d4af37" fill="none" stroke-width="1.2"/></svg>');
+      background-repeat: repeat; line-height: 1.6;
+    }
+    .navbar {
+      background: #0a120e; padding: clamp(10px,2vw,15px) 0; border-bottom: 2px solid #d4af37;
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+      background: rgba(10, 18, 14, 0.95);
+    }
+    .nav-container {
+      max-width: min(1400px, 95%); margin: 0 auto; padding: 0 clamp(15px,3vw,25px);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+    }
+    .logo { font-family: 'Amiri', serif; font-size: clamp(1.5rem,4vw,2.5rem); color: #d4af37; text-decoration: none; }
+    .nav-links { display: flex; gap: clamp(12px,3vw,25px); flex-wrap: wrap; }
+    .nav-links a { color: #efefef; text-decoration: none; font-size: clamp(0.9rem,2vw,1.2rem); padding-bottom: 5px; border-bottom: 2px solid transparent; transition: all 0.3s ease; }
+    .nav-links a:hover, .nav-links a.active { color: #d4af37; border-bottom-color: #d4af37; }
+    
+    .dua-page {
+      max-width: min(1400px, 95%); margin: clamp(20px,5vw,40px) auto;
+      background: #132016; border: 2px solid #d4af37; border-radius: clamp(25px,5vw,40px);
+      padding: clamp(30px,6vw,50px); box-shadow: 0 20px 0 #0a2f1f;
+    }
+    
+    .dua-header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #d4af37; padding-bottom: 20px; }
+    .dua-header h2 { font-family: 'Noto Nastaliq Urdu', 'Amiri', serif; font-size: clamp(2.5rem,6vw,3.5rem); color: #d4af37; margin-bottom: 10px; }
+    .dua-header p { font-size: 1.2rem; color: #bfa98e; }
+    
+    .arabic-dua {
+      font-family: 'Amiri', 'Noto Naskh Arabic', serif; font-size: clamp(1.3rem,2.8vw,1.9rem);
+      line-height: 2.2; text-align: right; direction: rtl; background: #1f3327;
+      padding: 30px 25px; border-radius: 30px; border: 1px solid #5a7c66; margin-bottom: 30px;
+      max-height: 650px; overflow-y: auto; color: #f0ead6; box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+    }
+    .arabic-dua p { margin-bottom: 20px; }
+    .arabic-dua .transliteration {
+      font-family: 'Segoe UI', 'Amiri', sans-serif; font-size: 1rem; color: #bfa98e;
+      direction: ltr; text-align: left; margin-top: 5px; border-top: 1px dashed #5a7c66; padding-top: 5px;
+    }
+    
+    .audio-player-section {
+      background: #1a2f21; border-radius: 60px; padding: 20px 30px; margin: 30px 0 20px;
+      border: 2px solid #d4af37; text-align: center;
+    }
+    .audio-player-section h3 { color: #d4af37; font-size: 1.8rem; margin-bottom: 15px; font-family: 'Noto Nastaliq Urdu', serif; }
+    .audio-player-section audio { width: 100%; max-width: 600px; border-radius: 40px; background: #0a2f1f; }
+    
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px; color: #bfa98e; text-decoration: none;
+      font-size: 1.2rem; margin-bottom: 30px; border: 1px solid #5a7c66; padding: 8px 20px; border-radius: 40px;
+      transition: all 0.2s;
+    }
+    .back-link:hover { background: #2a3f31; color: #d4af37; border-color: #d4af37; }
+    
+    .footer {
+      background: linear-gradient(180deg, #07120b, #0a1a0f); padding: 30px 0 20px;
+      margin-top: 50px; border-top: 3px solid #d4af37; text-align: center;
+    }
+    .social-icons { display: flex; justify-content: center; gap: 30px; margin-bottom: 15px; flex-wrap: wrap; }
+    .social-icons a { color: #d4af37; font-size: 2.2rem; transition: all 0.15s; }
+    .social-icons a:hover { color: #f5d742; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Mash’al-e-Hussain</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="Admin%20Contact.html">Admin Contact</a>
+        <a href="Book%20Library.html">Book Library</a>
+        <a href="Event%20Gallery.html">Event Gallery</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="dua-page">
+    <a href="Book%20Library.html" class="back-link"><i class="fas fa-arrow-right"></i> Back to Library</a>
+    
+    <div class="dua-header">
+      <h2>دعائے توسل</h2>
+      <p>Duʿā' Tawassul | Supplication of Imploration</p>
+    </div>
+
+    <div class="arabic-dua">
+      <p>بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ<br>اَللَّهُمَّ إِنِّي أَسْأَلُكَ وَأَتَوَجَّهُ إِلَيْكَ<br><span class="transliteration">allahumma inni as'aluka wa atawajjahu ilayka</span></p>
+      <p>بِنَبِيِّكَ نَبِيِّ ٱلرَّحْمَةِ<br><span class="transliteration">binabiyyika nabiyyi al-rahmah</span></p>
+      <p>مُحَمَّدٍ صَلَّىٰ ٱللَّهُ عَلَيْهِ وَآلِهِ<br><span class="transliteration">muhammadin salla allahu 'alayhi wa alihi</span></p>
+      <p>يَا أَبَا ٱلْقَاسِمِ يَا رَسُولَ ٱللَّهِ<br><span class="transliteration">ya abal-qasimi ya rasula allahi</span></p>
+      <p>يَا إِمَامَ ٱلرَّحْمَةِ يَا سَيِّدَنَا وَمَوْلاَنَا<br><span class="transliteration">ya imama al-rahmati ya sayyidana wa mawlana</span></p>
+      <p>إِنَّا تَوَجَّهْنَا وَٱسْتَشْفَعْنَا وَتَوَسَّلْنَا بِكَ إِلَىٰ ٱللَّهِ<br><span class="transliteration">inna tawajjahna wastashfa'na wa tawassalna bika ila allahi</span></p>
+      <p>وَقَدَّمْنَاكَ بَيْنَ يَدَيْ حَاجَاتِنَا يَا وَجِيهاً عِنْدَ ٱللَّهِ<br><span class="transliteration">wa qaddamnaka bayna yaday hajatina ya wajihan 'inda allahi</span></p>
+      <p>إِشْفَعْ لَنَا عِنْدَ ٱللَّهِ<br><span class="transliteration">ishfa' lana 'inda allahi</span></p>
+      <p>يَا أَبَا ٱلْحَسَنِ يَا أَمِيرَ ٱلْمُؤْمِنِينَ<br><span class="transliteration">ya abal-hasani ya amiral-mu'minin</span></p>
+      <p>يَا عَلِيُّ بْنَ أَبِي طَالِبٍ<br><span class="transliteration">ya 'aliyyu bna abi talib</span></p>
+      <p>يَا فَاطِمَةُ ٱلزَّهْرَاءُ يَا بِنْتَ مُحَمَّدٍ<br><span class="transliteration">ya fatimatu al-zahra'u ya binta muhammad</span></p>
+      <p>... (یہ سلسلہ تمام ۱۴ معصومینؑ کے ناموں سے جاری ہے) ...</p>
+      <p>يَا سَادَتِي وَمَوَالِيَّ إِنِّي تَوَجَّهْتُ بِكُمْ<br><span class="transliteration">ya sadati wa mawaliya inni tawajjahtu bikum</span></p>
+      <p>آمِينَ رَبَّ ٱلْعَالَمينَ<br><span class="transliteration">amina rabba al-'alamin</span></p>
+    </div>
+
+    <div class="audio-player-section">
+      <h3><i class="fas fa-headphones-alt"></i> تلاوة دعائے توسل</h3>
+      <audio controls>
+        <source src="dua_tawassul.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p>© 2026 Mashal-e-Hussain. All rights reserved.</p>
+  </footer>
+</body>
+</html>

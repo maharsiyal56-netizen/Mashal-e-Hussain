@@ -933,18 +933,18 @@
                 <i class="fas fa-scroll"></i> حدیث کساء
             </a>
         </div>
-        <!-- Dua Kumayl Button (Coming Soon) -->
+        <!-- Dua Kumayl Button (Placeholder) -->
         <div class="special-btn-wrapper">
             <a href="#" id="duaKumaylBtn" class="btn-special">
                 <i class="fas fa-hands"></i> دعائے کمیل
-                <span class="sub-text">Coming Soon</span>
+                <!-- "Coming Soon" removed, now a placeholder link -->
             </a>
         </div>
-        <!-- Dua Tawassul Button (Coming Soon) -->
+        <!-- Dua Tawassul Button (Placeholder) -->
         <div class="special-btn-wrapper">
             <a href="#" id="duaTawassulBtn" class="btn-special">
                 <i class="fas fa-link"></i> دعائے توسل
-                <span class="sub-text">Coming Soon</span>
+                <!-- "Coming Soon" removed, now a placeholder link -->
             </a>
         </div>
     </div>
@@ -1559,7 +1559,7 @@
       // Hadith Kisa Button
       const hadithKisaBtn = document.getElementById('hadithKisaBtn');
       
-      // Coming Soon Buttons
+      // Dua Buttons (placeholders)
       const duaKumaylBtn = document.getElementById('duaKumaylBtn');
       const duaTawassulBtn = document.getElementById('duaTawassulBtn');
       
@@ -1690,17 +1690,19 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-      // COMING SOON ALERTS
+      // PLACEHOLDER LINKS for Dua Kumayl and Dua Tawassul (no Coming Soon, just placeholder)
       if (duaKumaylBtn) {
         duaKumaylBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          alert('دعائے کمیل کی خصوصیت جلد آرہی ہے۔ (Dua Kumayl coming soon)');
+          // Placeholder - replace with actual link later e.g., "dua-kumayl.html"
+          window.location.href = 'dua-kumayl.html'; // You can change this later
         });
       }
       if (duaTawassulBtn) {
         duaTawassulBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          alert('دعائے توسل کی خصوصیت جلد آرہی ہے۔ (Dua Tawassul coming soon)');
+          // Placeholder - replace with actual link later e.g., "dua-tawassul.html"
+          window.location.href = 'dua-tawasal.html'; // You can change this later
         });
       }
 
